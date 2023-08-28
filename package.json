@@ -3,15 +3,41 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
+  "main": "src/js/main.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prettier": "npx prettier --write src/**/*.{html,css,js} *.js",
+    "eslint": "npx eslint 'src/js/**/*.js'",
+    "eslint-fix": "eslint src/**/*.js --cache --fix",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.15",
+    "eslint": "^8.48.0",
+    "eslint-config-prettier": "^9.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
     "postcss": "^8.4.28",
+    "prettier": "^3.0.2",
     "tailwindcss": "^3.3.3",
-    "vite": "^4.4.5"
+    "vite": "^4.4.5",
+    "vite-plugin-eslint": "^1.8.1"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --cache --fix"
+    ],
+    "*.html": [
+      "prettier --write"
+    ],
+    "*.scss": [
+      "prettier --write"
+    ],
+    "*.css": [
+      "prettier --write"
+    ]
   }
 }
