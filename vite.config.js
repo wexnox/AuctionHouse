@@ -3,7 +3,7 @@ import path from 'path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  root: 'src',
+  // root: path.resolve(__dirname, 'src'),
   base: '/AuctionHouse/',
   plugin: [
     // default settings on build (i.e. fail on error)
@@ -21,9 +21,10 @@ export default defineConfig({
     },
   ],
   build: {
-    outDir: '../dist',
+    emptyOutDir: true,
+    outDir: path.resolve(__dirname, './dist'),
     rollupOptions: {
-      index: path.resolve(__dirname, 'src/index.html'),
+      index: path.resolve(__dirname, '../index.html'),
     },
   },
   server: {
