@@ -1,4 +1,5 @@
 import eslint from 'vite-plugin-eslint';
+import path from 'path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
@@ -21,7 +22,9 @@ export default defineConfig({
   ],
   build: {
     outDir: '../dist',
-    rollupOptions: {},
+    rollupOptions: {
+      index: path.resolve(__dirname, 'src/index.html'),
+    },
   },
   server: {
     hot: true,
