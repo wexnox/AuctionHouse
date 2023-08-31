@@ -25,6 +25,7 @@ export default defineConfig({
     outDir: path.resolve(__dirname, './dist'),
     rollupOptions: {
       index: path.resolve(__dirname, '../index.html'),
+      login: path.resolve(__dirname, 'src/pages/login/index.html'),
     },
   },
   server: {
