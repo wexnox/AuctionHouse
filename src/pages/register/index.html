@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
     <meta name="description" content="The most exclusive & prestigious Auction House"/>
     <meta name="description" content="Website for educational purpose only"/>
 
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
     <script type="module" src="../../js/main.js"></script>
-    <link rel="icon" href="/src/images/favicon.png" type="image/x-icon"/>
+    <link rel="icon" href="src/images/favicon.png" type="image/x-icon"/>
 
-    <title>Auction House | Login</title>
+    <title>Auction House</title>
 
 </head>
 
@@ -61,18 +60,35 @@
 
                 </div>
             </div>
+            <nav>
+                <a class="bg-white text-black" href="/src/pages/login/index.html">Login</a>
+                <a class="bg-white text-black" href="/src/pages/register/index.html">Register</a>
+            </nav>
+
         </div>
     </div>
 </header>
 
-<main class="flex-1">
-
-
+<main>
     <section>
         <div class="container mx-auto max-w-7xl px-4">
-            <h1 class="mb-4 text-3xl font-medium sm:text-center">Login</h1>
-            <div id="loginContainer" class="mt-8 mb-14">
-                <form id="loginForm" class="flex flex-col gap-5 sm:m-0 sm:max-w-xs">
+            <h1 class="mb-4 text-3xl font-medium sm:text-center">Sign Up</h1>
+            <div id="registerContainer" class="mt-8 mb-14">
+                <form id="registerForm" class="flex flex-col gap-5 sm:m-0 sm:max-w-xs">
+                    <div class="flex flex-col gap-2">
+                        <label for="name" class="block font-bold">Name</label>
+                        <input
+                                id="name"
+                                name="name"
+                                required
+                                class="h-8 w-full rounded bg-zinc-100 indent-2.5"
+                                type="text"
+                                placeholder="Your name"
+                        />
+                        <div class="hidden text-rose-700 validation-error py-1.5">
+                            Name must not contain punctuation symbols apart from underscore
+                        </div>
+                    </div>
                     <div class="flex flex-col gap-2">
                         <label for="email" class="block font-bold">Email address</label>
                         <input
@@ -99,15 +115,28 @@
                         />
                         <div class="hidden text-rose-700 validation-error py-1.5">Password must 8 characters or more</div>
                     </div>
+                    <div class="flex flex-col gap-2">
+                        <label for="confirm-password" class="block font-bold">Confirm Password</label>
+                        <input
+                                id="confirm-password"
+                                required
+                                class="h-8 w-full rounded bg-zinc-100 indent-2.5"
+                                type="password"
+                                placeholder="Password"
+                        />
+                        <div class="hidden text-rose-700 validation-error py-1.5">
+                            Confirmed password does not match password
+                        </div>
+                    </div>
                     <div class="mt-4">
                         <button type="submit" class="relative w-full rounded-md bg-blue-700 py-2 text-white hover:bg-blue-600">
-                            Sign In
+                            Sign Up
                         </button>
                     </div>
                     <p class="mt-2 text-center">
-                        Don't have an account?
-                        <a href="/src/pages/register/index.html" class="font-medium text-blue-700 decoration-2 underline-offset-4 hover:underline"
-                        >Sign Up</a
+                        Already have an account?
+                        <a href="/src/pages/login/index.html" class="font-medium text-blue-700 decoration-2 underline-offset-4 hover:underline"
+                        >Sign In</a
                         >
                     </p>
                 </form>
@@ -118,7 +147,6 @@
             ></div>
         </div>
     </section>
-
 
 </main>
 

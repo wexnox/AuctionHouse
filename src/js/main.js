@@ -1,2 +1,4 @@
 import '../css/index.css';
-import './router.js';
+import router from './router.js';
+
+router();
