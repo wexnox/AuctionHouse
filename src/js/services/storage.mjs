@@ -10,15 +10,10 @@ export function save(key, value) {
 /**
  *
  * @param key
- * @returns {any|null}
+ * @returns {any}
  */
-export function load(key) {
-    try {
-        const value = localStorage.getItem(key);
-        return JSON.parse(value);
-    } catch {
-        return null
-    }
+export function get(key) {
+    return JSON.parse(localStorage.getItem(key));
 }
 
 /**

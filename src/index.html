@@ -1,144 +1,89 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="The most exclusive & prestigious Auction House" name="description" />
-    <meta content="Website for educational purpose only" name="description" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="The most exclusive & prestigious Auction House" name="description"/>
+    <meta content="Website for educational purpose only" name="description"/>
 
-    <link href="https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css" rel="stylesheet" />
+    <link href="https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css" rel="stylesheet"/>
     <script src="./js/main.js" type="module"></script>
-    <!--    <script src="https://cdn.tailwindcss.com"></script>-->
-    <link href="images/favicon.png" rel="icon" type="image/x-icon" />
+    <link href="images/favicon.png" rel="icon" type="image/x-icon"/>
 
     <title>Auction House</title>
-  </head>
+</head>
 
-  <body class="text-grey-800">
-    <header class="sticky top-0 z-10 w-full bg-gray-700 duration-300 ease-out">
-      <div class="container mx-auto max-w-7xl px-4">
-        <div class="items-center justify-between gap-x-10 sm:flex">
-          <div class="flex shrink-0 justify-between py-6">
-            <a href="/">
-              <div>
-                <img alt="logo" class="h-12 w-12 sm:mb-0.5" src="images/favicon.png" title="Home" />
-              </div>
-            </a>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Login Example</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav" id="menu"></ul>
+        </div>
+    </div>
+</nav>
 
-            <!--TODO: fix hamburger-btn-->
-          </div>
+<main class="container">
+    <h1>Home</h1>
+    
 
-          <nav
-            class="absolute w-full -translate-x-full bg-gray-700 text-white duration-300 ease-out sm:relative sm:-translate-x-0"
-            id="hamburger-menu"
-          >
-            <div class="container mx-auto max-w-7xl px-4">
-              <ul class="flex flex-row place-content-center gap-10 py-10 sm:flex sm:py-3" id="menu">
-                <li class="mb-8 border-b border-slate-700 pb-4 hover:text-slate-300 sm:m-0 sm:border-0 sm:p-0">
-                  <a class="block" href="/">Home</a>
-                </li>
-                <li class="mb-8 border-b border-slate-700 pb-4 sm:m-0 sm:border-0 sm:p-0" title="Categories">
-                  Categories
-                </li>
-                <li class="mb-8 border-b border-slate-700 pb-4 sm:m-0 sm:border-0 sm:p-0" title="Auctions">Auctions</li>
-              </ul>
+</main>
+
+
+<footer>
+
+    <div class="container">
+        <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+            <div class="col mb-3">
+                <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32">
+                        <use xlink:href="#bootstrap"/>
+                    </svg>
+                </a>
+                <p class="text-muted">&copy; 2022</p>
             </div>
-          </nav>
-          <div class="flex flex-row sm:grow sm:items-center sm:justify-between sm:gap-4">
-            <div class="flex max-w-xl grow flex-row gap-1.5 pb-6 sm:order-1 sm:pb-0" id="search-container">
-              <label class="grow" for="search">
-                <input class="h-8 w-full rounded indent-2.5" id="search" placeholder="Search me" type="text" />
-              </label>
 
-              <button class="h-8 rounded bg-amber-50 px-3 hover:bg-amber-100">Search</button>
+            <div class="col mb-3">
+
             </div>
-          </div>
-          <nav>
-            <a class="bg-white text-black" href="/src/pages/login/index.html">Login</a>
-            <a class="bg-white text-black" href="/src/pages/register/index.html">Register</a>
-          </nav>
-        </div>
-      </div>
-    </header>
 
-    <main>
-      <section class="py-10">
-        <!--TODO: breadcrumbs-->
-      </section>
+            <div class="col mb-3">
+                <h5>Section</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                </ul>
+            </div>
 
-      <section class="m-auto max-w-7xl xl:px-4">
-        <!--TODO: carousel-->
-      </section>
+            <div class="col mb-3">
+                <h5>Section</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                </ul>
+            </div>
 
-      <section id="auctionListings">
-        <div class="container mx-auto max-w-7xl px-4">
-          <h2 class="mt-24 text-3xl">Latest Listings</h2>
-          <div class="mb-15 gap-15 mt-6 flex flex-col" id="listingsContainer"></div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="bg-gray-700 pb-4 pt-16 text-white">
-      <!--TODO: subscription form-->
-      <section></section>
-
-      <section class="flex-row pb-10">
-        <h2 class="bg-gray-700 pb-5 text-center font-bold text-white">Follow us</h2>
-        <ul class="flex place-content-center gap-10 pb-5">
-          <li class="SoMe">
-            <a href=""><i class="fi fi-brands-twitter"></i></a>
-          </li>
-          <li class="SoMe">
-            <a href=""><i class="fi fi-brands-facebook"></i></a>
-          </li>
-          <li class="SoMe">
-            <a href=""><i class="fi fi-brands-instagram"></i></a>
-          </li>
-          <li class="SoMe">
-            <a href=""><i class="fi fi-brands-youtube"></i></a>
-          </li>
-          <li class="SoMe">
-            <a href=""><i class="fi fi-brands-linkedin"></i></a>
-          </li>
-        </ul>
-      </section>
-
-      <div class="container mx-auto max-w-7xl px-4">
-        <div class="flex flex-col justify-between gap-14 pb-28 sm:flex-row">
-          <div class="flex flex-col items-start gap-3 sm:w-40">
-            <a href="/"><img alt="logo" class="h-20 sm:mb-0.5" src="images/favicon.png" title="Home" /></a>
-          </div>
-
-          <div>
-            <p class="pb-2 font-bold">Support</p>
-            <ul class="flex flex-col gap-2 font-light">
-              <li>Contact US</li>
-              <li>FAQ</li>
-              <li>Careers</li>
-              <li>Community</li>
-            </ul>
-          </div>
-          <div>
-            <p class="pb-2 font-bold">Corporate</p>
-            <ul class="flex flex-col gap-2 font-light">
-              <li>Press</li>
-              <li>Careers</li>
-              <li>Privacy Policy</li>
-              <li>Corporate Governance</li>
-            </ul>
-          </div>
-          <div>
-            <p class="pb-2 font-bold">Connect with us</p>
-            <ul class="flex flex-col gap-2 font-light">
-              <li>Security</li>
-              <li>Terms & Conditions</li>
-              <li>Conditions of Business</li>
-              <li>LinkedIn</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <p class="bg-gray-700 text-center font-light text-white">For educational purpose only</p>
-    </footer>
-  </body>
+            <div class="col mb-3">
+                <h5>Section</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+</footer>
+</body>
 </html>
