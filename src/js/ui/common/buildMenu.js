@@ -7,26 +7,29 @@ export default function buildMenu(pathname) {
     if (isLoggedIn()) {
         const name = getName();
 
-        menu.innerHTML += `<li class="nav-item">
-                        <a class="nav-link ${pathname === "/" || pathname === "/index.html" ? "active" : ""}" href="/">Home</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link ${pathname === "/dashboard/" ? "active" : ""}" href="/dashboard">Dashboard</a>
-                      </li>
-                      <li class="nav-item">
-                        <button class="btn btn-primary" id="logout">Log out ${name}</button>
-                      </li>`;
+        menu.innerHTML += `
+                        <li class="nav-item">
+                            <a class="nav-link ${pathname === "/" || pathname === "/index.html" ? "active" : ""}" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link ${pathname === "/dashboard/" ? "active" : ""}" aria-current="page" href="/dashboard">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-warning" id="logout" aria-current="page">Log out ${name}</button>
+                        </li>
+`;
 
         listeners.logoutListener();
     } else {
-        menu.innerHTML += `<li class="nav-item">
-                        <a class="nav-link ${pathname === "/" || pathname === "/index.html" ? "active" : ""}" href="/">Home</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link ${pathname === "/auth/login.html" ? "active" : ""}" href="/auth/login.html">Login</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link ${pathname === "/auth/register.html" ? "active" : ""}" href="/auth/register.html">Register</a>
-                      </li>`;
+        menu.innerHTML += `
+                        <li class="nav-item">
+                            <a class="nav-link ${pathname === "/" || pathname === "/index.html" ? "active" : ""}" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link ${pathname === "/auth/login.html" ? "active" : ""}" aria-current="page" href="/auth/login.html">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link ${pathname === "/auth/register.html" ? "active" : ""}" aria-current="page" href="/auth/register.html">Register</a>
+                        </li>`;
     }
 }
