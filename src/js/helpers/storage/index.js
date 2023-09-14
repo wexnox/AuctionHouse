@@ -1,2 +1,1 @@
-export * from './getName.js';
-export * from './isLoggedin.js';
+export * from './storage.mjs';

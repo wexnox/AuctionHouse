@@ -1,39 +1,41 @@
-import { API_BASE_URL } from '../../constants/constants.mjs';
-import * as storage from '../../services/storage.mjs';
+import {API_MAIN_URL} from '../../constants/constants.js';
+import * as storage from '../../helpers/storage/storage.mjs';
 
-/**
- *
- * @type {string}
- */
-const action = '/auth/login';
-/**
- *
- * @type {string}
- */
+
+const endpoint = '/auth/login';
 const method = 'post';
 
-/**
- *
- * @param profile
- * @returns {Promise<void>}
- */
+
 export async function login(profile) {
-  const loginURL = API_BASE_URL + action;
-  const body = JSON.stringify(profile);
+    const loginURL = API_MAIN_URL + endpoint;
+    const body = JSON.stringify(profile);
 
-  const response = await fetch(loginURL, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    method,
-    body,
-  });
+    try {
+        const response = await fetch(loginURL, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            method,
+            body,
+        });
 
-  const { accessToken, ...user } = await response.json();
+        const {accessToken, ...user} = await response.json();
 
-  storage.save('token', accessToken);
+        if (response.status !== 200) {
+            alert("eeeeek")
+        }
 
-  storage.save('profile', user);
-  console.log();
-  alert('You are now logged in');
+        if (response.status === 200) {
+            storage.saveTokenToStorage('token', accessToken);
+            storage.saveTokenToStorage('profile', user);
+            alert('You are now logged in');
+            location.href = "../../../profile/index.html"
+        }
+
+
+    } catch (error) {
+        console.log(error);
+    }
+
+
 }

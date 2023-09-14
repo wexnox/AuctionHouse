@@ -1,9 +1,3 @@
-/**
- *
- * @param type
- * @param message
- * @param target
- */
 export default function displayMessage(type, message, target) {
     const container = document.querySelector(target);
 

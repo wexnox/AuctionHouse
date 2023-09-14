@@ -1,12 +1,12 @@
-import {isLoggedIn} from "../storage/index.js";
-
 export function redirectBasedOnLogin(pathname) {
-    if (isLoggedIn()) {
+    const token = localStorage.getItem('token');
+    if (token) {
         if (pathname === "/auth/login.html" || pathname === "/auth/register.html") {
-            location.href = "/dashboard";
+            alert("hey")
+            location.href = "/profile";
         }
     } else {
-        if (pathname === "/dashboard/" || pathname === "/dashboard/index.html") {
+        if (pathname === "/profile/" || pathname === "/profile/index.html") {
             location.href = "/auth/login.html";
         }
     }
