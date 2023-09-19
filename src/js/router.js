@@ -19,6 +19,7 @@ export default function router() {
             listeners.setRegisterUserListener();
             break;
         case "/profile/index.html":
+            listeners.fetchProfile()
             listeners.updateProfileListener();
             break;
     }
