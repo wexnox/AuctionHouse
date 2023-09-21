@@ -11,6 +11,7 @@ export default function router() {
     switch (pathname) {
         case "/":
         case "/index.html":
+            listeners.getAllListingsListener()
             break;
         case "/auth/login.html":
             listeners.loginListener();
