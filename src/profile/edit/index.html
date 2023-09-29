@@ -2,23 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="The most exclusive & prestigious Auction House" name="description"/>
+    <meta content="Website for educational purpose only" name="description"/>
 
-    <meta name="description" content="The most exclusive & prestigious Auction House"/>
-    <meta name="description" content="Website for educational purpose only"/>
+    <link href="https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css" rel="stylesheet"/>
+    <script src="../../js/main.js" type="module"></script>
+    <link href="../../images/favicon.png" rel="icon" type="image/x-icon"/>
 
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
-    <script type="module" src="../../js/main.js"></script>
-    <link rel="icon" href="/src/images/favicon.png" type="image/x-icon"/>
-
-    <title>Auction House | Login</title>
-
+    <title>Auction House</title>
 </head>
 
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/"><img src="../../images/favicon.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-top">
+        <a class="navbar-brand" href="/">
+            <img src="../../images/favicon.png" alt="logo" width="50" class="d-inline-block align-text-top">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -39,14 +38,23 @@
     </form>
 </nav>
 
-<main>
+<main class="container">
+    <h1>Index home</h1>
+    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
 
-    <h1 class="text-center">Edit Your profile</h1>
+        <form id="updateAvatarForm">
+            <div class="form-group form-floating">
+                <input id="avatar" type="url" name="avatar" placeholder="Avatar URL">
+                <label for="avatar"></label>
+                <button type="submit" id="updateAvatarBtn" class="btn btn-sm btn-outline-info px-4">Update Avatar</button>
+            </div>
+        </form>
+    </div>
 
 </main>
 
 
-<footer class="footer mt-auto py-3">
+<footer>
 
     <div class="container">
 

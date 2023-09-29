@@ -10,7 +10,7 @@ export async function getAllListingsListener(items) {
 
         const response = await authFetch(url, method)
         const resultJSON = await response.json(items);
-        console.log("bob")
+
         renderListings(resultJSON)
 
     } catch (e) {
@@ -20,4 +20,3 @@ export async function getAllListingsListener(items) {
 
 }
 
-getAllListingsListener();

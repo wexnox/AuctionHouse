@@ -21,8 +21,7 @@ export default function router() {
             break;
         case "/profile/index.html":
             listeners.fetchProfile()
-            listeners.updateProfileListener();
-            break;
+            return;
     }
 
 }

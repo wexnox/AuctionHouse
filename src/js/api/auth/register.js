@@ -1,10 +1,10 @@
 import {API_MAIN_URL} from "../../constants/constants.js";
 
-const action = "/auth/register";
+const endpoint = "/auth/register";
 
 
 export async function register(userProfile) {
-    const registerURL = `${API_MAIN_URL}${action}`;
+    const registerURL = `${API_MAIN_URL}${endpoint}`;
 
     const options = {
         headers: {
@@ -18,6 +18,7 @@ export async function register(userProfile) {
 
         const response = await fetch(registerURL, options);
         const result = await response.json();
+        // TODO: remove log
         console.log(response);
         console.log(result);
         if (response.status === 201) {
