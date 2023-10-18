@@ -1,4 +1,5 @@
 # Semester Project 2
+[![pages-build-deployment](https://github.com/wexnox/AuctionHouse/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/wexnox/AuctionHouse/actions/workflows/pages/pages-build-deployment)
 
 ## Goal
 To take the skills learned over the past three semesters and create an auction website.
