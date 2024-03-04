@@ -1,41 +1,38 @@
-import {API_MAIN_URL} from '../../constants/constants.js';
-import * as storage from '../../helpers/storage/storage.mjs';
+import {API_MAIN_URL} from '../constants.js';
+import * as storage from '../../helpers/storage.js';
+import {displayMessage} from "../../ui/common/displayMessage.js";
+// import togglePassword from "../../listeners/auth/togglePassword.js";
 
+// togglePassword()
 
-const endpoint = '/auth/login';
-const method = 'post';
+export async function login(userProfile) {
+    const endpoint = '/auth/login';
+    const loginURL = `${API_MAIN_URL}${endpoint}`;
 
-
-export async function login(profile) {
-    const loginURL = API_MAIN_URL + endpoint;
-    const body = JSON.stringify(profile);
+    console.log(`The API URL is: ${loginURL}`);
+    console.log(`User Profile Sent: ${JSON.stringify(userProfile)}`);
 
     try {
         const response = await fetch(loginURL, {
             headers: {
-                'Content-Type': 'application/json',
+                "Content-Type": "application/json; charset=UTF-8",
             },
-            method,
-            body,
+            method: 'POST',
+            body: JSON.stringify(userProfile),
         });
 
         const {accessToken, ...user} = await response.json();
 
-        if (response.status !== 200) {
-            alert("eeeeek")
-        }
-
         if (response.status === 200) {
-            storage.saveTokenToStorage('token', accessToken);
+            storage.saveTokenToStorage('accessToken', accessToken);
             storage.saveTokenToStorage('profile', user);
-            alert('You are now logged in');
-            location.href = "../../../profile/index.html"
+            location.href = "../"
+        } else {
+            console.log('Unexpected response status:', response.status);
+            displayMessage('danger', 'Unexpected error occurred. Please try again later.');
         }
-
 
     } catch (error) {
-        console.log(error);
+        return displayMessage('danger', error.message);
     }
-
-
 }
