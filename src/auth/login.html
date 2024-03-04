@@ -3,18 +3,12 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <meta name="description" content="The most exclusive & prestigious Auction House"/>
-    <meta name="description" content="Website for educational purpose only"/>
-
+    <meta name="description" content="The most exclusive & prestigious Auction House. Website for educational purpose only"/>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
     <script type="module" src="../js/main.js"></script>
     <link rel="icon" href="../images/favicon.png" type="image/x-icon"/>
-
     <title>Auction House | Login</title>
-
 </head>
-
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
@@ -38,15 +32,12 @@
         />
     </form>
 </nav>
-
 <main>
-
     <div class="container mt-4 mb-4">
+        <div id="message"></div>
         <div class="row justify-content-center">
             <h1 class="text-center">Login</h1>
-            <!--TODO: error msg placement-->
             <div class="col-12 col-md-6">
-
                 <form class="" id="loginForm">
 
                     <div class="form-group mb-4 form-floating">
@@ -62,17 +53,15 @@
                     </div>
 
                     <div class="form-group mb-4 form-floating">
-
                         <input type="password" id="password" class="form-control" name="password" placeholder="Password"
                                minlength="8"
                                required
                         />
                         <label for="password" class="col-form-label ">Password</label>
+                        <i id="togglePassword" class="absolute inset-y-0 right-3 flex items-center mr-3 cursor-pointer">👁️</i>
                     </div>
                     <button type="submit" class="btn btn-primary mb-4">Login</button>
-
                 </form>
-
                 <div>
                     <a class="text-decoration-none " href="../auth/register.html">Register here</a>
                     <a class="text-decoration-none " href="#">Forgot Password?</a>
@@ -82,12 +71,8 @@
     </div>
 
 </main>
-
-
 <footer class="footer mt-auto py-3">
-
     <div class="container">
-
         <section class="row row-cols-1 row-cols-sm-2">
             <div class="col">
                 <p class=" ">Follow Us!</p>
@@ -95,31 +80,28 @@
             <div class="col">
                 <ul class="nav p-2">
                     <li class="nav-item">
-                        <a href="" class=" nav-link text-decoration-none"><i class="text-black fi fi-brands-twitter"></i></a>
+                        <a href="#" class=" nav-link text-decoration-none"><i class="text-black fi fi-brands-twitter"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class=" nav-link text-decoration-none"><i class="text-black fi fi-brands-facebook"></i></a>
+                        <a href="#" class=" nav-link text-decoration-none"><i class="text-black fi fi-brands-facebook"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class=" nav-link text-decoration-none"><i class="text-black fi fi-brands-instagram"></i></a>
+                        <a href="#" class=" nav-link text-decoration-none"><i class="text-black fi fi-brands-instagram"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link text-decoration-none"><i class="text-black fi fi-brands-youtube"></i></a>
+                        <a href="#" class="nav-link text-decoration-none"><i class="text-black fi fi-brands-youtube"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link text-decoration-none"><i class="text-black fi fi-brands-linkedin"></i></a>
+                        <a href="#" class="nav-link text-decoration-none"><i class="text-black fi fi-brands-linkedin"></i></a>
                     </li>
                 </ul>
             </div>
         </section>
-        <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
 
             <div class="col mb-3">
                 <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
                     <img src="../images/favicon.png" alt="logo" width="50" height="50" class="d-inline-block align-text-top">
-                    <svg class="bi me-2" width="40" height="32">
-                        <use xlink:href="#bootstrap"/>
-                    </svg>
                 </a>
                 <p class="text-muted">&copy; 2022</p>
             </div>
@@ -154,7 +136,7 @@
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">LinkedIn</a></li>
                 </ul>
             </div>
-        </footer>
+        </div>
     </div>
 </footer>
 
