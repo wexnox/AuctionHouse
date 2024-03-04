@@ -1,11 +1,11 @@
-import * as storage from "../../helpers/storage/storage.mjs";
+import * as storage from "../../helpers/storage.js";
 
 
 export function logoutListener() {
     const logoutBtn = document.getElementById('logout');
 
     logoutBtn.addEventListener('click', () => {
-        storage.clearTokenFromStorage("token");
+        storage.clearTokenFromStorage("accessToken");
         storage.clearTokenFromStorage("profile")
         location.href = '/';
     });
