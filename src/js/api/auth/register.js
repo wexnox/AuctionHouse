@@ -1,10 +1,14 @@
-import {API_MAIN_URL} from "../../constants/constants.js";
-
-const endpoint = "/auth/register";
-
+import {API_MAIN_URL} from "../constants.js";
+import {authFetch} from "../api.js";
+import {displayMessage} from "../../ui/common/displayMessage.js";
 
 export async function register(userProfile) {
+    const endpoint = "/auth/register";
     const registerURL = `${API_MAIN_URL}${endpoint}`;
+
+    console.log(`The API URL is: ${registerURL}`);
+    console.log(`User Profile Sent: ${JSON.stringify(userProfile)}`);
+
 
     const options = {
         headers: {
@@ -16,21 +20,27 @@ export async function register(userProfile) {
 
     try {
 
-        const response = await fetch(registerURL, options);
-        const result = await response.json();
-        // TODO: remove log
-        console.log(response);
-        console.log(result);
-        if (response.status === 201) {
-            // location.href = "../../../profile/index.html";
+        const {data, error} = await authFetch(registerURL, options);
+        if (error) {
+            throw new Error(error);
         }
 
-        if (response.status !== 201) {
-            alert("Something went wrong!");
-            console.log(response.status)
+
+        console.log(data.errors);
+        console.log(data);
+
+        if (data.status === 400 && data.errors[0].message === "Profile already exists") {
+            return displayMessage('danger', 'Profile already exists. Please use a different email.');
         }
-        return result;
+
+        if (data.status >= 200 && data.status < 300) {
+            location.href = "../../../profile/index.html";
+        } else {
+            console.log('Unexpected response status:', data.status);
+            displayMessage('danger', 'Unexpected error occurred. Please try again later.');
+        }
+        return data;
     } catch (error) {
-        console.log(error);
+        return displayMessage('danger', error.message);
     }
 }
