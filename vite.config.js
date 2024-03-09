@@ -1,35 +1,30 @@
-import eslint from 'vite-plugin-eslint';
-import path from 'path';
-import { defineConfig } from 'vite';
+import {resolve} from 'path';
+import {defineConfig} from 'vite';
+import eslintPlugin from "vite-plugin-eslint";
 
 export default defineConfig({
-  // root: path.resolve(__dirname, 'src'),
-  base: '/AuctionHouse/',
-  plugin: [
-    // default settings on build (i.e. fail on error)
-    {
-      ...eslint(),
-      apply: 'build',
+    root: resolve(__dirname, 'src'),
+    base: '/',
+
+    plugins: [
+        eslintPlugin()
+    ],
+
+    build: {
+        rollupOptions: {
+            input: {
+                index: resolve(__dirname, './src/index.html'),
+                login: resolve(__dirname, './src/auth/login.html'),
+                register: resolve(__dirname, './src/auth/register.html'),
+                profile: resolve(__dirname, './src/profile/index.html'),
+                createListing: resolve(__dirname, './src/listings/create.html'),
+                listingsDetails: resolve(__dirname, './src/listings/details.html'),
+                search: resolve(__dirname, './src/search.html')
+
+            },
+        },
+
+        emptyOutDir: true,
+        outDir: resolve(__dirname, '../docs'),
     },
-    {
-      ...eslint({
-        failOnWarning: false,
-        failOnError: false,
-      }),
-      apply: 'serve',
-      enforce: 'post',
-    },
-  ],
-  build: {
-    emptyOutDir: true,
-    outDir: path.resolve(__dirname, './dist'),
-    rollupOptions: {
-      index: path.resolve(__dirname, '../index.html'),
-    },
-  },
-  server: {
-    hot: true,
-    port: 5555,
-    host: '127.0.0.1',
-  },
 });
