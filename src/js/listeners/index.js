@@ -10,4 +10,4 @@ export * from './profile/updateAvatarListener.js'
 // Auction
 export * from './auction/getAllAuctionsListener.js'
 export * from './auction/loadMore.js'
-export * from './auction/createListingForm.js'
+export * from './auction/createNewListingListener.js'
