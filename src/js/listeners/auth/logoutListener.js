@@ -1,4 +1,5 @@
 import * as storage from "../../helpers/storage.js";
+import buildMenu from "../../ui/common/buildMenu.js";
 
 
 export function logoutListener() {
@@ -8,5 +9,6 @@ export function logoutListener() {
         storage.clearTokenFromStorage("accessToken");
         storage.clearTokenFromStorage("profile")
         location.href = '/';
+        buildMenu(); // Rebuild the menu to reflect the unauthenticated state
     });
 }
