@@ -10,5 +10,5 @@ export * from '../api/profile/userListings.js'
 
 // Auction
 export * from './auction/getAllAuctionsListener.js'
-export * from './auction/loadMore.js'
+export * from './auction/loadMoreListener.js'
 export * from './auction/createNewListingListener.js'

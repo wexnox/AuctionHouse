@@ -14,7 +14,7 @@ export default function router() {
         case "/index.html":
             listAuctions = listeners.getAllAuctionsListener()
             listAuctions() // Initial auctions load
-            listeners.loadMore(listAuctions) // Set up listener for subsequent loads
+            listeners.loadMoreListener(listAuctions) // Set up listener for subsequent loads
             break;
         case "/auth/register.html":
             listeners.setRegisterUserListener();
