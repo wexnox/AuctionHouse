@@ -25,6 +25,7 @@ export default function router() {
         case "/profile/index.html":
             listeners.userProfileListener()
             listeners.updateAvatarListener();
+            listeners.getUserListing()
             return;
         case "/listings/create.html":
             listeners.createNewListingListener()
