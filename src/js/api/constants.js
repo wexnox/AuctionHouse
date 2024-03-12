@@ -12,5 +12,5 @@ export const API_BID_URL = "/bids";
 
 export const sellerBidsURL = "?_seller=true&_bids=true";
 
-export const AUCTIONS_LIMIT = 10;
+export const AUCTIONS_LIMIT = 15;
 
