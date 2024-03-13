@@ -2,6 +2,7 @@ import * as listeners from './listeners/index.js';
 import buildMenu from './ui/common/buildMenu.js';
 import {redirectBasedOnLogin} from './helpers/redirectBasedOnLogin.js';
 
+// TODO: Refactor me
 export default function router() {
     const pathname = location.pathname;
     let listAuctions;
@@ -27,6 +28,13 @@ export default function router() {
             listeners.updateAvatarListener();
             listeners.getUserListing()
             return;
+        // TODO: Setup sorting
+        // case "/listings/index.html":
+        //     getSortedListings();
+        //     break;
+        case "/listings/details.html":
+            listeners.getListingsDetailsListener();
+            break;
         case "/listings/create.html":
             listeners.createNewListingListener()
     }
