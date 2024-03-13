@@ -32,7 +32,7 @@ const renderCard = (item) => {
 
     return `
         <div class="col">
-            <div class="card py-3 px-3">
+            <div class="card glass py-3 px-3">
                 <img src="${item.media}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${item.title}</h5>
