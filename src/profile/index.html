@@ -9,8 +9,8 @@
     <link href="../images/favicon.png" rel="icon" type="image/x-icon"/>
     <title>Auction House | Profile</title>
 </head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<body class="bg-gradient-custom d-flex flex-column vh-100 mb-auto">
+<nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
             <img src="../images/favicon.png" alt="logo" width="50" height="50" class="d-inline-block align-text-top"/>
@@ -41,7 +41,7 @@
     </form>
 </nav>
 
-<main id="main-container">
+<main class="container mb-5 pb-5 flex-grow-1">
 
     <div class="wrapper">
         <div class="userWrapper" id="userWrapper"></div>
@@ -49,10 +49,11 @@
     <div class="listingWrapper mt-4 mb-2">
         <div class="row row-cols-1 row-cols-md-2 g-4 mx-auto usersAuctions" id="itemsList"></div>
     </div>
+
 </main>
 
-<footer>
-    <div class="container">
+<footer class="mt-auto">
+    <div class="container ">
         <section class="row row-cols-1 row-cols-sm-2">
             <div class="col">
                 <p class=" ">Follow Us!</p>
