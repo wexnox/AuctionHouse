@@ -1,7 +1,7 @@
-export function toggleAuctionLoadMore(hideButton = false) {
+export function toggleAuctionLoadMore(hideBtn = false) {
     const button = document.querySelector('#loadMore');
 
     if (button) {
-        button.style.display = hideButton ? 'none' : 'block';
+        button.style.display = hideBtn ? 'none' : 'block';
     }
 }
