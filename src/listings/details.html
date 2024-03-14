@@ -113,5 +113,31 @@
         </div>
     </div>
 </footer>
+
+<!-- Bid Modal -->
+<div class="modal fade" id="placeBidModal" tabindex="-1" aria-labelledby="placeBidModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="placeBidModalLabel">Place a Bid</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="bidForm">
+                <div class="modal-body">
+
+                    <div class="mb-3">
+                        <label for="bidAmount" class="form-label">Bid Amount:</label>
+                        <input type="number" class="form-control" id="bidAmount" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="submitBid">Place Bid</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
