@@ -2,7 +2,7 @@ import {displayMessage} from '../../ui/common/displayMessage.js';
 import {toggleAuctionLoadMore} from '../../ui/helpers/toggleAuctionLoadMore.js';
 import * as api from '../../api/listings/getAllListings.js';
 import {AUCTIONS_LIMIT} from '../../api/constants.js';
-import createHtml from '../../ui/common/createHtml.js';
+import createHtmlCards from '../../ui/common/createHtmlCards.js';
 import {toggleLoadingIndicator} from '../../ui/helpers/toggleLoadingIndicator.js';
 
 const ERROR_COLOR = 'danger';
@@ -14,7 +14,7 @@ export function getAllAuctionsListener() {
     async function fetchAndDisplayAuctions() {
         const auctions = await api.getAllListings(offset);
         offset += AUCTIONS_LIMIT;
-        createHtml(auctions, container);
+        createHtmlCards(auctions, container);
         const hideBtn = (auctions.length === 0 || auctions.length < AUCTIONS_LIMIT);
         toggleAuctionLoadMore(hideBtn);
         return auctions;
