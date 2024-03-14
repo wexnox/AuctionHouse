@@ -6,8 +6,11 @@ export * from './auth/registerListener.js'
 // Profile
 export * from './profile/userProfileListener.js'
 export * from './profile/updateAvatarListener.js'
+export * from '../api/profile/userListings.js'
 
 // Auction
 export * from './auction/getAllAuctionsListener.js'
-export * from './auction/loadMore.js'
-export * from './auction/createListingForm.js'
+export * from './auction/loadMoreListener.js'
+export * from './auction/createNewListingListener.js'
+export * from './auction/getListingsDetailsListener.js'
+export * from './auction/setBidListener.js'

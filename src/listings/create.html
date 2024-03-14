@@ -9,8 +9,8 @@
     <link href="../images/favicon.png" rel="icon" type="image/x-icon"/>
     <title>Auction House</title>
 </head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<body class="bg-gradient-custom d-flex flex-column vh-100 mb-auto">
+<nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
             <img src="../images/favicon.png" alt="logo" width="50" class="d-inline-block align-text-top">
@@ -26,11 +26,11 @@
         <input type="search" id="searchBar" name="searchBar" class="form-control form-control-dark" placeholder="Search..." aria-label="Search"/>
     </form>
 </nav>
-<main class="container" role="main">
+<main class="container mb-5 pb-5 flex-grow-1">
     <div class="wrapper">
         <div class="userWrapper" id="userWrapper"></div>
     </div>
-    <div class="container d-flex flex-column mt-4 w-50">
+    <div class="container d-flex flex-column mt-4  w-50">
 
         <h1 class="mb-4">Create new listing</h1>
         <form class="d-flex flex-column gap-4 form-group form-floating" id="createListingForm">
@@ -48,7 +48,6 @@
                 <label for="endsAt" class="form-label">End</label>
                 <input type="datetime-local" class="form-control" id="endsAt" name="endsAt"/>
             </div>
-
             <div class="form-group form-floating">
                 <input type="url" class="form-control" id="media" name="media" placeholder="Place image link here"/>
                 <label for="media" class="form-label">Place image link here</label>
@@ -66,7 +65,7 @@
     </div>
 </main>
 
-<footer class="footer">
+<footer class="mt-auto">
     <div class="container">
         <section class="row row-cols-1 row-cols-sm-2">
             <div class="col">

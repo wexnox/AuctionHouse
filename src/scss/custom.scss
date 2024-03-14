@@ -1,3 +1,16 @@
 @import 'variables';
 @import 'bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.bg-gradient-custom {
+  //background-image: linear-gradient(to right, #ff7e5f, #feb47b);
+  //background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+  background: rgb(65, 53, 58);
+  background: radial-gradient(circle, rgba(65, 53, 58, 1) 0%, rgba(46, 49, 70, 1) 100%);
+}
+
+.glass {
+  background-color: rgba(149, 212, 220, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}

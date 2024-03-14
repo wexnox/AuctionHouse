@@ -8,7 +8,7 @@ const profileDOMElement = document.getElementById("userWrapper");
 // TODO: Make better styling it looks like crap
 async function renderUserProfile(userInfo) {
     profileDOMElement.innerHTML = `
-        <div class="profile-container border-top border-bottom shadow p-3 mb-5 d-flex flex-column align-items-center">
+        <div class="profile-container border-bottom shadow p-3 mb-5 d-flex flex-column align-items-center">
             <img class="mx-auto rounded profile-avatar" src="${userInfo.avatar}" alt="" width="100" height="90">
             <h1 class="profile-name">${userInfo.name}</h1>
             <div class="profile-stats col-lg-6 mx-auto text-center">

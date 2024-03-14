@@ -9,8 +9,8 @@
     <link href="../images/favicon.png" rel="icon" type="image/x-icon"/>
     <title>Auction House</title>
 </head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<body class="bg-gradient-custom d-flex flex-column vh-100 mb-auto">
+<nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
             <img src="../images/favicon.png" alt="logo" width="50" class="d-inline-block align-text-top">
@@ -34,17 +34,18 @@
     </form>
 </nav>
 
-<main class="container">
-    <!--TODO: Remove background-->
-    <div class="pt-5 text-center  ">
-        <h1 class="fw-light">Ongoing listings</h1>
+<section>
+    <div id="searchResults" class="search-results"></div>
+</section>
+
+<main class="container mb-5 pb-5 flex-grow-1">
+    <div class="pt-5 text-center">
+        <h1 class="text-center">Sorted Listings</h1>
         <p class="lead ">Here you will find an overview of all our current listings that has been made.</p>
+        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 mx-auto" id="listingsContainer"></div>
     </div>
-    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 mx-auto" id="listingContainer"></div>
-
 </main>
-
-<footer>
+<footer class="mt-auto">
     <div class="container">
         <section class="row row-cols-1 row-cols-sm-2">
             <div class="col">
