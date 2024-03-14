@@ -4,7 +4,7 @@ import eslintPlugin from "vite-plugin-eslint";
 
 export default defineConfig({
     root: resolve(__dirname, 'src'),
-    base: '/',
+    base: '/AuctionHouse/',
 
     plugins: [
         eslintPlugin()
