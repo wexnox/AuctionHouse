@@ -12,10 +12,10 @@ export async function createNewListing(listingData) {
             method,
             body: JSON.stringify(listingData),
         });
-        handleHttpError(response); // Handle any HTTP errors
+        handleHttpError(response);
         return await response.json();
     } catch (error) {
         console.log(error);
-        throw error; // re-throw the error so it can be caught in the calling function
+        throw error;
     }
 }
