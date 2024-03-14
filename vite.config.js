@@ -19,12 +19,12 @@ export default defineConfig({
                 profile: resolve(__dirname, './src/profile/index.html'),
                 createListing: resolve(__dirname, './src/listings/create.html'),
                 listingsDetails: resolve(__dirname, './src/listings/details.html'),
-                search: resolve(__dirname, './src/search.html')
+                // search: resolve(__dirname, './src/search.html')
 
             },
         },
 
         emptyOutDir: true,
-        outDir: resolve(__dirname, '../docs'),
+        outDir: resolve(__dirname, './docs'),
     },
 });
