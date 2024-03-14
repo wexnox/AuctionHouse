@@ -3,7 +3,7 @@ import {defineConfig} from 'vite';
 import eslintPlugin from "vite-plugin-eslint";
 
 export default defineConfig({
-    // root: resolve(__dirname, 'src'),
+    root: resolve(__dirname, 'src'),
     base: '/AuctionHouse/',
 
     plugins: [
@@ -11,6 +11,7 @@ export default defineConfig({
     ],
 
     build: {
+        assetsPublicPath: '/AuctionHouse/',
         rollupOptions: {
             input: {
                 index: resolve(__dirname, './src/index.html'),
