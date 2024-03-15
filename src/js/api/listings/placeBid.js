@@ -29,5 +29,5 @@ export async function placeBidOnItem(id, amount) {
 }
 
 function redirectToItemDetailsPage(itemId) {
-    location.href = `../../../listings/details.html?id=${itemId}`;
+    location.href = `../../../../pages/listings/details.html?id=${itemId}`;
 }

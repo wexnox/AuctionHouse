@@ -34,7 +34,7 @@ export async function register(userProfile) {
         }
 
         if (data.status >= 200 && data.status < 300) {
-            location.href = "../../../profile/index.html";
+            location.href = "pages/profile/index.html";
         } else {
             console.log('Unexpected response status:', data.status);
             displayMessage('danger', 'Unexpected error occurred. Please try again later.');

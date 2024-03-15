@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="The most exclusive & prestigious Auction House. Website for educational purpose only"/>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
-    <script type="module" src="../js/main.js"></script>
-    <link rel="icon" href="../images/favicon.png" type="image/x-icon"/>
-    <title>Auction House</title>
+    <script type="module" src="../../src/js/main.js"></script>
+    <link rel="icon" href="../../src/images/favicon.png" type="image/x-icon"/>
+    <title>Auction House | Login</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/"><img src="../images/favicon.png" alt="logo" width="50" height="50" class="d-inline-block align-text-top"></a>
+        <a class="navbar-brand" href="/"><img src="../../src/images/favicon.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-top">
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -27,52 +28,50 @@
                 name="searchBar"
                 class="form-control form-control-dark"
                 placeholder="Search..."
-                aria-label="Search"/>
+                aria-label="Search"
+        />
     </form>
 </nav>
 <main>
-    <div class="container mt-3">
+    <div class="container mt-4 mb-4">
         <div id="message"></div>
         <div class="row justify-content-center">
-            <h1 class="text-center">Registration Form</h1>
+            <h1 class="text-center">Login</h1>
             <div class="col-12 col-md-6">
-                <form id="registerForm">
+                <form class="" id="loginForm">
+
                     <div class="form-group mb-4 form-floating">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Name"
-                               required
-                               pattern="^[\w]+$"
-                               title="Username must only contain lowercase and uppercase letters, numbers & underscore.">
-                        <label for="name" class="col-form-label">Name</label>
-                        <div class="invalid-feedback">Invalid Username</div>
-                    </div>
-                    <div class="form-group mb-4 form-floating">
-                        <input type="email" class="form-control" id="email" name="email" autocomplete="email" placeholder="Email"
-                               aria-describedby="email"
+
+                        <input type="email" id="email" class="form-control" name="email" autocomplete="email" placeholder="Email"
                                required
                                pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
-                               title="Only @(stud.)noroff.no are allowed to register.">
-                        <label for="email" class="col-form-label">Email address</label>
+                               title="Only @(stud.)noroff.no registered users are allowed."
+
+                        />
+                        <label for="email" class="col-form-label">Email</label>
                         <div class="invalid-feedback">Invalid Email</div>
                     </div>
-                    <div class="form-group mb-4 form-floating relative">
-                        <input type="password" class="form-control pl-10" id="password" name="password" placeholder="Password"
+
+                    <div class="form-group mb-4 form-floating">
+                        <input type="password" id="password" class="form-control" name="password" placeholder="Password"
                                minlength="8"
-                               required/>
-                        <label for="password" class="col-form-label">Password</label>
+                               required
+                        />
+                        <label for="password" class="col-form-label ">Password</label>
                         <i id="togglePassword" class="absolute inset-y-0 right-3 flex items-center mr-3 cursor-pointer">👁️</i>
                     </div>
-                    <div class="form-group mb-4 form-floating">
-                        <input type="url" class="form-control" name="avatar" placeholder="Avatar URL"/>
-                        <label for="avatar">Avatar</label>
-                    </div>
-                    <button type="submit" class="btn btn-success" name="create">Sign up</button>
+                    <button type="submit" class="btn btn-primary mb-4">Login</button>
                 </form>
-
+                <div>
+                    <a class="text-decoration-none " href="r.html">Register here</a>
+                    <a class="text-decoration-none " href="#">Forgot Password?</a>
+                </div>
             </div>
         </div>
     </div>
+
 </main>
-<footer class="">
+<footer class="footer mt-auto py-3">
     <div class="container">
         <section class="row row-cols-1 row-cols-sm-2">
             <div class="col">
@@ -99,9 +98,10 @@
             </div>
         </section>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+
             <div class="col mb-3">
                 <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
-                    <img src="../images/favicon.png" alt="logo" width="50" height="50" class="d-inline-block align-text-top">
+                    <img src="../../src/images/favicon.png" alt="logo" width="50" height="50" class="d-inline-block align-text-top">
                 </a>
                 <p class="text-muted">&copy; 2022</p>
             </div>
@@ -139,6 +139,7 @@
         </div>
     </div>
 </footer>
+
 
 </body>
 </html>

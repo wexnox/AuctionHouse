@@ -5,15 +5,15 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta content="The most exclusive & prestigious Auction House. Website for educational purpose only" name="description"/>
     <link href="https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css" rel="stylesheet"/>
-    <script src="../js/main.js" type="module"></script>
-    <link href="../images/favicon.png" rel="icon" type="image/x-icon"/>
+    <script src="../../src/js/main.js" type="module"></script>
+    <link href="../../src/images/favicon.png" rel="icon" type="image/x-icon"/>
     <title>Auction House</title>
 </head>
 <body class="bg-gradient-custom d-flex flex-column vh-100 mb-auto">
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
-            <img src="../images/favicon.png" alt="logo" width="50" class="d-inline-block align-text-top">
+            <img src="../../src/images/favicon.png" alt="logo" width="50" class="d-inline-block align-text-top">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -23,48 +23,28 @@
         </div>
     </div>
     <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-        <input type="search" id="searchBar" name="searchBar" class="form-control form-control-dark" placeholder="Search..." aria-label="Search"/>
+        <input
+                type="search"
+                id="searchBar"
+                name="searchBar"
+                class="form-control form-control-dark"
+                placeholder="Search..."
+                aria-label="Search"
+        />
     </form>
 </nav>
+
+<section>
+    <div id="searchResults" class="search-results"></div>
+</section>
+
 <main class="container mb-5 pb-5 flex-grow-1">
-    <div class="wrapper">
-        <div class="userWrapper" id="userWrapper"></div>
-    </div>
-    <div class="container d-flex flex-column mt-4  w-50">
-
-        <h1 class="mb-4">Create new listing</h1>
-        <form class="d-flex flex-column gap-4 form-group form-floating" id="createListingForm">
-            <div class="form-group form-floating">
-                <input type="text" class="form-control" id="title" name="title" placeholder="Auction Title Name"
-                       required/>
-                <label for="title" class="form-label">Auction Title Name</label>
-            </div>
-            <div class="form-group form-floating">
-                <textarea class="form-control" id="listingDescription" name="description" placeholder="Description of Auctioned item"
-                          required></textarea>
-                <label for="listingDescription" class="form-label">Description of Auctioned item</label>
-            </div>
-            <div class="form-group form-floating">
-                <label for="endsAt" class="form-label">End</label>
-                <input type="datetime-local" class="form-control" id="endsAt" name="endsAt"/>
-            </div>
-            <div class="form-group form-floating">
-                <input type="url" class="form-control" id="media" name="media" placeholder="Place image link here"/>
-                <label for="media" class="form-label">Place image link here</label>
-            </div>
-            <div class="form-group form-floating">
-                <input type="text" class="form-control" id="tags" name="tags" placeholder="Tags" required/>
-                <label for="tags" class="form-label">Tags</label>
-            </div>
-
-            <div class="d-flex  justify-content-end gap-2">
-                <button type="submit" class="btn btn-success" id="newListingBtn" name="newListingBtn">Submit</button>
-                <button type="reset" class="btn btn-secondary" value="reset" name="cancel">Reset</button>
-            </div>
-        </form>
+    <div class="pt-5 text-center">
+        <h1 class="text-center">Sorted Listings</h1>
+        <p class="lead ">Here you will find an overview of all our current listings that has been made.</p>
+        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 mx-auto" id="listingsContainer"></div>
     </div>
 </main>
-
 <footer class="mt-auto">
     <div class="container">
         <section class="row row-cols-1 row-cols-sm-2">
@@ -74,28 +54,30 @@
             <div class="col">
                 <ul class="nav p-2">
                     <li class="nav-item">
-                        <a href="#" class=" nav-link text-decoration-none"><i class="text-black fi fi-brands-twitter"></i></a>
+                        <a href="" class=" nav-link text-decoration-none"><i class="text-black fi fi-brands-twitter"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class=" nav-link text-decoration-none"><i class="text-black fi fi-brands-facebook"></i></a>
+                        <a href="" class=" nav-link text-decoration-none"><i class="text-black fi fi-brands-facebook"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class=" nav-link text-decoration-none"><i class="text-black fi fi-brands-instagram"></i></a>
+                        <a href="" class=" nav-link text-decoration-none"><i class="text-black fi fi-brands-instagram"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link text-decoration-none"><i class="text-black fi fi-brands-youtube"></i></a>
+                        <a href="" class="nav-link text-decoration-none"><i class="text-black fi fi-brands-youtube"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link text-decoration-none"><i class="text-black fi fi-brands-linkedin"></i></a>
+                        <a href="" class="nav-link text-decoration-none"><i class="text-black fi fi-brands-linkedin"></i></a>
                     </li>
                 </ul>
             </div>
         </section>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
-
             <div class="col mb-3">
                 <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
-                    <img src="../images/favicon.png" alt="logo" width="50" height="50" class="d-inline-block align-text-top">
+                    <img src="../../src/images/favicon.png" alt="logo" width="50" height="50" class="d-inline-block align-text-top">
+                    <svg class="bi me-2" width="40" height="32">
+                        <use xlink:href="#bootstrap"/>
+                    </svg>
                 </a>
                 <p class="text-muted">&copy; 2022</p>
             </div>

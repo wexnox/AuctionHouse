@@ -1,31 +1,36 @@
-import {resolve} from 'path';
-import {defineConfig} from 'vite';
+import * as path from 'path';
+import {fileURLToPath} from 'url';
 import eslintPlugin from "vite-plugin-eslint";
+import {defineConfig} from "vite";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 
 export default defineConfig({
-    root: resolve(__dirname, 'src'),
-    base: '/AuctionHouse/',
+
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname, './src'),
+        },
+    },
 
     plugins: [
         eslintPlugin()
     ],
-
     build: {
-        assetsPublicPath: '/AuctionHouse/',
+        outDir: path.resolve(__dirname, './docs'),
+        emptyOutDir: true,
         rollupOptions: {
             input: {
-                index: resolve(__dirname, './src/index.html'),
-                login: resolve(__dirname, './src/auth/login.html'),
-                register: resolve(__dirname, './src/auth/register.html'),
-                profile: resolve(__dirname, './src/profile/index.html'),
-                createListing: resolve(__dirname, './src/listings/create.html'),
-                listingsDetails: resolve(__dirname, './src/listings/details.html'),
+                index: path.resolve(__dirname, 'index.html'),
+                login: path.resolve(__dirname, 'pages/auth/login.html'),
+                register: path.resolve(__dirname, 'pages/auth/register.html'),
+                profile: path.resolve(__dirname, 'pages/profile/index.html'),
+                createListing: path.resolve(__dirname, 'pages/listings/create.html'),
+                listingsDetails: path.resolve(__dirname, 'pages/listings/details.html'),
                 // search: resolve(__dirname, './src/search.html')
 
             },
         },
-
-        emptyOutDir: true,
-        outDir: resolve(__dirname, './docs'),
     },
 });
