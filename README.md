@@ -1,5 +1,6 @@
 # Semester Project 2
-[![pages-build-deployment](https://github.com/wexnox/AuctionHouse/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/wexnox/AuctionHouse/actions/workflows/pages/pages-build-deployment)
+
+[![Deploy static content to Pages](https://github.com/wexnox/AuctionHouse/actions/workflows/static.yml/badge.svg)](https://github.com/wexnox/AuctionHouse/actions/workflows/static.yml)
 
 ## Goal
 
