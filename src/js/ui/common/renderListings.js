@@ -20,14 +20,12 @@ const renderCard = (item) => {
 
     const detailsButton = `
     <button type="button" class="btn btn-outline-primary btn-sm px-4 gap-3">
-        <a href="../listings/singleListing/index.html?id=${item.id}">Details</a>
+        <a href="../listings/details.html?id=${item.id}">Details</a>
     </button>`;
 
     const expiringDetails = `
     <div class="py-3 px-3">Ending: 
-            <p class="bg-info border border-solid rounded mb-3 py-2 px-2">${endDate.toLocaleDateString()} 
-                <span class="mx-1">|</span>${endDate.toLocaleTimeString()}
-            </p>
+     <p class="bg-info border border-solid rounded mb-3 py-2 px-2">${endDate.toLocaleDateString()} <span class="mx-1">|</span>${endDate.toLocaleTimeString()}</p>
     </div>`;
 
     return `
