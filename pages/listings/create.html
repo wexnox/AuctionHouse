@@ -49,9 +49,16 @@
                 <input type="datetime-local" class="form-control" id="endsAt" name="endsAt"/>
             </div>
             <div class="form-group form-floating">
-                <input type="url" class="form-control" id="media" name="media" placeholder="Place image link here"/>
-                <label for="media" class="form-label">Place image link here</label>
+                <input type="url" class="form-control" id="mediaUrl" name="mediaUrl" placeholder="Place image link here"/>
+                <label for="mediaUrl" class="form-label">Place image link here</label>
             </div>
+            <div class="form-group form-floating">
+                <input type="file" class="form-control" id="mediaFile" name="mediaFile" multiple>
+                <label for="mediaFile" class="form-label">Upload Media Files</label>
+                <div id="preview" class="row mt-3"></div>
+            </div>
+            <button type="button" class="btn btn-warning" id="clearMediaButton">Clear Media</button>
+
             <div class="form-group form-floating">
                 <input type="text" class="form-control" id="tags" name="tags" placeholder="Tags" required/>
                 <label for="tags" class="form-label">Tags</label>
@@ -59,7 +66,8 @@
 
             <div class="d-flex  justify-content-end gap-2">
                 <button type="submit" class="btn btn-success" id="newListingBtn" name="newListingBtn">Submit</button>
-                <button type="reset" class="btn btn-secondary" value="reset" name="cancel">Reset</button>
+                <button type="button" class="btn btn-secondary" id="resetButton">Reset</button>
+
             </div>
         </form>
     </div>
