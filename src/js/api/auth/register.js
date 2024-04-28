@@ -9,22 +9,16 @@ export async function register(userProfile) {
     console.log(`The API URL is: ${registerURL}`);
     console.log(`User Profile Sent: ${JSON.stringify(userProfile)}`);
 
-
-    const options = {
-        headers: {
-            "Content-Type": "application/json; charset=UTF-8",
-        },
-        method: 'POST',
-        body: JSON.stringify(userProfile),
-    }
-
     try {
 
-        const {data, error} = await authFetch(registerURL, options);
+        const {data, error} = await authFetch(registerURL, {
+            method: 'POST',
+            body: JSON.stringify(userProfile),
+        });
         if (error) {
+            displayMessage('danger', `Failed: ${error.message}`);
             throw new Error(error);
         }
-
 
         console.log(data.errors);
         console.log(data);

@@ -6,7 +6,7 @@ export function headers(hasBody = false) {
     const token = getTokenFromStorage("accessToken")
 
     if (token) {
-        headers.append("Autherization", `Bearer ${token}`)
+        headers.append("Authorization", `Bearer ${token}`)
     }
 
     // if (APP_KEY){
@@ -14,7 +14,7 @@ export function headers(hasBody = false) {
     // }
 
     if (hasBody) {
-        headers.append("Content-Type", "application/json")
+        headers.append("Content-Type", "application/json; charset=UTF-8")
     }
 
     return headers;

@@ -2,6 +2,7 @@ import {API_MAIN_URL} from '../constants.js';
 import * as storage from '../../helpers/storage.js';
 import {displayMessage} from "../../ui/common/displayMessage.js";
 import buildMenu from "../../ui/common/buildMenu.js";
+import {authFetch} from "@/js/api/api.js";
 // import togglePassword from "../../listeners/auth/togglePassword.js";
 
 // togglePassword()
@@ -14,10 +15,7 @@ export async function login(userProfile) {
     console.log(`User Profile Sent: ${JSON.stringify(userProfile)}`);
 
     try {
-        const response = await fetch(loginURL, {
-            headers: {
-                "Content-Type": "application/json; charset=UTF-8",
-            },
+        const response = await authFetch(loginURL, {
             method: 'POST',
             body: JSON.stringify(userProfile),
         });
