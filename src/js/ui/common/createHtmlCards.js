@@ -77,7 +77,7 @@ function createDescription(description) {
 
 function createImage(media) {
     const imageEl = document.createElement('img');
-    imageEl.setAttribute('src', media.length >= 1 ? media[0] : '../../../img/no-image.jpeg');
+    imageEl.setAttribute('src', media.length >= 1 ? media[0] : '../../src/images/no-image.jpeg');
     imageEl.classList.add('card-img-top', 'mt-3');
     imageEl.style.margin = "auto";
     imageEl.style.height = '250px';
@@ -99,7 +99,7 @@ function createEndTimeElement(endsAt) {
 // TODO: add glass class
 function createBidButton(id) {
     const bidBtnEl = document.createElement('a');
-    bidBtnEl.setAttribute('href', `listings/details.html?id=${id}`);
+    bidBtnEl.setAttribute('href', `pages/listings/details.html?id=${id}`);
     bidBtnEl.classList.add('btn', 'text-blue-600', 'hover:underline', 'flex', 'items-center', 'mb-4', 'sm:mb-0');
     bidBtnEl.textContent = 'Read More';
     bidBtnEl.style.backgroundColor = 'rgba(0, 123, 255, 0.6)';
