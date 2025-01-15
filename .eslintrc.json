@@ -1,7 +1,8 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "node": true
   },
   "extends": [
     "eslint:recommended",
@@ -12,6 +13,13 @@
     "sourceType": "module"
   },
   "rules": {
-    "no-unused-vars": "off"
+    "no-unused-vars": "warn",        // Warn instead of disabling for better visibility
+    "no-console": "off",            // Allow console statements
+    "eqeqeq": "error",              // Enforce strict equality
+    "curly": "error",               // Require curly braces for all control statements
+    "quotes": ["error", "single"],  // Enforce single quotes for consistency
+    "semi": ["error", "always"],    // Require semicolons for clarity
+    "indent": ["error", 2],         // Enforce 2 spaces for indentation
+    "no-debugger": "warn"           // Warn instead of error for debugger use
   }
 }
