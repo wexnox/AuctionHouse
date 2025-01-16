@@ -1,4 +1,4 @@
-import {logoutListener} from "../../listeners/index.js";
+import {logoutListener} from '../../listeners/index.js';
 
 /**
  * Create a menu item HTML string.
@@ -12,9 +12,9 @@ import {logoutListener} from "../../listeners/index.js";
  * @returns {string} - The menu item HTML string.
  */
 function createMenuItem({pathname, currentPath, path, name}) {
-    const isActive = pathname === currentPath;
-    return `<li class="nav-item">
-            <a class="nav-link ${isActive ? "active" : ""}" href="${path}">${name}</a>
+  const isActive = pathname === currentPath;
+  return `<li class="nav-item">
+            <a class="nav-link ${isActive ? 'active' : ''}" href="${path}">${name}</a>
           </li>`;
 }
 
@@ -25,32 +25,32 @@ function createMenuItem({pathname, currentPath, path, name}) {
  * @return {void}
  */
 export default function buildMenu() {
-    const pathname = window.location.pathname;
-    const menu = document.querySelector("#menu");
-    let isAuthenticated = localStorage.getItem('accessToken') ? true : false;
+  const pathname = window.location.pathname;
+  const menu = document.querySelector('#menu');
+  let isAuthenticated = localStorage.getItem('accessToken') ? true : false;
 
-    // Define the menu items for authenticated and unauthenticated states
-    const authMenuItems = [
-        {currentPath: "/", path: "/", name: "Home"},
-        {currentPath: "/pages/profile/", path: "/pages/profile/index.html", name: "Profile"},
-    ];
+  // Define the menu items for authenticated and unauthenticated states
+  const authMenuItems = [
+    {currentPath: '/', path: '/', name: 'Home'},
+    {currentPath: '/pages/profile/', path: '/pages/profile/index.html', name: 'Profile'},
+  ];
 
-    const unauthMenuItems = [
-        {currentPath: "/", path: "/", name: "Home"},
-        {currentPath: "/pages/auth/login.html", path: "/pages/auth/login.html", name: "Login"},
-        {currentPath: "/pages/auth/register.html", path: "/pages/auth/register.html", name: "Register"}
-    ];
+  const unauthMenuItems = [
+    {currentPath: '/', path: '/', name: 'Home'},
+    {currentPath: '/pages/auth/login.html', path: '/pages/auth/login.html', name: 'Login'},
+    {currentPath: '/pages/auth/register.html', path: '/pages/auth/register.html', name: 'Register'}
+  ];
 
-    let menuItems = isAuthenticated ? authMenuItems : unauthMenuItems
-    menuItems = menuItems.map(item => createMenuItem({...item, pathname})).join('');
+  let menuItems = isAuthenticated ? authMenuItems : unauthMenuItems;
+  menuItems = menuItems.map(item => createMenuItem({...item, pathname})).join('');
 
-    if (isAuthenticated) {
-        menuItems += `<li class="nav-item"><button class="btn btn-primary" id="logout">Log out</button></li>`;
-    }
+  if (isAuthenticated) {
+    menuItems += '<li class=\'nav-item\'><button class=\'btn btn-primary\' id=\'logout\'>Log out</button></li>';
+  }
 
-    menu.innerHTML = menuItems;
+  menu.innerHTML = menuItems;
 
-    if (isAuthenticated) {
-        logoutListener();
-    }
+  if (isAuthenticated) {
+    logoutListener();
+  }
 }
