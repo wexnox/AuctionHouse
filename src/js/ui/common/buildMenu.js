@@ -18,7 +18,6 @@ function createMenuItem({pathname, currentPath, path, name}) {
           </li>`;
 }
 
-
 /**
  * Build the menu based on the current authentication state and current URL path.
  *
