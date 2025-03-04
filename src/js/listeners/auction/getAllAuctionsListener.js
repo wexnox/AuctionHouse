@@ -12,11 +12,17 @@ export function getAllAuctionsListener() {
   let offset = 0;
 
   async function fetchAndDisplayAuctions() {
+
     const auctions = await api.getAllListings(offset);
     offset += AUCTIONS_LIMIT;
+
+    // Render fetched auctions in the container.
     createHtmlCards(auctions, container);
+
+    // Determine if there are more auctions to load.
     const hideBtn = (auctions.length === 0 || auctions.length < AUCTIONS_LIMIT);
     toggleAuctionLoadMore(hideBtn);
+
     return auctions;
   }
 
@@ -24,9 +30,12 @@ export function getAllAuctionsListener() {
     try {
       toggleLoadingIndicator(container);
       toggleAuctionLoadMore(true);
-      await fetchAndDisplayAuctions();
+
+      return await fetchAndDisplayAuctions();
+
     } catch (error) {
       displayMessage(ERROR_COLOR, error.message);
+      return [];
     } finally {
       toggleLoadingIndicator(container);
     }

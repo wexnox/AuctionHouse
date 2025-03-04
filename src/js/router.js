@@ -1,11 +1,17 @@
 import * as listeners from './listeners/index.js';
 import buildMenu from './ui/common/buildMenu.js';
 import {redirectBasedOnLogin} from './helpers/redirectBasedOnLogin.js';
+import {buildFeed} from './ui/posts/buildFeed.js';
 
-function handleRootIndex() {
-  const listAuctions = listeners.getAllAuctionsListener();
-  listAuctions();
-  listeners.loadMoreListener(listAuctions);
+async function handleRootIndex() {
+  try {
+    await buildFeed();
+  } catch (error) {
+    // TODO: refactor this
+    console.error('Error showing posts:', error);
+    // Handle error (e.g., show error message to user)
+  }
+
 }
 
 function handleAuthRegister() {

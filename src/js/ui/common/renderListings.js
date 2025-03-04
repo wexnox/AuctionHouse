@@ -1,5 +1,5 @@
 export function renderItems(itemsToRender) {
-  const itemsContainer = document.querySelector('#itemsList');
+  const itemsContainer = document.querySelector('#listingsContainer');
 
   clearContainer(itemsContainer);
   if (itemsToRender.length === 0) {
