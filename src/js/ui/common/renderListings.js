@@ -19,6 +19,7 @@ const renderCardsToContainer = (container, items) => {
   });
 };
 
+
 const renderCard = (item) => {
   const endDate = new Date(item.endsAt);
   return `
@@ -35,10 +36,12 @@ const renderCard = (item) => {
                     <p class="bg-info border border-solid rounded mb-3 py-2 px-2">
                         ${endDate.toLocaleDateString()} | ${endDate.toLocaleTimeString()}
                     </p>
-                </div>
-       on type="button" class="btn btn-outline-primary bt         <buttn-sm px-4 gap-3">
-                    <a href="../listings/details.html?id=${item.id}">Details</a>
+                </div> 
+      <button type="button" class="btn btn-outline-primary bt-buttn-sm px-4 gap-3">
+                    <a href="pages/listings/details.html?id=${item.id}">Details</a>
                 </button>
             </div>
         </div>`;
 };
+
+// THIS IS WRONG FILE
