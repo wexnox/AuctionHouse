@@ -10,7 +10,7 @@ const url = `${API_MAIN_URL}/listings/${id}?_bids=true`;
 const title = document.querySelector('title');
 const wrapper = document.querySelector('#detailsContainer');
 
-function createAvatarImage(seller) {
+export function createAvatarImage(seller) {
   return seller.avatar
     ? `<img src="${seller.avatar}" alt="Avatar for ${seller.name}" class="img-fluid rounded-circle mb-4" width="100" height="100"/>`
     : '<div class="mb-4"><i class="bi bi-person-circle" style="font-size: 4rem;"></i></div>';
@@ -22,7 +22,7 @@ function createListingImage(detailsListing) {
     : '<div class="text-muted">No Image Available</div>';
 }
 
-function createHighestBidInfo(detailsListing) {
+export function createHighestBidInfo(detailsListing) {
   const highestBid = detailsListing.bids && detailsListing.bids.length > 0
     ? detailsListing.bids.reduce((max, bid) => bid.amount > max.amount ? bid : max, detailsListing.bids[0])
     : null;
