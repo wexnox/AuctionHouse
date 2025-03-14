@@ -8,7 +8,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   server: {
-    open: true,
+    // open: true,
     port: 3000,
     cors: true,
   },
@@ -36,7 +36,7 @@ export default defineConfig({
     target: 'modules', // balanced
     // target: 'esnext', // Newest
     cssCodeSplit: true,
-    
+
     minify: 'terser',
     terserOptions: {
       compress: {
