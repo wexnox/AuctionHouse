@@ -1,9 +1,9 @@
 import {searchPosts} from '@/js/helpers/searchPosts.js';
-import {renderItems} from '@/js/ui/common/renderListings.js';
 import * as listeners from '@/js/listeners/index.js';
+import createHtmlCards from '@/js/ui/common/createHtmlCards.js';
 
 const searchBar = document.getElementById('searchBar');
-// const listingsContainer = document.getElementById('listingsContainer');
+const listingsContainer = document.getElementById('listingsContainer');
 
 let posts = [];
 
@@ -26,8 +26,9 @@ searchBar.addEventListener('keyup', (e) => {
   // Filter the posts using the search term.
   const filteredPosts = searchPosts(posts, searchTerm);
 
-  // Render the filtered posts in the UI.
-  // renderItems(filteredPosts, listingsContainer);
-  renderItems(filteredPosts);
+  // Clear the container before rendering search results.
+  listingsContainer.innerHTML = '';
 
+  // Render the filtered posts using createHtmlCards
+  createHtmlCards(filteredPosts, listingsContainer);
 });
