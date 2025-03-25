@@ -2,6 +2,7 @@ import {API_PROFILE_URL, API_LISTINGS_URL} from '../constants.js';
 import {getTokenFromStorage} from '../../helpers/storage.js';
 import {authFetch} from '../api.js';
 import {renderItems} from '../../ui/common/renderListings.js';
+import createHtmlCards from '@/js/ui/common/createHtmlCards.js';
 
 
 function getUserName() {
@@ -23,7 +24,8 @@ export async function getUserListing() {
       console.log(`Error${response.status}: ${data.message}`);
       return;
     }
-    renderItems(data);
+    // renderItems(data); // TODO: Move over to createHtmlCards.js
+    createHtmlCards(data);
   } catch (error) {
     console.log(error);
   }
