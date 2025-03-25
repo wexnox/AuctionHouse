@@ -46,11 +46,11 @@ const renderCard = (item) => {
                     <p class="card-text">Tags: ${item.tags.join(', ')}</p>
                     <p class="card-text">Bids on this item: ${item._count.bids}</p>
                 </div>
-                <div class="py-3 px-3">Ending: 
+                <div class="py-3 px-3">Ending:
                     <p class="bg-info border border-solid rounded mb-3 py-2 px-2">
                         ${endDate.toLocaleDateString()} | ${endDate.toLocaleTimeString()}
                     </p>
-                </div> 
+                </div>
                  <button type="button" class="btn btn-outline-primary bt-buttn-sm px-4 gap-3">
                     <a href="pages/listings/details.html?id=${item.id}">Details</a>
                 </button>
@@ -58,5 +58,5 @@ const renderCard = (item) => {
         </div>`;
 };
 
-// THIS IS WRONG FILE
+// Used in getUserListing
 // TODO: create placeholder.jpg
