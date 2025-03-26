@@ -14,3 +14,4 @@ export * from './auction/loadMoreListener.js';
 export * from './auction/createNewListingListener.js';
 export * from './auction/getListingsDetailsListener.js';
 export * from './auction/setBidListener.js';
+export * from '../api/listings/createNewListing.js';

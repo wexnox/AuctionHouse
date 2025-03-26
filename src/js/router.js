@@ -2,6 +2,8 @@ import * as listeners from './listeners/index.js';
 import buildMenu from './ui/common/buildMenu.js';
 import {redirectBasedOnLogin} from './helpers/redirectBasedOnLogin.js';
 import {buildFeed} from './ui/posts/buildFeed.js';
+import {handleCreateListing} from './listeners/index.js';
+import {createNewListing} from '@/js/api/listings/createNewListing.js';
 
 async function handleRootIndex() {
   try {
@@ -34,7 +36,7 @@ function handleListingsDetails() {
 }
 
 function handleListingsCreate() {
-  listeners.createNewListingListener();
+  listeners.createNewListing();
 }
 
 export default function router() {

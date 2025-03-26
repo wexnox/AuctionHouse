@@ -3,7 +3,7 @@ import {displayMessage} from '@/js/ui/common/displayMessage.js';
 
 let mediaItems = []; // Array to hold all media items
 
-function resetForm() {
+export function resetForm() {
   document.getElementById('createListingForm').reset();
   mediaItems = [];
   document.getElementById('mediaUrl').value = '';
@@ -11,20 +11,20 @@ function resetForm() {
   updatePreview();
 }
 
-function clearMedia() {
+export function clearMedia() {
   mediaItems = [];
   document.getElementById('mediaFile').value = '';
   updatePreview();
 }
 
-function removeMediaItem(index) {
+export function removeMediaItem(index) {
   if (index > -1) {
     mediaItems.splice(index, 1);
     updatePreview();
   }
 }
 
-function getFormData(form) {
+export function getFormData(form) {
   const formData = new FormData(form);
   const title = formData.get('title');
   const description = formData.get('description');
@@ -43,7 +43,7 @@ function handleEmptyArrays(listing) {
   return listing;
 }
 
-async function handleCreateListing(listing) {
+export async function handleCreateListing(listing) {
   try {
     const response = await createNewListing(listing);
     console.log('Server Response:', response);
