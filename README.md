@@ -2,31 +2,49 @@
 
 [![Laravel Forge Site Deployment Status](https://img.shields.io/endpoint?url=https%3A%2F%2Fforge.laravel.com%2Fsite-badges%2F9b30fe25-6e15-4057-b7bb-d08c681145b2%3Fdate%3D1%26label%3D1%26commit%3D1&style=plastic)](https://forge.laravel.com/servers/513382/sites/2587689)
 
+**Note:** This project is incomplete. The code is not finished, and the Figma design prototype is not finished.
+
+## Cover
+
+![Project Cover Image](path/to/your/cover/image.png)  *(Replace `path/to/your/cover/image.png` with the actual path to
+your cover image)*
+
+## Description
+
+This project aimed to build a front-end auction website, leveraging skills acquired over three semesters. The goal was
+to create a platform where users could list items for auction and bid on others' listings. New users would start with
+1000 credits, earned from selling items and spent on purchasing them. Unregistered users could browse listings, but only
+registered users could bid.
+
 ## Goal
 
 To take the skills learned over the past three semesters and create an auction website.
 
-## Description
+## Requirements
 
-An auction site is looking to launch a website where users can add items to be bid on and bid on items other users have
-put up for auction.
-When a new user joins the website, they are given 1000 credits to use on the site. They can get credits by selling items
-and use credit by buying items. Non-registered users can search through the listings, but only registered users can make
-bids on listings.
-
-## User stories
+* **API:** Front-end application for an existing API (Auction EndPoints in Noroff API documentation).
 
 The client has specified the following requirements in the form of User Stories:
 
-1. A user with a stud.noroff.no email may register
-2. A registered user may login
-3. A registered user may logout
-4. A registered user may update their avatar
-5. A registered user may view their total credit
-6. A registered user may create a Listing with a title, deadline date, media gallery and description
-7. A registered user may add a Bid to another user’s Listing
-8. A registered user may view Bids made on a Listing
-9. An unregistered user may search through Listings
+* **User Stories:**
+* A user with a `stud.noroff.no` email may register
+* Registered users can log in, log out, update avatars, and view credit totals.
+* Registered users can create listings (title, deadline, media, description) and place bids.
+* Registered users can view bids on their listings.
+* Unregistered users can search listings.
+
+* **Technical Restrictions:**
+* Use approved CSS frameworks (Bootstrap, Tailwind, MUI).
+* Host on approved static hosts (GitHub Pages, Netlify).
+* Use approved design (Figma, Adobe XD, Sketch) and planning applications (Trello, GitHub Projects).
+
+* **Required Links:**
+* Gantt chart for project timing.
+* Design prototype (Figma).
+* Style guide.
+* Kanban project board.
+* Repository link.
+* Hosted application demo link (Not available due to incomplete code).
 
 ## Built With
 
@@ -67,6 +85,15 @@ Or, if directly using Vite (if installed globally):
 ## Deployed Site
 
 [Github Pages](@)
+
+## Planning & Design
+
+- Gantt Chart: [add link]
+- Design Prototype: [add link]
+- Style Guide: [add link]
+- Kanban Board: [add link]
+- Repository: https://github.com/wexnox/AuctionHouse
+- Live Site: [add link]
 
 ## Contact
 
