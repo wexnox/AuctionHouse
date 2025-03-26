@@ -15,7 +15,9 @@ export default defineConfig({
   // root: path.resolve(__dirname, 'src'),
   css: {
     preprocessorOptions: {
-      scss: {},
+      scss: {
+        quietDeps: true // Suppresses warnings from node_modules like Bootstrap
+      },
     },
   },
   resolve: {
