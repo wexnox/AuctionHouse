@@ -7,7 +7,11 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 
 export default defineConfig({
-
+  server: {
+    // open: true,
+    port: 3000,
+    cors: true,
+  },
   // root: path.resolve(__dirname, 'src'),
   css: {
     preprocessorOptions: {
@@ -28,6 +32,27 @@ export default defineConfig({
     emitError: true    // Enable errors
   })],
   build: {
+    // target: 'es2015', // oldest
+    target: 'modules', // balanced
+    // target: 'esnext', // Newest
+    cssCodeSplit: true,
+
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        dead_code: true,
+        drop_console: true,
+      },
+      mangle: {
+        toplevel: true,
+        // reserved: ['importantVar'],
+      },
+      output: {
+        beautify: false,
+        comments: false,
+      },
+      ecma: 2015,
+    },
     outDir: path.resolve(__dirname, './dist'),
     sourcemap: true,
     emptyOutDir: true,

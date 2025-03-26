@@ -6,8 +6,8 @@ export async function register(userProfile) {
   const endpoint = '/auth/register';
   const registerURL = `${API_MAIN_URL}${endpoint}`;
 
-  console.log(`The API URL is: ${registerURL}`);
-  console.log(`User Profile Sent: ${JSON.stringify(userProfile)}`);
+  // console.log(`The API URL is: ${registerURL}`);
+  // console.log(`User Profile Sent: ${JSON.stringify(userProfile)}`);
 
   try {
 

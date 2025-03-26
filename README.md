@@ -40,13 +40,14 @@ The client has specified the following requirements in the form of User Stories:
 1. Clone the repo:
 
 ```bash
-git clone git@github.com:wexnox/AuctionHouse.git
+git clone https://github.com/wexnox/AuctionHouse.git
 ```
 
 2. Install the dependencies:
 
-```
-npm install
+```bash
+ cd AuctionHouse
+ npm install
 ```
 
 ### Running
@@ -54,7 +55,13 @@ npm install
 To run the app, run the following commands:
 
 ```bash
-npm run dev / vite
+ npm run dev
+```
+
+Or, if directly using Vite (if installed globally):
+
+```bash
+ vite
 ```
 
 ## Deployed Site

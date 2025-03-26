@@ -8,10 +8,11 @@ export async function getAllListings(offset) {
   const response = await authFetch(url);
 
   const data = await response.json();
+  console.log('Fetched Listings:', data);
 
   if (response.ok) {
     return data;
   }
-  // TODO: add search
+
   handleErrors(data);
 }
