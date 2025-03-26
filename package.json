@@ -13,18 +13,19 @@
     "eslint": "npx eslint 'src/js/**/*.js'",
     "eslint-fix": "eslint src/**/*.js --cache --fix",
     "prepare": "husky install",
-    "format": "npm run prettier && npm run eslint-fix"
+    "format": "npm run prettier && npm run eslint-fix",
+    "update": "ncu --upgrade && npm install"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
-    "eslint": "^9.22.0",
+    "eslint": "^9.23.0",
     "eslint-config-prettier": "^10.1.1",
     "husky": "^9.1.7",
     "lint-staged": "^15.5.0",
     "postcss": "8.5.3",
     "prettier": "^3.5.3",
     "sass": "^1.86.0",
-    "vite": "^6.2.2",
+    "vite": "^6.2.3",
     "vite-plugin-eslint": "^1.8.1"
   },
   "lint-staged": {
