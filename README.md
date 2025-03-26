@@ -84,7 +84,7 @@ Or, if directly using Vite (if installed globally):
 
 ## Deployed Site
 
-[Github Pages](@)
+[Auction House](http://ah.wexox.no)
 
 ## Planning & Design
 
@@ -93,7 +93,7 @@ Or, if directly using Vite (if installed globally):
 - Style Guide: [add link]
 - Kanban Board: [add link]
 - Repository: https://github.com/wexnox/AuctionHouse
-- Live Site: [add link]
+- Live Site: [Auction House](http://ah.wexox.no)
 
 ## Contact
 
