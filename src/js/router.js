@@ -35,6 +35,7 @@ function handleListingsDetails() {
   listeners.placeBidListener();
 }
 
+// TODO:'createNewListing' is defined but never used     no-unused-vars
 function handleListingsCreate() {
   listeners.createNewListing();
 }
