@@ -4,6 +4,7 @@ import {handleHttpError} from '../handleErrors.js';
 
 const method = 'POST';
 
+// TODO:'createNewListing' is defined but never used     no-unused-vars
 export async function createNewListing(listingData) {
   const createURL = `${API_MAIN_URL}${API_LISTINGS_URL}`;
 
