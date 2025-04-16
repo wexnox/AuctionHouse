@@ -43,6 +43,7 @@ function handleEmptyArrays(listing) {
   return listing;
 }
 
+//TODO: 'handleCreateListing' is defined but never used  no-unused-vars
 export async function handleCreateListing(listing) {
   try {
     const response = await createNewListing(listing);
