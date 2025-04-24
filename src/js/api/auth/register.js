@@ -1,6 +1,6 @@
-import {API_MAIN_URL} from '../constants.js';
-import {authFetch} from '../api.js';
-import {displayMessage} from '../../ui/common/displayMessage.js';
+import { API_MAIN_URL } from '../constants.js';
+import { authFetch } from '../api.js';
+import { displayMessage } from '../../ui/common/displayMessage.js';
 
 export async function register(userProfile) {
   const endpoint = '/auth/register';
@@ -8,10 +8,14 @@ export async function register(userProfile) {
 
   // console.log(`The API URL is: ${registerURL}`);
   // console.log(`User Profile Sent: ${JSON.stringify(userProfile)}`);
+  const emailRegex = /^[\w\-.]+@(stud\.)?noroff\.no$/;
+  if (!emailRegex.test(userProfile.email)) {
+    return displayMessage('danger', 'Registration is only available for noroff.no or stud.noroff.no email addresses');
+  }
 
   try {
 
-    const {data, error} = await authFetch(registerURL, {
+    const { data, error } = await authFetch(registerURL, {
       method: 'POST', body: JSON.stringify(userProfile),
     });
     if (error) {
