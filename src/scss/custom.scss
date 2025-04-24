@@ -1,16 +1,192 @@
-@use 'variables';
 @use 'bootstrap/scss/bootstrap';
+@use 'sass:color';
+@use 'variables';
+@import 'variables';
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+// Global Configuration
+$font-stack: 'Roboto', variables.$base-font-family, sans-serif;
+$outline-focus: 3px solid variables.$focus-outline-color;
+$card-spacing: variables.$form-spacing-vertical;
+$text-margin: 1rem;
+$button-hover-darken: -10%;
+
+// Global Styles
+body {
+  font-family: $font-stack;
+  line-height: variables.$body-line-height;
+  background-color: variables.$light;
+  color: variables.$dark;
+}
+
+html {
+  font-size: 16px;
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: $text-margin;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+
+:focus {
+  outline: $outline-focus;
+  outline-offset: variables.$focus-outline-offset;
+}
+
+
+// Buttons
+.btn-primary {
+  background-color: variables.$primary;
+  border: none;
+
+  &:hover {
+    background-color: color.scale(variables.$primary, $lightness: $button-hover-darken);
+  }
+}
+
+
+// Background Gradients and Glass Effects
 .bg-gradient-custom {
-  //background-image: linear-gradient(to right, #ff7e5f, #feb47b);
-  //background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
-  background: rgb(65, 53, 58);
   background: radial-gradient(circle, rgba(65, 53, 58, 1) 0%, rgba(46, 49, 70, 1) 100%);
 }
 
+
 .glass {
-  background-color: rgba(149, 212, 220, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: variables.$shadow-lg;
+}
+
+
+// Cards
+.card {
+  background: variables.$white;
+  border-radius: variables.$border-radius-lg;
+  box-shadow: variables.$shadow-md;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .card-title {
+    font-weight: variables.$heading-font-weight;
+    margin-bottom: $card-spacing;
+    color: variables.$dark;
+  }
+
+  .card-text {
+    margin-bottom: $card-spacing;
+    color: variables.$secondary;
+    flex-shrink: 1;
+    overflow: hidden;
+  }
+
+  .card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; // max 3 linjer
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .badge {
+    background: variables.$warning;
+    color: variables.$dark;
+  }
+
+  .card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; // NEW: Push footer down
+  }
+}
+
+// Auction Card
+.auction-card {
+  @extend .card;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover,
+  &:focus-within {
+    transform: translateY(-3px);
+    box-shadow: variables.$shadow-md;
+  }
+}
+
+
+// Form Styles
+form {
+  //margin: auto;
+  //max-width: 400px;
+  //padding: variables.$form-spacing-vertical variables.$form-spacing-horizontal;
+  //border: 1px solid variables.$light;
+  //border-radius: variables.$border-radius-default;
+  //box-shadow: variables.$shadow-sm;
+  //background: variables.$white;
+
+  h1 {
+    text-align: center;
+    font-weight: variables.$heading-font-weight;
+    margin-bottom: $card-spacing;
+  }
+
+  input {
+    width: 100%;
+    padding: $card-spacing;
+    margin-bottom: $card-spacing;
+    border-radius: variables.$border-radius-default;
+    border: 1px solid variables.$secondary;
+  }
+
+  button {
+    width: 100%;
+    padding: $card-spacing;
+    color: variables.$white;
+    background: variables.$primary;
+    border: none;
+    border-radius: variables.$border-radius-default;
+
+    &:hover {
+      background: color.scale(variables.$primary, $lightness: $button-hover-darken);
+    }
+  }
+}
+
+// Focusable Form Controls
+.form-control {
+  padding: variables.$form-control-padding;
+  border-radius: variables.$form-control-border-radius;
+
+  &:focus {
+    border-color: variables.$primary;
+  }
+}
+
+
+// Utility Classes
+.badge-time {
+  background-color: variables.$warning;
+  color: variables.$dark;
+  font-weight: 600;
+}
+
+.text-secondary {
+  color: variables.$secondary;
+}
+
+// Utility Integration for Links
+a {
+  color: $primary;
+  text-decoration: underline;
+
+  &:hover {
+    color: $btn-primary-hover-bg;
+  }
 }
