@@ -1,7 +1,7 @@
-import {API_PROFILE_URL, API_LISTINGS_URL} from '../constants.js';
-import {getTokenFromStorage} from '../../helpers/storage.js';
-import {authFetch} from '../api.js';
-import {renderItems} from '../../ui/common/renderListings.js';
+import { API_PROFILE_URL, API_LISTINGS_URL } from '../constants.js';
+import { getTokenFromStorage } from '../../helpers/storage.js';
+import { authFetch } from '../api.js';
+// import {renderItems} from '../../ui/common/renderListings.js';
 import createHtmlCards from '@/js/ui/common/createHtmlCards.js';
 
 
