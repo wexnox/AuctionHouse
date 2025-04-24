@@ -1,4 +1,5 @@
-import {login} from '../../api/auth/login.js';
+import { login } from '../../api/auth/login.js';
+import togglePassword from '@/js/ui/common/togglePassword.js';
 
 
 export function loginListener() {
@@ -7,6 +8,9 @@ export function loginListener() {
   const form = document.getElementById('loginForm');
 
   if (form) {
+
+    togglePassword(true);
+
     form.addEventListener('submit', (event) => {
       event.preventDefault();
 
