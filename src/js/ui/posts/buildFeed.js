@@ -1,4 +1,4 @@
-import {searchPosts} from '@/js/helpers/searchPosts.js';
+import { searchPosts } from '@/js/helpers/searchPosts.js';
 import * as listeners from '@/js/listeners/index.js';
 import createHtmlCards from '@/js/ui/common/createHtmlCards.js';
 
@@ -9,7 +9,7 @@ let posts = [];
 
 export async function buildFeed() {
   const listAuctions = listeners.getAllAuctionsListener();
-  posts = await listAuctions(); // populate the posts array
+  posts = await listAuctions(); // populate the post-array
   listeners.loadMoreListener(listAuctions);
 }
 
@@ -17,7 +17,7 @@ export async function buildFeed() {
 searchBar.addEventListener('keyup', (e) => {
   const searchTerm = e.target.value.toLowerCase();
 
-  // Ensure posts array has been populated before filtering.
+  // Ensure a post-array has been populated before filtering.
   if (!posts || posts.length === 0) {
     console.error('No posts available for search.');
     return;
