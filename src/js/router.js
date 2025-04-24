@@ -1,20 +1,31 @@
 import * as listeners from './listeners/index.js';
 import buildMenu from './ui/common/buildMenu.js';
-import {redirectBasedOnLogin} from './helpers/redirectBasedOnLogin.js';
-import {buildFeed} from './ui/posts/buildFeed.js';
-import {handleCreateListing} from './listeners/index.js';
-import {createNewListing} from '@/js/api/listings/createNewListing.js';
+import { redirectBasedOnLogin } from './helpers/redirectBasedOnLogin.js';
+import { buildFeed } from './ui/posts/buildFeed.js';
+// import { handleCreateListing } from './listeners/index.js';
+// import { createNewListing } from '@/js/api/listings/createNewListing.js';
+import { displayMessage } from './ui/common/displayMessage.js';
 
 async function handleRootIndex() {
   try {
     await buildFeed();
   } catch (error) {
-    // TODO: refactor this
+    handleFeedError(error, 'feed');
     console.error('Error showing posts:', error);
-    // Handle error (e.g., show error message to user)
   }
-
 }
+
+// TODO: was i done?
+function handleFeedError(error, context) {
+  console.error(`Error loading ${context}:`, error);
+  displayMessage('danger', `Failed to load ${context}. Please try again later.`);
+
+  const container = document.querySelector('#listingsContainer');
+  if (container) {
+    container.innerHTML = '<div class="alert alert-warning">Unable to load content. <button class="btn btn-sm btn-outline-primary" onclick="handleRootIndex()">Retry</button></div>';
+  }
+}
+
 
 function handleAuthRegister() {
   listeners.setRegisterUserListener();
@@ -57,11 +68,12 @@ export default function router() {
     break;
   case '/pages/profile/index.html':
     handleProfileIndex();
-    return;
+    break;
   case '/pages/listings/details.html':
     handleListingsDetails();
     break;
   case '/pages/listings/create.html':
     handleListingsCreate();
+    break;
   }
 }
