@@ -1,112 +1,68 @@
 export default function createHtmlCards(listings, container) {
-  const rowDiv = document.createElement('div');
-  rowDiv.classList.add('row', 'gy-4');
+  const row = document.createElement('div');
+  row.className = 'row gy-4';
 
   listings.forEach((listing) => {
-    const {media, endsAt, id} = listing;
+    const col = document.createElement('div');
+    col.className = 'col-sm-12 col-lg-4 d-flex';
 
-    const cardEl = createCardElement();
-    const cardBodyEl = createCardBody(listing);
-    const imageEl = createImage(media);
-    const endsAtEl = createEndTimeElement(endsAt);
-    const bidBtnEl = createBidButton(id);
+    const card = document.createElement('div');
+    card.className = 'card auction-card shadow-lg w-100 d-flex flex-column';
 
-    cardBodyEl.append(endsAtEl, bidBtnEl);
-    cardEl.append(imageEl, cardBodyEl);
+    const img = document.createElement('img');
+    img.className = 'card-img-top rounded-top';
+    img.src = listing.media?.[0] || '../../src/images/no-image.jpeg';
+    img.style.height = '220px';
+    img.style.objectFit = 'cover';
 
-    const colDiv = document.createElement('div');
-    colDiv.classList.add('col-sm-12', 'col-lg-4', 'my-2', 'd-flex');
-    colDiv.append(cardEl);
+    const body = document.createElement('div');
+    body.className = 'card-body d-flex flex-column justify-content-between flex-grow-1';
 
-    rowDiv.append(colDiv);
+    const title = document.createElement('h5');
+    title.className = 'card-title fw-bold fs-5 text-dark';
+    title.textContent = truncate(listing.title, 60);
+
+    const desc = document.createElement('p');
+    desc.className = 'card-text text-secondary';
+    desc.textContent = listing.description || 'No description available.';
+
+    const footer = document.createElement('div');
+    footer.className = 'd-flex flex-column gap-2 mt-auto';
+
+    const time = document.createElement('span');
+    time.className = 'badge bg-warning text-dark';
+    time.textContent = getTimeLeft(new Date(listing.endsAt)) || 'Auction ended';
+
+    const button = document.createElement('a');
+    button.href = `pages/listings/details.html?id=${listing.id}`;
+    button.className = 'btn btn-primary w-100';
+    button.textContent = 'Read More';
+
+    footer.append(time, button);
+    body.append(title, desc, footer);
+    card.append(img, body);
+    col.append(card);
+    row.append(col);
   });
 
-  container.append(rowDiv);
+  container.append(row);
 }
 
-function createCardElement() {
-  const cardEl = document.createElement('div');
-  cardEl.classList.add('card', 'd-flex', 'flex-column', 'justify-content-center', 'glass');
-  // cardEl.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';  // More transparent background
-  // cardEl.style.backdropFilter = 'blur(10px)';  // Increase the Blur Filter
-  // cardEl.style.border = '1px solid rgba(255, 255, 255, 0.2)';  // Border for the glass effect
-
-  return cardEl;
-}
-
-function createCardBody(listing) {
-  const bodyEl = document.createElement('div');
-  bodyEl.classList.add('card-body');
-
-  const titleEl = createTitle(listing.title);
-  const descEl = createDescription(listing.description);
-  bodyEl.append(titleEl, descEl);
-
-  if (Array.isArray(listing.features)) {
-    listing.features.forEach((feature) => {
-      const featureEl = document.createElement('p');
-      featureEl.classList.add('text-gray-600');
-      featureEl.textContent = feature;
-      bodyEl.append(featureEl);
-    });
+function truncate(str, max = 60) {
+  if (!str) {
+    return '';
   }
-
-  return bodyEl;
+  return str.length > max ? str.slice(0, str.lastIndexOf(' ', max)) + '...' : str;
 }
 
-function createTitle(title, maxLength = 50) {
-  const titleEl = document.createElement('h5');
-  titleEl.classList.add('card-title', 'text-lg', 'sm:text-xl', 'font-semibold', 'text-gray-900');
-  titleEl.textContent = truncateString(title, maxLength);
-  return titleEl;
-}
-
-function truncateString(str, maxLength) {
-  var trimmedString = str.substr(0, maxLength);
-  return trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' '))) + '...';
-}
-
-function createDescription(description) {
-  const descEl = document.createElement('p');
-  descEl.classList.add('card-text', 'py-2', 'text-gray-700');
-  if (description) {
-    descEl.textContent = description;
+function getTimeLeft(end) {
+  const now = new Date();
+  const diff = end - now;
+  if (diff <= 0) {
+    return null;
   }
-  return descEl;
-}
-
-function createImage(media) {
-  const imageEl = document.createElement('img');
-  imageEl.setAttribute('src', media.length >= 1 ? media[0] : '../../src/images/no-image.jpeg');
-  imageEl.classList.add('card-img-top', 'mt-3');
-  imageEl.style.margin = 'auto';
-  imageEl.style.height = '250px';
-  imageEl.style.objectFit = 'cover';
-  return imageEl;
-}
-
-function createEndTimeElement(endsAt) {
-  const endsAtEl = document.createElement('p');
-  endsAtEl.classList.add('card-text');
-
-  const date = new Date(endsAt);
-  const today = new Date();
-  endsAtEl.textContent = date <= today ? 'Auction ended' : `Ends in: ${date.getDay()} day(s) ${date.getHours()} hour(s) ${date.getMinutes()} minutes`;
-
-  return endsAtEl;
-}
-
-// TODO: add glass class
-function createBidButton(id) {
-  const bidBtnEl = document.createElement('a');
-  bidBtnEl.setAttribute('href', `pages/listings/details.html?id=${id}`);
-  bidBtnEl.classList.add('btn', 'text-blue-600', 'hover:underline', 'flex', 'items-center', 'mb-4', 'sm:mb-0');
-  bidBtnEl.textContent = 'Read More';
-  bidBtnEl.style.backgroundColor = 'rgba(0, 123, 255, 0.6)';
-  bidBtnEl.style.border = '1px solid rgba(255, 255, 255, 0.2)';
-  bidBtnEl.style.backdropFilter = 'blur(10px)';
-  bidBtnEl.style.borderRadius = '10px';
-  // bidBtnEl.style.backgroundColor = 'transparent';
-  bidBtnEl.style.border = 'none';
-  return bidBtnEl;
+  const days = Math.floor(diff / (24 * 60 * 60 * 1000));
+  const hours = Math.floor((diff % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
+  const mins = Math.floor((diff % (60 * 60 * 1000)) / (60 * 1000));
+  return `Ends in: ${days} day(s) ${hours} hour(s) ${mins} minutes`;
 }
