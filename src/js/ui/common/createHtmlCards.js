@@ -1,8 +1,13 @@
+import { getCountdownBadge } from '@/js/ui/common/getCountdownBadge.js';
+
 export default function createHtmlCards(listings, container) {
   const row = document.createElement('div');
   row.className = 'row gy-4';
 
   listings.forEach((listing) => {
+
+    const timeBadge = getCountdownBadge(listing.endsAt);
+
     const col = document.createElement('div');
     col.className = 'col-sm-12 col-lg-4 d-flex';
 
@@ -29,9 +34,12 @@ export default function createHtmlCards(listings, container) {
     const footer = document.createElement('div');
     footer.className = 'd-flex flex-column gap-2 mt-auto';
 
+    // const time = document.createElement('span');
+    // time.className = 'badge bg-warning text-dark';
+    // time.textContent = getTimeLeft(new Date(listing.endsAt)) || 'Auction ended';
     const time = document.createElement('span');
-    time.className = 'badge bg-warning text-dark';
-    time.textContent = getTimeLeft(new Date(listing.endsAt)) || 'Auction ended';
+    time.innerHTML = timeBadge;
+
 
     const button = document.createElement('a');
     button.href = `pages/listings/details.html?id=${listing.id}`;
@@ -55,14 +63,14 @@ function truncate(str, max = 60) {
   return str.length > max ? str.slice(0, str.lastIndexOf(' ', max)) + '...' : str;
 }
 
-function getTimeLeft(end) {
-  const now = new Date();
-  const diff = end - now;
-  if (diff <= 0) {
-    return null;
-  }
-  const days = Math.floor(diff / (24 * 60 * 60 * 1000));
-  const hours = Math.floor((diff % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
-  const mins = Math.floor((diff % (60 * 60 * 1000)) / (60 * 1000));
-  return `Ends in: ${days} day(s) ${hours} hour(s) ${mins} minutes`;
-}
+// function getTimeLeft(end) {
+//   const now = new Date();
+//   const diff = end - now;
+//   if (diff <= 0) {
+//     return null;
+//   }
+//   const days = Math.floor(diff / (24 * 60 * 60 * 1000));
+//   const hours = Math.floor((diff % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
+//   const mins = Math.floor((diff % (60 * 60 * 1000)) / (60 * 1000));
+//   return `Ends in: ${days} day(s) ${hours} hour(s) ${mins} minutes`;
+// }
