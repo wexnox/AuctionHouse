@@ -1,5 +1,6 @@
 import { login } from '../../api/auth/login.js';
 import togglePassword from '@/js/ui/common/togglePassword.js';
+import { displayMessage } from '@/js/ui/common/displayMessage.js';
 
 
 export function loginListener() {
@@ -11,7 +12,7 @@ export function loginListener() {
 
     togglePassword(true);
 
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
       event.preventDefault();
 
       const formData = new FormData(event.target);
@@ -20,7 +21,13 @@ export function loginListener() {
       console.log(userProfile); // Add this line to debug
       console.log(JSON.stringify(userProfile));
 
-      login(userProfile);
+      try {
+        await login(userProfile);
+      } catch (error) {
+        console.error('Unexpected error during registration:', error);
+        displayMessage('danger', 'An unexpected error occurred. Please try again.');
+      }
+
     });
   }
 }
