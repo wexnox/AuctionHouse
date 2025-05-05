@@ -23,8 +23,8 @@ export async function register(userProfile) {
       throw new Error(error);
     }
 
-    console.log(data.errors);
-    console.log(data);
+    // console.log(data.errors);
+    // console.log(data);
 
     if (data.status === 400 && data.errors[0].message === 'Profile already exists') {
       return displayMessage('danger', 'Profile already exists. Please use a different email.');

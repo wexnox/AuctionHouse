@@ -15,7 +15,6 @@ async function handleRootIndex() {
   }
 }
 
-// TODO: was i done?
 function handleFeedError(error, context) {
   console.error(`Error loading ${context}:`, error);
   displayMessage('danger', `Failed to load ${context}. Please try again later.`);

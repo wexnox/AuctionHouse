@@ -31,8 +31,8 @@ export function setRegisterUserListener() {
 
       delete userProfile.confirmPassword;
 
-      console.log(userProfile);
-      console.log(JSON.stringify(userProfile));
+      // console.log(userProfile);
+      // console.log(JSON.stringify(userProfile));
 
       register(userProfile);
 
