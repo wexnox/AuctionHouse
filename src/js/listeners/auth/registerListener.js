@@ -1,6 +1,7 @@
 import { register } from '../../api/auth/register.js';
 import { displayMessage } from '@/js/ui/common/displayMessage.js';
 import togglePassword from '../../ui/common/togglePassword.js';
+import { isValidEmail } from '@/js/utils/validation.js';
 
 export function setRegisterUserListener() {
 
@@ -16,10 +17,10 @@ export function setRegisterUserListener() {
       const formData = new FormData(event.target);
       const userProfile = Object.fromEntries(formData.entries());
 
-      const emailRegex = /^[\w\-.]+@(stud\.)?noroff\.no$/;
-      if (!emailRegex.test(userProfile.email)) {
+      if (!isValidEmail(userProfile.email)) {
         return displayMessage('danger', 'Registration is only available for noroff.no or stud.noroff.no email addresses');
       }
+
 
       // Check password match
       const password = userProfile.password;
