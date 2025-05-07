@@ -1,7 +1,7 @@
 import * as path from 'path';
-import {fileURLToPath} from 'url';
+import { fileURLToPath } from 'url';
 import eslintPlugin from 'vite-plugin-eslint';
-import {defineConfig} from 'vite';
+import { defineConfig } from 'vite';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -16,7 +16,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        quietDeps: true // Suppresses warnings from node_modules like Bootstrap
+        quietDeps: true, // Suppresses warnings from node_modules like Bootstrap
       },
     },
   },
@@ -31,7 +31,7 @@ export default defineConfig({
     include: ['src/**/*.js'], // Adjust if using TypeScript or other file types
     exclude: ['node_modules', 'dist'], // Exclude generated files and dependencies
     emitWarning: true, // Enable warnings
-    emitError: true    // Enable errors
+    emitError: true,    // Enable errors
   })],
   build: {
     // target: 'es2015', // oldest
@@ -66,6 +66,7 @@ export default defineConfig({
         profile: path.resolve(__dirname, 'pages/profile/index.html'),
         createListing: path.resolve(__dirname, 'pages/listings/create.html'),
         listingsDetails: path.resolve(__dirname, 'pages/listings/details.html'),
+        browseListings: path.resolve(__dirname, 'pages/listings/browse.html'),
         // search: resolve(__dirname, './src/search.html')
 
       },
