@@ -4,14 +4,13 @@ import togglePassword from '../../ui/common/togglePassword.js';
 import { isValidEmail } from '@/js/utils/validation.js';
 
 export function setRegisterUserListener() {
-
   const form = document.getElementById('registerForm');
 
   if (form) {
-    // Initialize password toggle functionality
+
     togglePassword();
 
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
       event.preventDefault();
 
       const formData = new FormData(event.target);
@@ -21,21 +20,28 @@ export function setRegisterUserListener() {
         return displayMessage('danger', 'Registration is only available for noroff.no or stud.noroff.no email addresses');
       }
 
-
-      // Check password match
       const password = userProfile.password;
       const confirmPassword = userProfile.confirmPassword;
+
+      if (password.length < 8) {
+        return displayMessage('danger', 'Password must be at least 8 characters long');
+      }
 
       if (password !== confirmPassword) {
         return displayMessage('danger', 'Passwords do not match');
       }
+      // TODO: remove this console.warn
+      if (password.length < 8) {
+        console.warn('Password length validation failed', { password });
+      }
 
       delete userProfile.confirmPassword;
-
-      // console.log(userProfile);
-      // console.log(JSON.stringify(userProfile));
-
-      register(userProfile);
+      try {
+        await register(userProfile);
+      } catch (error) {
+        console.error('Unexpected error during registration:', error);
+        displayMessage('danger', 'An unexpected error occurred. Please try again.');
+      }
 
     });
 
@@ -43,8 +49,8 @@ export function setRegisterUserListener() {
     if (emailInput) {
       emailInput.addEventListener('input', function() {
         const emailValue = this.value;
-        const emailRegex = /^[\w\-.]+@(stud\.)?noroff\.no$/;
-        const isValid = emailRegex.test(emailValue);
+        const isValid = isValidEmail(emailValue);
+
 
         if (emailValue && !isValid) {
           this.setCustomValidity('Only noroff.no or stud.noroff.no email addresses are allowed');
