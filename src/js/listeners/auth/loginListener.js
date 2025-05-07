@@ -18,8 +18,8 @@ export function loginListener() {
       const formData = new FormData(event.target);
       const userProfile = Object.fromEntries(formData.entries());
 
-      console.log(userProfile); // Add this line to debug
-      console.log(JSON.stringify(userProfile));
+      // console.log(userProfile); // Add this line to debug
+      // console.log(JSON.stringify(userProfile));
 
       try {
         await login(userProfile);
