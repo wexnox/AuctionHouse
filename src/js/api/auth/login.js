@@ -26,7 +26,7 @@ export async function login(userProfile) {
       storage.saveTokenToStorage('accessToken', accessToken);
       storage.saveTokenToStorage('profile', user);
       buildMenu(); // Refresh the menu to reflect the authenticated state
-      location.href = '../';
+      location.href = '/';
     } else {
       console.log('Unexpected response status:', response.status);
       displayMessage('danger', 'Unexpected error occurred. Please try again later.');
