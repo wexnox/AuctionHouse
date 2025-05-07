@@ -47,13 +47,15 @@
           </div>
 
           <div class="form-group mb-4 form-floating">
-            <input type="email" class="form-control" id="email" name="email" autocomplete="email" placeholder="Email"
-                   aria-describedby="email"
+            <input type="email" class="form-control" id="email" name="email" autocomplete="email" placeholder="Needs to be stud.noroff.no"
+                   aria-describedby="emailHelp"
                    required
                    pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
                    title="Only @(stud.)noroff.no are allowed to register.">
             <label for="email" class="col-form-label">Email address</label>
             <div class="invalid-feedback">Invalid Email</div>
+            <div id="emailHelp" class="form-text">Only @(stud.)noroff.no are allowed to register</div>
+
           </div>
 
           <div class="form-group mb-4 form-floating">
