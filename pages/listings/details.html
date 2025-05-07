@@ -13,9 +13,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">
-      <img src="../../src/images/favicon.png" alt="logo" width="50" class="d-inline-block align-text-top">
+      <img alt="logo" class="d-inline-block align-text-top" src="../../src/images/favicon.png" width="50">
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -24,21 +24,24 @@
   </div>
   <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
     <input
-      type="search"
+      aria-label="Search"
+      class="form-control form-control-dark"
       id="searchBar"
       name="searchBar"
-      class="form-control form-control-dark"
       placeholder="Search..."
-      aria-label="Search"
+      type="search"
     />
   </form>
 </nav>
 
-<main id="container">
+<main class="container mt-4 mb-4 pb-5 flex-grow-1" id="container">
 
   <div>
-    <h1 class="text-center" id="listingTitle">Listings</h1>
-    <div class="row" id="detailsContainer"></div>
+    <h1 class="text-center mt-5" id="listingTitle">Listings Details</h1>
+    <div class="row justify-content-center" id="detailsContainer">
+      <!-- Content load -->
+    </div>
+
   </div>
 
 </main>
@@ -52,28 +55,28 @@
       <div class="col">
         <ul class="nav p-2">
           <li class="nav-item">
-            <a href="" class=" nav-link text-decoration-none"><i class="text-black fi fi-brands-twitter"></i></a>
+            <a class=" nav-link text-decoration-none" href=""><i class="text-black fi fi-brands-twitter"></i></a>
           </li>
           <li class="nav-item">
-            <a href="" class=" nav-link text-decoration-none"><i class="text-black fi fi-brands-facebook"></i></a>
+            <a class=" nav-link text-decoration-none" href=""><i class="text-black fi fi-brands-facebook"></i></a>
           </li>
           <li class="nav-item">
-            <a href="" class=" nav-link text-decoration-none"><i class="text-black fi fi-brands-instagram"></i></a>
+            <a class=" nav-link text-decoration-none" href=""><i class="text-black fi fi-brands-instagram"></i></a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link text-decoration-none"><i class="text-black fi fi-brands-youtube"></i></a>
+            <a class="nav-link text-decoration-none" href=""><i class="text-black fi fi-brands-youtube"></i></a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link text-decoration-none"><i class="text-black fi fi-brands-linkedin"></i></a>
+            <a class="nav-link text-decoration-none" href=""><i class="text-black fi fi-brands-linkedin"></i></a>
           </li>
         </ul>
       </div>
     </section>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
       <div class="col mb-3">
-        <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
-          <img src="../../src/images/favicon.png" alt="logo" width="50" height="50" class="d-inline-block align-text-top">
-          <svg class="bi me-2" width="40" height="32">
+        <a class="d-flex align-items-center mb-3 link-dark text-decoration-none" href="/">
+          <img alt="logo" class="d-inline-block align-text-top" height="50" src="../../src/images/favicon.png" width="50">
+          <svg class="bi me-2" height="32" width="40">
             <use xlink:href="#bootstrap" />
           </svg>
         </a>
@@ -83,10 +86,10 @@
       <div class="col mb-3">
         <h5>Section</h5>
         <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Contact US</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQ</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Careers</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Community</a></li>
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="#">Contact US</a></li>
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="#">FAQ</a></li>
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="#">Careers</a></li>
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="#">Community</a></li>
         </ul>
       </div>
 
@@ -94,20 +97,20 @@
         <h5>Section</h5>
         <ul class="nav flex-column">
 
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Press</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Careers</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Privacy Policy</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Corporate Governance</a></li>
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="#">Press</a></li>
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="#">Careers</a></li>
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="#">Privacy Policy</a></li>
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="#">Corporate Governance</a></li>
         </ul>
       </div>
 
       <div class="col mb-3">
         <h5>Section</h5>
         <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Security</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Terms & Conditions</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Conditions of Business</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">LinkedIn</a></li>
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="#">Security</a></li>
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="#">Terms & Conditions</a></li>
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="#">Conditions of Business</a></li>
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="#">LinkedIn</a></li>
         </ul>
       </div>
     </div>
@@ -115,24 +118,24 @@
 </footer>
 
 <!-- Bid Modal -->
-<div class="modal fade" id="placeBidModal" tabindex="-1" aria-labelledby="placeBidModalLabel" aria-hidden="true">
+<div aria-hidden="true" aria-labelledby="placeBidModalLabel" class="modal fade" id="placeBidModal" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="placeBidModalLabel">Place a Bid</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
       </div>
       <form id="bidForm">
         <div class="modal-body">
 
           <div class="mb-3">
-            <label for="bidAmount" class="form-label">Bid Amount:</label>
-            <input type="number" class="form-control" id="bidAmount" required>
+            <label class="form-label" for="bidAmount">Bid Amount:</label>
+            <input class="form-control" id="bidAmount" required type="number">
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" id="submitBid">Place Bid</button>
+          <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
+          <button class="btn btn-primary" id="submitBid" type="submit">Place Bid</button>
         </div>
       </form>
     </div>
