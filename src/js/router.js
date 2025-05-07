@@ -5,6 +5,7 @@ import { buildFeed } from './ui/posts/buildFeed.js';
 // import { handleCreateListing } from './listeners/index.js';
 // import { createNewListing } from '@/js/api/listings/createNewListing.js';
 import { displayMessage } from './ui/common/displayMessage.js';
+import { setPageTitle } from '@/js/utils/titleManager.js';
 
 async function handleRootIndex() {
   try {
@@ -66,24 +67,31 @@ export default function router() {
   switch (pathname) {
   case '/':
   case '/index.html':
+    setPageTitle('Home');
     handleRootIndex();
     break;
   case '/pages/auth/register.html':
+    setPageTitle('Register ');
     handleAuthRegister();
     break;
   case '/pages/auth/login.html':
+    setPageTitle('Login ');
     handleAuthLogin();
     break;
   case '/pages/profile/index.html':
+    setPageTitle('Profile');
     handleProfileIndex();
     break;
   case '/pages/listings/details.html':
+    setPageTitle('Listings Details ');
     handleListingsDetails();
     break;
   case '/pages/listings/create.html':
+    setPageTitle('Create Listing');
     handleListingsCreate();
     break;
   case '/pages/listings/browse.html':
+    setPageTitle('Browse All Listings');
     handleBrowseListings();
     break;
 
