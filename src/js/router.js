@@ -8,12 +8,23 @@ import { displayMessage } from './ui/common/displayMessage.js';
 
 async function handleRootIndex() {
   try {
-    await buildFeed();
+    await buildFeed({ limit: 3 }); // Show the latest 3 posts on the home page
   } catch (error) {
     handleFeedError(error, 'feed');
     console.error('Error showing posts:', error);
   }
 }
+
+async function handleBrowseListings() {
+  try {
+    // Show all listings on the browse page
+    await buildFeed({ showAll: true }); // Shows all listings on the browse page
+  } catch (error) {
+    handleFeedError(error, 'listings');
+    console.error('Error showing all listings:', error);
+  }
+}
+
 
 function handleFeedError(error, context) {
   console.error(`Error loading ${context}:`, error);
@@ -24,7 +35,6 @@ function handleFeedError(error, context) {
     container.innerHTML = '<div class="alert alert-warning">Unable to load content. <button class="btn btn-sm btn-outline-primary" onclick="handleRootIndex()">Retry</button></div>';
   }
 }
-
 
 function handleAuthRegister() {
   listeners.setRegisterUserListener();
@@ -74,5 +84,9 @@ export default function router() {
   case '/pages/listings/create.html':
     handleListingsCreate();
     break;
+  case '/pages/listings/browse.html':
+    handleBrowseListings();
+    break;
+
   }
 }

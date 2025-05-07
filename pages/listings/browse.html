@@ -7,15 +7,16 @@
   <meta content="Auction,Online Selling, " name="keywords">
   <meta content="Lasse R" name="author">
   <link href="https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css" rel="stylesheet" />
-  <script src="src/js/main.js" type="module"></script>
-  <link href="src/images/favicon.png" rel="icon" type="image/x-icon" />
-  <title>Auction House</title>
+  <script src="../../src/js/main.js" type="module"></script>
+  <link href="../../src/images/favicon.png" rel="icon" type="image/x-icon" />
+  <title>Browse All Listings | Auction House</title>
+
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">
-      <img alt="logo" class="d-inline-block align-text-top" src="src/images/favicon.png" width="50" />
+      <img src="../../src/images/favicon.png" alt="logo" width="50" class="d-inline-block align-text-top">
     </a>
     <button
       aria-controls="navbarNav"
@@ -46,17 +47,8 @@
 <!--TODO: do i need this?-->
 <div id="searchList"></div>
 <main class="container mt-4 mb-4 pb-5 flex-grow-1" id="container">
-
-  <section class="hero py-5 bg-light text-center">
-    <div class="container">
-      <h1 class="display-4 fw-bold">Welcome to Our Auction House</h1>
-      <p class="lead text-secondary mt-3">Discover the best listings and grab your favorite items before they're gone!</p>
-      <a class="btn btn-primary btn-lg mt-4" href="/pages/listings/browse.html">Browse Listings</a>
-    </div>
-  </section>
-
   <div id="message"></div>
-  <h1 class="text-center">Listings</h1>
+  <h1 class="text-center mb-4 mt-5">Browse All Listings</h1>
   <div class="row" id="listingsContainer"></div>
 
   <button class="btn btn-warning " id="loadMore">
