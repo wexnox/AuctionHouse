@@ -1,15 +1,19 @@
 import * as listeners from './listeners/index.js';
 import buildMenu from './ui/common/buildMenu.js';
 import { redirectBasedOnLogin } from './helpers/redirectBasedOnLogin.js';
-import { buildFeed } from './ui/posts/buildFeed.js';
+import { buildFeed } from './ui/buildFeed.js';
 // import { handleCreateListing } from './listeners/index.js';
 // import { createNewListing } from '@/js/api/listings/createNewListing.js';
 import { displayMessage } from './ui/common/displayMessage.js';
 import { setPageTitle } from '@/js/utils/titleManager.js';
+import { initializeSearch } from '@/js/ui/search.js';
+import { initializeLoadMore } from '@/js/ui/helpers/loadMoreHandler.js';
+
 
 async function handleRootIndex() {
   try {
-    await buildFeed({ limit: 3 }); // Show the latest 3 posts on the home page
+    const limit = 3;
+    await buildFeed({ limit });
   } catch (error) {
     handleFeedError(error, 'feed');
     console.error('Error showing posts:', error);
@@ -18,13 +22,23 @@ async function handleRootIndex() {
 
 async function handleBrowseListings() {
   try {
-    // Show all listings on the browse page
-    await buildFeed({ showAll: true }); // Shows all listings on the browse page
+    const limit = 9;
+    const offset = 0;
+
+    const posts = await buildFeed({ limit, offset });
+
+    if (posts.length > 0) {
+      initializeLoadMore(posts, 'listingsContainer', 'loadMore', limit);
+      initializeSearch(posts);
+    } else {
+      console.warn('No listings available to display or search.');
+    }
   } catch (error) {
     handleFeedError(error, 'listings');
     console.error('Error showing all listings:', error);
   }
 }
+
 
 function handleFeedError(error, context) {
   console.error(`Error loading ${context}:`, error);
