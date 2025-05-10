@@ -5,17 +5,22 @@ import { initializeLoadMore } from '../ui/helpers/loadMoreHandler.js';
 import { initializeSearch } from '../ui/search.js';
 import * as listeners from '../listeners/index.js';
 import { handleFeedError } from './routeHelpers.js';
+import { getPosts, setPosts } from '@/js/utils/postsStore.js';
 
 export function handleListingRoutes(pathname) {
 
   if (pathname.endsWith('/browse.html')) {
 
     setPageTitle('Browse All Listings');
+
     handleBrowseListings();
 
   } else if (pathname.endsWith('/details.html')) {
 
     setPageTitle('Listings Details');
+
+    initializeSearch(getPosts());
+
 
     listeners.getListingsDetailsListener();
     listeners.placeBidListener();
@@ -23,6 +28,9 @@ export function handleListingRoutes(pathname) {
   } else if (pathname.endsWith('/create.html')) {
 
     setPageTitle('Create Listing');
+
+    initializeSearch(getPosts());
+
     listeners.createNewListing();
   }
 }
@@ -36,9 +44,13 @@ async function handleBrowseListings() {
 
     const posts = await buildFeed({ limit, offset });
 
+    setPosts(posts);
+
+
     if (posts.length > 0) {
 
       initializeLoadMore(posts, 'listingsContainer', 'loadMore', limit);
+
       initializeSearch(posts);
 
     } else {
