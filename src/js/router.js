@@ -4,6 +4,7 @@ import { handleIndexRoutes } from './routes/indexRoutes.js';
 import { handleAuthRoutes } from './routes/authRoutes.js';
 import { handleProfileRoutes } from './routes/profileRoutes.js';
 import { handleListingRoutes } from './routes/listingRoutes.js';
+import { handleSearchRoutes } from './routes/searchRoutes.js';
 
 export default function router() {
   const pathname = location.pathname;
@@ -19,5 +20,8 @@ export default function router() {
     handleProfileRoutes(pathname);
   } else if (pathname.startsWith('/pages/listings')) {
     handleListingRoutes(pathname);
+  } else if (pathname.endsWith('/search.html')) {
+    handleSearchRoutes(pathname);
   }
+
 }

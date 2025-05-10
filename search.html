@@ -44,11 +44,17 @@
   </form>
 </nav>
 
+
 <main class="container mt-4 mb-4 pb-5 flex-grow-1" id="container">
   <div id="message"></div>
-  <div id="searchList"></div>
-  <h1 class="text-center">Listings</h1>
-  <div class="row" id="listingsContainer"></div>
+  <div class="row">
+    <div class="col-12">
+      <h1>Search Results for "<span id="searchTermDisplay"></span>"</h1>
+      <div class="row mt-4" id="searchList">
+        <!-- Search results will be populated here -->
+      </div>
+    </div>
+  </div>
 
 </main>
 

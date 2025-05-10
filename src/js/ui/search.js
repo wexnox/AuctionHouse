@@ -1,23 +1,35 @@
-import { searchPosts } from '@/js/helpers/searchPosts.js';
-import createHtmlCards from '@/js/ui/common/createHtmlCards.js';
-
 export function initializeSearch(allPosts = []) {
   const searchInput = document.getElementById('searchBar');
-  const searchList = document.getElementById('searchList');
 
-  searchInput.addEventListener('input', (event) => {
+  if (!searchInput) {
+    console.error('Search bar not found in the DOM');
+    return;
+  }
 
-    const searchTerm = event.target.value.trim();
 
-    // Filter posts based on the search term
-    const filteredPosts = searchPosts(allPosts, searchTerm);
+  localStorage.setItem('allPosts', JSON.stringify(allPosts));
 
-    // Render filtered posts dynamically into `#searchList`
-    if (filteredPosts.length) {
-      searchList.innerHTML = ''; // Clear previous results
-      createHtmlCards(filteredPosts, searchList);
-    } else {
-      searchList.innerHTML = '<p class="text-muted text-center">No results were not found.</p>';
-    }
-  });
+  const searchForm = searchInput.closest('form') || searchInput.parentElement;
+
+  if (searchForm) {
+    searchForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const searchTerm = searchInput.value.trim();
+
+      if (searchTerm) {
+        window.location.href = `/search.html?q=${encodeURIComponent(searchTerm)}`;
+      }
+    });
+  } else {
+    searchInput.addEventListener('keyup', (event) => {
+      if (event.key === 'Enter') {
+        const searchTerm = event.target.value.trim();
+
+        if (searchTerm) {
+          window.location.href = `/search.html?q=${encodeURIComponent(searchTerm)}`;
+        }
+      }
+    });
+  }
 }
