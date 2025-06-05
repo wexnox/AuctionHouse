@@ -3,9 +3,13 @@ import { setPageTitle } from '@/js/utils/titleManager.js';
 import { buildFeed } from '../ui/buildFeed.js';
 import { initializeSearch } from '@/js/ui/search.js';
 import { getPosts, setPosts } from '@/js/utils/postsStore.js';
+import { displayVersion } from '@/js/ui/common/displayVersion.js';
 
 export function handleIndexRoutes() {
   setPageTitle('Home');
+
+
+  displayVersion();
 
   displayHomePageFeed();
 

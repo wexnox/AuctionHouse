@@ -6,6 +6,7 @@ import { initializeSearch } from '../ui/search.js';
 import * as listeners from '../listeners/index.js';
 import { handleFeedError } from './routeHelpers.js';
 import { getPosts, setPosts } from '@/js/utils/postsStore.js';
+import { displayVersion } from '@/js/ui/common/displayVersion.js';
 
 export function handleListingRoutes(pathname) {
 
@@ -13,11 +14,15 @@ export function handleListingRoutes(pathname) {
 
     setPageTitle('Browse All Listings');
 
+    displayVersion();
+
     handleBrowseListings();
 
   } else if (pathname.endsWith('/details.html')) {
 
     setPageTitle('Listings Details');
+
+    displayVersion();
 
     initializeSearch(getPosts());
 
@@ -28,6 +33,8 @@ export function handleListingRoutes(pathname) {
   } else if (pathname.endsWith('/create.html')) {
 
     setPageTitle('Create Listing');
+
+    displayVersion();
 
     initializeSearch(getPosts());
 

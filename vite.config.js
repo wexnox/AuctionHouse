@@ -2,11 +2,17 @@ import * as path from 'path';
 import { fileURLToPath } from 'url';
 import eslintPlugin from 'vite-plugin-eslint';
 import { defineConfig } from 'vite';
+import { readFileSync } from 'fs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+// Hent versjon fra package.json
+const pkg = JSON.parse(readFileSync('./package.json', 'utf-8'));
 
 export default defineConfig({
+  define: {
+    __APP_VERSION__: JSON.stringify(pkg.version),
+  },
   server: {
     // open: true,
     port: 3000,

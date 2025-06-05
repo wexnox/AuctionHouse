@@ -2,12 +2,15 @@
 import { setPageTitle } from '../utils/titleManager.js';
 import * as listeners from '../listeners/index.js';
 import { initializeSearch } from '@/js/ui/search.js';
+import { displayVersion } from '@/js/ui/common/displayVersion.js';
 
 export function handleAuthRoutes(pathname) {
 
   if (pathname.endsWith('/register.html')) {
 
     setPageTitle('Register');
+
+    displayVersion();
 
     initializeSearch(posts);
 
@@ -16,6 +19,8 @@ export function handleAuthRoutes(pathname) {
   } else if (pathname.endsWith('/login.html')) {
 
     setPageTitle('Login');
+
+    displayVersion();
 
     initializeSearch(posts);
 
