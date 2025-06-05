@@ -1,16 +1,5 @@
 import { logoutListener } from '../../listeners/index.js';
 
-/**
- * Create a menu item HTML string.
- *
- * @param {Object} options - The options object.
- * @param {string} options.pathname - The current page's pathname.
- * @param {string} options.currentPath - The path of the current page.
- * @param {string} options.path - The path of the menu item.
- * @param {string} options.name - The name of the menu item.
- *
- * @returns {string} - The menu item HTML string.
- */
 function createMenuItem({ pathname, currentPath, path, name }) {
   const isActive = pathname === currentPath;
   return `<li class="nav-item">
@@ -18,14 +7,10 @@ function createMenuItem({ pathname, currentPath, path, name }) {
           </li>`;
 }
 
-/**
- * Build the menu based on the current authentication state and current URL path.
- *
- * @return {void}
- */
 export default function buildMenu() {
   const pathname = window.location.pathname;
   const menu = document.querySelector('#menu');
+  const logoutContainer = document.querySelector('#logout-container');
   let isAuthenticated = !!localStorage.getItem('accessToken');
 
   // Define the menu items for authenticated and unauthenticated states
@@ -44,15 +29,12 @@ export default function buildMenu() {
   ];
 
   let menuItems = isAuthenticated ? authMenuItems : unauthMenuItems;
-  menuItems = menuItems.map(item => createMenuItem({ ...item, pathname })).join('');
+  menu.innerHTML = menuItems.map(item => createMenuItem({ ...item, pathname })).join('');
 
   if (isAuthenticated) {
-    menuItems += '<li class=\'nav-item\'><button class=\'btn btn-primary\' id=\'logout\'>Log out</button></li>';
-  }
-
-  menu.innerHTML = menuItems;
-
-  if (isAuthenticated) {
+    logoutContainer.innerHTML = '<a class="nav-link text-light p-0" href="#" id="logout">Log out</a>';
     logoutListener();
+  } else {
+    logoutContainer.innerHTML = '';
   }
 }
