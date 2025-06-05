@@ -12,7 +12,7 @@ export async function handleSearchRoutes(pathname) {
 
     displayVersion();
 
-    const posts = await getPostsForSearch();
+    await getPostsForSearch();
 
     initializeSearch();
 

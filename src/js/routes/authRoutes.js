@@ -13,7 +13,7 @@ export async function handleAuthRoutes(pathname) {
 
     displayVersion();
 
-    const posts = await getPostsForSearch();
+    await getPostsForSearch();
 
     initializeSearch();
 
@@ -24,7 +24,8 @@ export async function handleAuthRoutes(pathname) {
     setPageTitle('Login');
 
     displayVersion();
-    const posts = await getPostsForSearch();
+
+    await getPostsForSearch();
 
     initializeSearch();
 

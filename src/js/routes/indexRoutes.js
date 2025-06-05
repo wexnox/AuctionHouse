@@ -22,7 +22,7 @@ async function displayHomePageFeed() {
 
     await buildFeed({ limit, offset });
 
-    const searchPosts = await getPostsForSearch();
+    await getPostsForSearch();
 
     initializeSearch();
 

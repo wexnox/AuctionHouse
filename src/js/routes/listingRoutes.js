@@ -25,7 +25,7 @@ export async function handleListingRoutes(pathname) {
     displayVersion();
 
     try {
-      const searchPosts = await getPostsForSearch();
+      await getPostsForSearch();
 
       initializeSearch();
 
@@ -48,8 +48,7 @@ export async function handleListingRoutes(pathname) {
     displayVersion();
 
     try {
-
-      const searchPosts = await getPostsForSearch();
+      await getPostsForSearch();
 
       initializeSearch();
 
@@ -79,7 +78,7 @@ async function handleBrowseListings() {
 
       initializeLoadMore(posts, 'listingsContainer', 'loadMore', limit);
 
-      const searchPosts = await getPostsForSearch();
+      await getPostsForSearch();
 
       initializeSearch();
 

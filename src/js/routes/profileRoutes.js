@@ -14,8 +14,7 @@ export async function handleProfileRoutes(pathname) {
     displayVersion();
 
     try {
-
-      const searchPosts = await getPostsForSearch();
+      await getPostsForSearch();
 
       initializeSearch();
 
