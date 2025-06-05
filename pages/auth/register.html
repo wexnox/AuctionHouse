@@ -12,25 +12,33 @@
   <title>Auction House</title>
 </head>
 <body>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/"><img alt="logo" class="d-inline-block align-text-top" height="50" src="../../src/images/favicon.png" width="50"></a>
+    <a class="navbar-brand" href="/">
+      <img alt="logo" class="d-inline-block align-text-top" src="src/images/favicon.png" width="50" />
+    </a>
+
     <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav" id="menu"></ul>
+      <ul class="navbar-nav me-auto" id="menu"></ul>
+      <div class="d-flex align-items-center">
+
+        <div id="logout-container" class="me-3"></div>
+
+        <form class="d-flex">
+          <input aria-label="Search" class="form-control form-control-sm form-control-dark " id="searchBar" name="searchBar" placeholder="Search listings..." type="search" />
+        </form>
+
+      </div>
     </div>
+
   </div>
-  <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-    <input
-      aria-label="Search"
-      class="form-control form-control-dark"
-      id="searchBar"
-      name="searchBar"
-      placeholder="Search..."
-      type="search" />
-  </form>
+
+
 </nav>
 
 <main>
