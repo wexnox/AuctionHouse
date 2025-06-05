@@ -58,9 +58,7 @@ export async function handleListingRoutes(pathname) {
 
       initializeSearch();
     }
-
-
-    await listeners.createNewListing();
+    
   }
 }
 
