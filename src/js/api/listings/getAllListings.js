@@ -2,7 +2,9 @@ import { API_MAIN_URL } from '../constants.js';
 import handleErrors, { handleHttpError } from '../handleErrors.js';
 import { authFetch } from '@/js/api/api.js';
 
-export async function getAllListings({ limit = 15, offset = 0, _active = true }) {
+export async function getAllListings(options = {}) {
+
+  const { limit = 15, offset = 0, _active = true } = options;
   const url = `${API_MAIN_URL}/listings?limit=${limit}&offset=${offset}&_active=${_active}`;
   try {
     const response = await authFetch(url);

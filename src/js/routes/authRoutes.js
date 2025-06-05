@@ -3,14 +3,17 @@ import { setPageTitle } from '../utils/titleManager.js';
 import * as listeners from '../listeners/index.js';
 import { initializeSearch } from '@/js/ui/search.js';
 import { displayVersion } from '@/js/ui/common/displayVersion.js';
+import { getPostsForSearch } from '@/js/ui/helpers/getPostsForSearch.js';
 
-export function handleAuthRoutes(pathname) {
+export async function handleAuthRoutes(pathname) {
 
   if (pathname.endsWith('/register.html')) {
 
     setPageTitle('Register');
 
     displayVersion();
+
+    const posts = await getPostsForSearch();
 
     initializeSearch(posts);
 
@@ -21,6 +24,7 @@ export function handleAuthRoutes(pathname) {
     setPageTitle('Login');
 
     displayVersion();
+    const posts = await getPostsForSearch();
 
     initializeSearch(posts);
 

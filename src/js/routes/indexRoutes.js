@@ -2,12 +2,11 @@
 import { setPageTitle } from '@/js/utils/titleManager.js';
 import { buildFeed } from '../ui/buildFeed.js';
 import { initializeSearch } from '@/js/ui/search.js';
-import { getPosts, setPosts } from '@/js/utils/postsStore.js';
 import { displayVersion } from '@/js/ui/common/displayVersion.js';
+import { getPostsForSearch } from '@/js/ui/helpers/getPostsForSearch.js';
 
 export async function handleIndexRoutes() {
   setPageTitle('Home');
-
 
   displayVersion();
 
@@ -21,15 +20,18 @@ async function displayHomePageFeed() {
 
   try {
 
-    const posts = await buildFeed({ limit, offset });
+    await buildFeed({ limit, offset });
 
-    setPosts(posts);
+    const searchPosts = await getPostsForSearch();
 
-    initializeSearch(posts);
+    initializeSearch(searchPosts);
+
 
   } catch (error) {
     console.error('Error loading homepage feed:', error);
-    initializeSearch(getPosts());
+
+    initializeSearch([]);
+
 
   }
 }

@@ -2,13 +2,22 @@
 import { setPageTitle } from '../utils/titleManager.js';
 import { handleSearchResults } from '../ui/searchResults.js';
 import { displayVersion } from '@/js/ui/common/displayVersion.js';
+import { initializeSearch } from '@/js/ui/search.js';
+import { getPostsForSearch } from '@/js/ui/helpers/getPostsForSearch.js';
 
-export function handleSearchRoutes(pathname) {
+export async function handleSearchRoutes(pathname) {
   if (pathname.endsWith('/search.html')) {
+
     setPageTitle('Search Results');
 
     displayVersion();
-    handleSearchResults();
+
+    const posts = await getPostsForSearch();
+
+    initializeSearch(posts);
+
+    await handleSearchResults();
+
   }
 }
 

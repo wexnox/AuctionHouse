@@ -6,9 +6,6 @@ export function initializeSearch(allPosts = []) {
     return;
   }
 
-
-  localStorage.setItem('allPosts', JSON.stringify(allPosts));
-
   const searchForm = searchInput.closest('form') || searchInput.parentElement;
 
   if (searchForm) {

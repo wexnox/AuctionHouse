@@ -1,9 +1,10 @@
 import { searchPosts } from '../utils/searchPosts.js';
 import createHtmlCards from '../ui/common/createHtmlCards.js';
 import { displayMessage } from '../ui/common/displayMessage.js';
-import { getPosts, setPosts } from '@/js/utils/postsStore.js';
+import { toggleLoadingIndicator } from '@/js/ui/helpers/toggleLoadingIndicator.js';
+import { getPostsForSearch } from '@/js/ui/helpers/getPostsForSearch.js';
 
-export function handleSearchResults() {
+export async function handleSearchResults() {
   const urlParams = new URLSearchParams(window.location.search);
   const searchTerm = urlParams.get('q');
 
@@ -25,17 +26,15 @@ export function handleSearchResults() {
 
   try {
 
-    let allPosts = getPosts();
+    toggleLoadingIndicator(searchList);
+
+    const allPosts = await getPostsForSearch();
+
+    toggleLoadingIndicator(searchList);
 
     if (!allPosts || allPosts.length === 0) {
-      const storedPosts = localStorage.getItem('allPosts');
-      if (storedPosts) {
-        allPosts = JSON.parse(storedPosts);
-
-        setPosts(allPosts);
-      } else {
-        allPosts = [];
-      }
+      searchList.innerHTML = '<p class="text-muted text-center">No listings available to search.</p>';
+      return;
     }
 
     const filteredPosts = searchPosts(allPosts, searchTerm);
@@ -50,5 +49,11 @@ export function handleSearchResults() {
     console.error('Error processing search results:', error);
     displayMessage('danger', 'An error occurred while processing search results.');
     searchList.innerHTML = '<p class="text-muted text-center">An error occurred. Please try again.</p>';
+
+    const loadingIndicator = searchList.querySelector('#loading');
+    if (loadingIndicator) {
+      toggleLoadingIndicator(searchList);
+    }
+
   }
 }

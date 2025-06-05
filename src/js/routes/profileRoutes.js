@@ -2,8 +2,8 @@
 import { setPageTitle } from '../utils/titleManager.js';
 import * as listeners from '../listeners/index.js';
 import { initializeSearch } from '@/js/ui/search.js';
-import { getPosts } from '@/js/utils/postsStore.js';
 import { displayVersion } from '@/js/ui/common/displayVersion.js';
+import { getPostsForSearch } from '@/js/ui/helpers/getPostsForSearch.js';
 
 export async function handleProfileRoutes(pathname) {
 
@@ -13,10 +13,25 @@ export async function handleProfileRoutes(pathname) {
 
     displayVersion();
 
-    initializeSearch(getPosts());
+    try {
+
+      const searchPosts = await getPostsForSearch();
+
+      initializeSearch(searchPosts);
+
+    } catch (error) {
+
+      console.error('Error initializing search:', error);
+
+      initializeSearch([]);
+    }
+
 
     await listeners.userProfileListener();
+
     await listeners.updateAvatarListener();
+
     await listeners.getUserListing();
+
   }
 }

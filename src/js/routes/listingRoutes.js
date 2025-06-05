@@ -5,8 +5,8 @@ import { initializeLoadMore } from '../ui/helpers/loadMoreHandler.js';
 import { initializeSearch } from '../ui/search.js';
 import * as listeners from '../listeners/index.js';
 import { handleFeedError } from './routeHelpers.js';
-import { getPosts, setPosts } from '@/js/utils/postsStore.js';
 import { displayVersion } from '@/js/ui/common/displayVersion.js';
+import { getPostsForSearch } from '@/js/ui/helpers/getPostsForSearch.js';
 
 export async function handleListingRoutes(pathname) {
 
@@ -24,10 +24,21 @@ export async function handleListingRoutes(pathname) {
 
     displayVersion();
 
-    initializeSearch(getPosts());
+    try {
+      const searchPosts = await getPostsForSearch();
+
+      initializeSearch(searchPosts);
+
+    } catch (error) {
+
+      console.error('Error initializing search:', error);
+
+      initializeSearch([]);
+    }
 
 
     await listeners.getListingsDetailsListener();
+
     await listeners.placeBidListener();
 
   } else if (pathname.endsWith('/create.html')) {
@@ -36,7 +47,19 @@ export async function handleListingRoutes(pathname) {
 
     displayVersion();
 
-    initializeSearch(getPosts());
+    try {
+
+      const searchPosts = await getPostsForSearch();
+
+      initializeSearch(searchPosts);
+
+    } catch (error) {
+
+      console.error('Error initializing search:', error);
+
+      initializeSearch([]);
+    }
+
 
     await listeners.createNewListing();
   }
@@ -51,17 +74,21 @@ async function handleBrowseListings() {
 
     const posts = await buildFeed({ limit, offset });
 
-    setPosts(posts);
-
 
     if (posts.length > 0) {
 
       initializeLoadMore(posts, 'listingsContainer', 'loadMore', limit);
 
-      initializeSearch(posts);
+      const searchPosts = await getPostsForSearch();
+
+      initializeSearch(searchPosts);
+
 
     } else {
       console.warn('No listings available to display.');
+
+      initializeSearch([]);
+
     }
   } catch (error) {
 
