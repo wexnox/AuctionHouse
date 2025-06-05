@@ -39,7 +39,6 @@ export default function buildMenu() {
   const unauthMenuItems = [
     { currentPath: '/', path: '/', name: 'Home' },
     { currentPath: '/pages/listings/browse.html', path: '/pages/listings/browse.html', name: 'Browse Listings' },
-    { currentPath: '/pages/listings/create.html', path: '/pages/listings/create.html', name: 'Create Listing' },
     { currentPath: '/pages/auth/login.html', path: '/pages/auth/login.html', name: 'Login' },
     { currentPath: '/pages/auth/register.html', path: '/pages/auth/register.html', name: 'Register' },
   ];
