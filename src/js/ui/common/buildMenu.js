@@ -26,7 +26,7 @@ function createMenuItem({ pathname, currentPath, path, name }) {
 export default function buildMenu() {
   const pathname = window.location.pathname;
   const menu = document.querySelector('#menu');
-  let isAuthenticated = localStorage.getItem('accessToken') ? true : false;
+  let isAuthenticated = !!localStorage.getItem('accessToken');
 
   // Define the menu items for authenticated and unauthenticated states
   const authMenuItems = [

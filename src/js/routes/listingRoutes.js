@@ -27,13 +27,13 @@ export async function handleListingRoutes(pathname) {
     try {
       const searchPosts = await getPostsForSearch();
 
-      initializeSearch(searchPosts);
+      initializeSearch();
 
     } catch (error) {
 
       console.error('Error initializing search:', error);
 
-      initializeSearch([]);
+      initializeSearch();
     }
 
 
@@ -51,13 +51,13 @@ export async function handleListingRoutes(pathname) {
 
       const searchPosts = await getPostsForSearch();
 
-      initializeSearch(searchPosts);
+      initializeSearch();
 
     } catch (error) {
 
       console.error('Error initializing search:', error);
 
-      initializeSearch([]);
+      initializeSearch();
     }
 
 
@@ -81,13 +81,13 @@ async function handleBrowseListings() {
 
       const searchPosts = await getPostsForSearch();
 
-      initializeSearch(searchPosts);
+      initializeSearch();
 
 
     } else {
       console.warn('No listings available to display.');
 
-      initializeSearch([]);
+      initializeSearch();
 
     }
   } catch (error) {

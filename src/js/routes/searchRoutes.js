@@ -14,7 +14,7 @@ export async function handleSearchRoutes(pathname) {
 
     const posts = await getPostsForSearch();
 
-    initializeSearch(posts);
+    initializeSearch();
 
     await handleSearchResults();
 

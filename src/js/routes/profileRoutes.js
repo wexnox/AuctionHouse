@@ -17,13 +17,13 @@ export async function handleProfileRoutes(pathname) {
 
       const searchPosts = await getPostsForSearch();
 
-      initializeSearch(searchPosts);
+      initializeSearch();
 
     } catch (error) {
 
       console.error('Error initializing search:', error);
 
-      initializeSearch([]);
+      initializeSearch();
     }
 
 

@@ -24,13 +24,13 @@ async function displayHomePageFeed() {
 
     const searchPosts = await getPostsForSearch();
 
-    initializeSearch(searchPosts);
+    initializeSearch();
 
 
   } catch (error) {
     console.error('Error loading homepage feed:', error);
 
-    initializeSearch([]);
+    initializeSearch();
 
 
   }

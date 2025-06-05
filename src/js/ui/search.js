@@ -1,4 +1,4 @@
-export function initializeSearch(allPosts = []) {
+export function initializeSearch() {
   const searchInput = document.getElementById('searchBar');
 
   if (!searchInput) {

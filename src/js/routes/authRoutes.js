@@ -15,7 +15,7 @@ export async function handleAuthRoutes(pathname) {
 
     const posts = await getPostsForSearch();
 
-    initializeSearch(posts);
+    initializeSearch();
 
     listeners.setRegisterUserListener();
 
@@ -26,7 +26,7 @@ export async function handleAuthRoutes(pathname) {
     displayVersion();
     const posts = await getPostsForSearch();
 
-    initializeSearch(posts);
+    initializeSearch();
 
     listeners.loginListener();
   }
