@@ -14,17 +14,31 @@ function getProfileListingsUrl(userName) {
 }
 
 export async function getUserListing() {
+
   const userName = getUserName();
+
   const url = getProfileListingsUrl(userName);
+
   try {
+
     const response = await authFetch(url);
     const data = await response.json();
+
     if (response.status !== 200) {
       console.log(`Error${response.status}: ${data.message}`);
       return;
     }
-    // renderItems(data); // TODO: Move over to createHtmlCards.js
-    createHtmlCards(data);
+
+    const container = document.getElementById('itemsList');
+
+    if (!container) {
+      console.error('User listings container not found in DOM.');
+      return;
+    }
+    container.innerHTML = '';
+
+
+    createHtmlCards(data, container);
   } catch (error) {
     console.log(error);
   }
