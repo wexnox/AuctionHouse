@@ -1,5 +1,5 @@
-import {createNewListing} from '../../api/listings/createNewListing.js';
-import {displayMessage} from '@/js/ui/common/displayMessage.js';
+import { createNewListing } from '../../api/listings/createNewListing.js';
+import { displayMessage } from '@/js/ui/common/displayMessage.js';
 
 let mediaItems = []; // Array to hold all media items
 
@@ -30,7 +30,7 @@ export function getFormData(form) {
   const description = formData.get('description');
   const endsAt = new Date(formData.get('endsAt'));
   const tags = formData.get('tags').split(', ').filter(x => x);
-  return {title, description, endsAt, media: mediaItems, tags};
+  return { title, description, endsAt, media: mediaItems, tags };
 }
 
 function handleEmptyArrays(listing) {
@@ -76,12 +76,12 @@ function updatePreview() {
     img.style.height = 'auto';
     if (typeof item === 'string') {
       img.src = item;
-      img.onerror = function () {
-        img.src = 'https://via.placeholder.com/150?text=Invalid+URL';
+      img.onerror = function() {
+        img.src = 'https://images.pexels.com/photos/20186655/pexels-photo-20186655/free-photo-of-a-black-and-green-mercedes-amg-gt.jpeg';
       };
     } else {
       img.src = URL.createObjectURL(item);
-      img.onload = function () {
+      img.onload = function() {
         URL.revokeObjectURL(img.src);
       };
     }
@@ -92,7 +92,7 @@ function updatePreview() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
   const mediaUrlInput = document.getElementById('mediaUrl');
   const mediaFileInput = document.getElementById('mediaFile');
   const form = document.getElementById('createListingForm');
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const clearMediaButton = document.getElementById('clearMediaButton');
 
   if (mediaUrlInput && mediaFileInput && form && resetButton && clearMediaButton) {
-    mediaUrlInput.addEventListener('input', function (event) {
+    mediaUrlInput.addEventListener('input', function(event) {
       const url = event.target.value.trim();
       if (url && !mediaItems.includes(url)) {
         mediaItems.push(url);
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    mediaFileInput.addEventListener('change', function (event) {
+    mediaFileInput.addEventListener('change', function(event) {
       if (event.target.files.length) {
         mediaItems.push(...event.target.files);
         updatePreview();
