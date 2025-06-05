@@ -22,9 +22,19 @@ export function loginListener() {
       // console.log(JSON.stringify(userProfile));
 
       try {
+
         await login(userProfile);
+
+        displayMessage('success', 'Login successful!');
+
+        setTimeout(() => {
+          window.location.href = '/pages/profile/index.html';
+        }, 1000);
+
       } catch (error) {
+
         console.error('Unexpected error during registration:', error);
+
         displayMessage('danger', 'An unexpected error occurred. Please try again.');
       }
 
