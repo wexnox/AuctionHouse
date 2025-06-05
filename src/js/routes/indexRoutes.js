@@ -5,13 +5,13 @@ import { initializeSearch } from '@/js/ui/search.js';
 import { getPosts, setPosts } from '@/js/utils/postsStore.js';
 import { displayVersion } from '@/js/ui/common/displayVersion.js';
 
-export function handleIndexRoutes() {
+export async function handleIndexRoutes() {
   setPageTitle('Home');
 
 
   displayVersion();
 
-  displayHomePageFeed();
+  await displayHomePageFeed();
 
 }
 

@@ -50,12 +50,12 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.glass {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: variables.$shadow-lg;
-}
+//.glass {
+//  background: rgba(255, 255, 255, 0.08);
+//  backdrop-filter: blur(16px);
+//  border: 1px solid rgba(255, 255, 255, 0.15);
+//  box-shadow: variables.$shadow-lg;
+//}
 
 
 // Cards
@@ -66,11 +66,11 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex-direction: column;
 
-  .card-title {
-    font-weight: variables.$heading-font-weight;
-    margin-bottom: $card-spacing;
-    color: variables.$dark;
-  }
+  //.card-title {
+  //  font-weight: variables.$heading-font-weight;
+  //  margin-bottom: $card-spacing;
+  //  color: variables.$dark;
+  //}
 
   .card-text {
     margin-bottom: $card-spacing;
@@ -84,10 +84,10 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-box-orient: vertical;
   }
 
-  .badge {
-    background: variables.$warning;
-    color: variables.$dark;
-  }
+  //.badge {
+  //  background: variables.$warning;
+  //  color: variables.$dark;
+  //}
 
   .card-body {
     display: flex;
@@ -96,16 +96,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 // Auction Card
-.auction-card {
-  @extend .card;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-  &:hover,
-  &:focus-within {
-    transform: translateY(-3px);
-    box-shadow: variables.$shadow-md;
-  }
-}
+//.auction-card {
+//  @extend .card;
+//  transition: transform 0.2s ease, box-shadow 0.2s ease;
+//
+//  &:hover,
+//  &:focus-within {
+//    transform: translateY(-3px);
+//    box-shadow: variables.$shadow-md;
+//  }
+//}
 
 // Form Styles
 form {
@@ -157,11 +157,11 @@ form {
 
 
 // Utility Classes
-.badge-time {
-  background-color: variables.$warning;
-  color: variables.$dark;
-  font-weight: 600;
-}
+//.badge-time {
+//  background-color: variables.$warning;
+//  color: variables.$dark;
+//  font-weight: 600;
+//}
 
 .text-secondary {
   color: variables.$secondary;

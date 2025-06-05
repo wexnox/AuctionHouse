@@ -22,11 +22,3 @@ export function getPosts() {
   return allPosts;
 }
 
-export function addPosts(newPosts) {
-  allPosts = [...allPosts, ...newPosts];
-  try {
-    localStorage.setItem('allPosts', JSON.stringify(allPosts));
-  } catch (error) {
-    console.error('Error saving updated posts to localStorage:', error);
-  }
-}

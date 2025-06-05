@@ -6,20 +6,20 @@ import { handleProfileRoutes } from './routes/profileRoutes.js';
 import { handleListingRoutes } from './routes/listingRoutes.js';
 import { handleSearchRoutes } from './routes/searchRoutes.js';
 
-export default function router() {
+export default async function router() {
   const pathname = location.pathname;
 
   redirectBasedOnLogin(pathname);
   buildMenu(pathname);
 
   if (pathname === '/' || pathname === '/index.html') {
-    handleIndexRoutes();
+    await handleIndexRoutes();
   } else if (pathname.startsWith('/pages/auth')) {
     handleAuthRoutes(pathname);
   } else if (pathname.startsWith('/pages/profile')) {
-    handleProfileRoutes(pathname);
+    await handleProfileRoutes(pathname);
   } else if (pathname.startsWith('/pages/listings')) {
-    handleListingRoutes(pathname);
+    await handleListingRoutes(pathname);
   } else if (pathname.endsWith('/search.html')) {
     handleSearchRoutes(pathname);
   }

@@ -1,4 +1,4 @@
-import { API_MAIN_URL, AUCTIONS_LIMIT } from '../constants.js';
+import { API_MAIN_URL } from '../constants.js';
 import handleErrors, { handleHttpError } from '../handleErrors.js';
 import { authFetch } from '@/js/api/api.js';
 

@@ -8,7 +8,7 @@ import { handleFeedError } from './routeHelpers.js';
 import { getPosts, setPosts } from '@/js/utils/postsStore.js';
 import { displayVersion } from '@/js/ui/common/displayVersion.js';
 
-export function handleListingRoutes(pathname) {
+export async function handleListingRoutes(pathname) {
 
   if (pathname.endsWith('/browse.html')) {
 
@@ -16,7 +16,7 @@ export function handleListingRoutes(pathname) {
 
     displayVersion();
 
-    handleBrowseListings();
+    await handleBrowseListings();
 
   } else if (pathname.endsWith('/details.html')) {
 
@@ -27,8 +27,8 @@ export function handleListingRoutes(pathname) {
     initializeSearch(getPosts());
 
 
-    listeners.getListingsDetailsListener();
-    listeners.placeBidListener();
+    await listeners.getListingsDetailsListener();
+    await listeners.placeBidListener();
 
   } else if (pathname.endsWith('/create.html')) {
 
@@ -38,7 +38,7 @@ export function handleListingRoutes(pathname) {
 
     initializeSearch(getPosts());
 
-    listeners.createNewListing();
+    await listeners.createNewListing();
   }
 }
 

@@ -3,9 +3,6 @@ import * as storage from '../../helpers/storage.js';
 import { displayMessage } from '../../ui/common/displayMessage.js';
 import buildMenu from '../../ui/common/buildMenu.js';
 import { authFetch } from '@/js/api/api.js';
-// import togglePassword from "../../listeners/auth/togglePassword.js";
-
-// togglePassword()
 
 export async function login(userProfile) {
   const endpoint = '/auth/login';

@@ -15,8 +15,8 @@ export async function handleProfileRoutes(pathname) {
 
     initializeSearch(getPosts());
 
-    listeners.userProfileListener();
-    listeners.updateAvatarListener();
-    listeners.getUserListing();
+    await listeners.userProfileListener();
+    await listeners.updateAvatarListener();
+    await listeners.getUserListing();
   }
 }
