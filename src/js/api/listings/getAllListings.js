@@ -1,18 +1,21 @@
-import {API_MAIN_URL, AUCTIONS_LIMIT} from '../constants.js';
-import handleErrors from '../handleErrors.js';
-import {authFetch} from '@/js/api/api.js';
+import { API_MAIN_URL, AUCTIONS_LIMIT } from '../constants.js';
+import handleErrors, { handleHttpError } from '../handleErrors.js';
+import { authFetch } from '@/js/api/api.js';
 
-export async function getAllListings(offset) {
+export async function getAllListings({ limit = 15, offset = 0, _active = true }) {
+  const url = `${API_MAIN_URL}/listings?limit=${limit}&offset=${offset}&_active=${_active}`;
+  try {
+    const response = await authFetch(url);
+    handleHttpError(response);
 
-  const url = `${API_MAIN_URL}/listings?limit=${AUCTIONS_LIMIT}&offset=${offset}&_active=true`;
-  const response = await authFetch(url);
+    const data = await response.json();
+    console.log('API response data:', data);
 
-  const data = await response.json();
-  console.log('Fetched Listings:', data);
+    handleErrors(data);
 
-  if (response.ok) {
     return data;
+  } catch (error) {
+    console.error('Error fetching listings:', error);
+    throw error;
   }
-
-  handleErrors(data);
 }

@@ -67,7 +67,7 @@ export default defineConfig({
         createListing: path.resolve(__dirname, 'pages/listings/create.html'),
         listingsDetails: path.resolve(__dirname, 'pages/listings/details.html'),
         browseListings: path.resolve(__dirname, 'pages/listings/browse.html'),
-        // search: resolve(__dirname, './src/search.html')
+        search: path.resolve(__dirname, './src/search.html'),
 
       },
     },
