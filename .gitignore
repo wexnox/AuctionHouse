@@ -27,3 +27,4 @@ docs
 /storage
 /bootstrap/cache
 .env/storage/
+package-lock.json
