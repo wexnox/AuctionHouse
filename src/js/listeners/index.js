@@ -1,3 +1,4 @@
+// TODO: fix logic
 // profile logic
 export * from './auth/loginListener.js';
 export * from './auth/logoutListener.js';
@@ -13,5 +14,9 @@ export * from './auction/getAllAuctionsListener.js';
 export * from './auction/loadMoreListener.js';
 export * from './auction/createNewListingListener.js';
 export * from './auction/getListingsDetailsListener.js';
-export * from './auction/setBidListener.js';
+
+// Listings
 export * from '../api/listings/createNewListing.js';
+
+// Bids
+export * from './bids/setBidListener.js';
