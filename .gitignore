@@ -22,3 +22,8 @@ node_modules
 Bob.md
 docs
 /dist/
+/vendor
+/node_modules
+/storage
+/bootstrap/cache
+.env/storage/
