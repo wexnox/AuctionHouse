@@ -1,13 +1,13 @@
 import { API_MAIN_URL } from '../constants.js';
 import { getTokenFromStorage, saveTokenToStorage } from '../../helpers/storage.js';
 import { authFetch } from '../api.js';
+import { handleHttpError } from '../handleErrors.js';
 
 const POST_METHOD = 'POST';
 const USER_PROFILE_KEY = 'userProfile';
 
 export async function placeBidOnItem(id, amount) {
   try {
-
     const token = getTokenFromStorage('accessToken');
 
     if (!token) {
@@ -26,11 +26,7 @@ export async function placeBidOnItem(id, amount) {
       body: JSON.stringify({ amount: amount }),
     });
 
-    if (response.status !== 200 && response.status !== 201) {
-      const errorData = await response.json();
-      throw new Error(errorData.message || `Request failed with status ${response.status}`);
-    }
-
+    handleHttpError(response);
 
     const jsonResponse = await response.json();
     saveTokenToStorage(USER_PROFILE_KEY, jsonResponse.userName);
@@ -39,7 +35,7 @@ export async function placeBidOnItem(id, amount) {
     return jsonResponse;
 
   } catch (error) {
-    throw new Error(`Failed to place bid due to error: ${error}`);
+    throw new Error(`Failed to place bid due to error: ${error.message}`);
   }
 }
 
