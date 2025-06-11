@@ -27,4 +27,6 @@ docs
 /storage
 /bootstrap/cache
 .env/storage/
+
+# Lock files (to prevent server conflicts)
 package-lock.json
