@@ -7,19 +7,19 @@ const POST_METHOD = 'POST';
 const USER_PROFILE_KEY = 'userProfile';
 
 export async function placeBidOnItem(id, amount) {
+
+  const token = getTokenFromStorage('accessToken');
+
+  if (!token) {
+    throw new Error('You must be logged in to place a bid');
+  }
+
+  const numericAmount = parseFloat(amount);
+
+  if (isNaN(numericAmount) || numericAmount <= 0) {
+    throw new Error('Please enter a valid bid amount');
+  }
   try {
-    const token = getTokenFromStorage('accessToken');
-
-    if (!token) {
-      throw new Error('You must be logged in to place a bid');
-    }
-
-    const numericAmount = parseFloat(amount);
-
-    if (isNaN(numericAmount) || numericAmount <= 0) {
-      throw new Error('Please enter a valid bid amount');
-    }
-
     const bidURL = `${API_MAIN_URL}/listings/${id}/bids`;
     const response = await authFetch(bidURL, {
       method: POST_METHOD,
