@@ -138,3 +138,51 @@ a {
   color: #bdc3c7;
 }
 
+// Profile dropdown styling
+.navbar {
+  .dropdown-menu {
+    border: 1px solid #dee2e6;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    min-width: 160px;
+
+    .dropdown-item {
+      padding: 0.5rem 1rem;
+
+      &:hover {
+        background-color: #f8f9fa;
+      }
+
+      i {
+        width: 16px;
+        display: inline-block;
+      }
+    }
+
+    .dropdown-divider {
+      margin: 0.5rem 0;
+    }
+  }
+
+  #profileDropdown {
+    &:hover {
+      color: #ffffff !important;
+    }
+
+    .rounded-circle {
+      object-fit: cover;
+    }
+  }
+}
+
+// Mobile responsive adjustments
+@media (max-width: 991.98px) {
+  .navbar-nav {
+    .dropdown-menu {
+      position: static !important;
+      transform: none !important;
+      box-shadow: none;
+      border: none;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
