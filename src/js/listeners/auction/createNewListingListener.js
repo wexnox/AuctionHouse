@@ -126,3 +126,6 @@ document.addEventListener('DOMContentLoaded', function() {
     clearMediaButton.addEventListener('click', clearMedia);
   }
 });
+
+
+// TODO: her
