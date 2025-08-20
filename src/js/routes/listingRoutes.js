@@ -7,6 +7,7 @@ import * as listeners from '../listeners/index.js';
 import { handleFeedError } from './routeHelpers.js';
 import { displayVersion } from '@/js/ui/common/displayVersion.js';
 import { getPostsForSearch } from '@/js/ui/helpers/getPostsForSearch.js';
+import { initCreateListingPage } from '@/js/listeners/auction/createNewListingListener.js';
 
 export async function handleListingRoutes(pathname) {
 
@@ -58,6 +59,9 @@ export async function handleListingRoutes(pathname) {
 
       initializeSearch();
     }
+
+    // Initialize create listing page (media uploader integration)
+    initCreateListingPage();
     
   }
 }
