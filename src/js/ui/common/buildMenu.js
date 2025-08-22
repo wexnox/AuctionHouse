@@ -79,10 +79,10 @@ function buildMenu() {
     if (logoutContainer) {
       logoutContainer.innerHTML = `
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle d-flex align-items-center text-light gap-2" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <span id="nav-credits" class="me-1">${pointsText}</span>
-          <img id="nav-avatar" src="${avatarUrl}" alt="Profile" class="rounded-circle" width="28" height="28" style="border: 2px solid #dee2e6; object-fit: cover;">
-          <span id="nav-username" class="username">${username}</span>
+        <a class="nav-link dropdown-toggle d-flex align-items-center text-dark gap-2" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <span id="nav-credits" class="me-1 badge points-badge">${pointsText}</span>
+          <img id="nav-avatar" src="${avatarUrl}" alt="Profile" class="rounded-circle nav-avatar" width="28" height="28">
+          <span id="nav-username" class="username text-dark">${username}</span>
         </a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
           <li>

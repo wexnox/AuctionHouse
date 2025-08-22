@@ -20,7 +20,7 @@ async function displayHomePageFeed() {
 
   try {
 
-    await buildFeed({ limit, offset });
+    await buildFeed({ limit, offset, layout: 'row' });
 
     await getPostsForSearch();
 
