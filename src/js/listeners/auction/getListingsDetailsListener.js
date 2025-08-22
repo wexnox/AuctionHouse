@@ -13,8 +13,8 @@ const wrapper = document.querySelector('#detailsContainer');
 
 export function createAvatarImage(seller) {
   return seller.avatar
-    ? `<img src="${seller.avatar}" alt="Avatar for ${seller.name}" class="img-fluid rounded-circle mb-4" width="100" height="100"/>`
-    : '<div class="mb-4"><i class="bi bi-person-circle" style="font-size: 4rem;"></i></div>';
+    ? `<img src="${seller.avatar}" alt="Avatar for ${seller.name}" class="img-fluid rounded-circle mb-4" width="100" height="100" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='../../src/images/no-image.jpeg'" />`
+    : '<div class="mb-4"><i class="bi bi-person-circle icon-xl"></i></div>';
 }
 
 function toGalleryImages(media) {
@@ -124,11 +124,14 @@ export async function getListingsDetailsListener() {
               </div>
 
               <div class="seller-mini d-flex align-items-center gap-2 mb-3">
-                ${sellerDetails.avatar ? `<img src="${sellerDetails.avatar}" alt="${sellerDetails.name}" class="rounded-circle" width="40" height="40">` : '<div class="rounded-circle bg-light d-inline-flex align-items-center justify-content-center" style="width:40px;height:40px;">👤</div>'}
+                ${sellerDetails.avatar ? `<img src="${sellerDetails.avatar}" alt="${sellerDetails.name}" class="rounded-circle" width="40" height="40" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='../../src/images/no-image.jpeg'">` : '<div class="rounded-circle bg-light d-inline-flex align-items-center justify-content-center avatar-40">👤</div>'}
                 <div class="small text-muted">Seller</div>
                 <div class="fw-semibold">${sellerDetails.name}</div>
               </div>
 
+              <div class="d-flex flex-wrap gap-1 mb-3">
+                ${(Array.isArray(detailsListing.tags) ? detailsListing.tags : []).map(t => `<a href="/pages/listings/browse.html?_tag=${encodeURIComponent(t)}" class="badge bg-light text-secondary border" aria-label="Filter by tag ${t}">#${t}</a>`).join('')}
+              </div>
               <p class="card-text text-break">${detailsListing.description || 'No description provided'}</p>
 
               <div class="mt-auto">
