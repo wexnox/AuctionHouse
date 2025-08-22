@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top" role="navigation">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">
       <img alt="logo" class="d-inline-block align-text-top" src="../../src/images/favicon.png" width="50" />
@@ -30,7 +30,7 @@
         <div id="logout-container" class="me-3"></div>
 
         <form class="d-flex">
-          <input aria-label="Search" class="form-control form-control-sm form-control-dark " id="searchBar" name="searchBar" placeholder="Search listings..." type="search" />
+          <input aria-label="Search" class="form-control form-control-sm" id="searchBar" name="searchBar" placeholder="Search listings..." type="search" />
         </form>
 
       </div>
@@ -68,7 +68,7 @@
             />
             <label for="password" class="col-form-label ">Password</label>
             <div class="invalid-feedback">Please enter your password</div>
-            <span class="position-absolute end-0 top-50 translate-middle-y me-3" id="togglePassword" style="cursor: pointer; z-index: 5;">👁️</span>
+            <span class="position-absolute end-0 top-50 translate-middle-y me-3 password-toggle" id="togglePassword">👁️</span>
 
           </div>
 
