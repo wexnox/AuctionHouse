@@ -137,6 +137,42 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+// Home hero adjustments (make hero taller to push listings down)
+.hero {
+  padding-block: 8rem; // larger vertical space on small screens
+  margin-bottom: 6rem; // more space below hero before Listings
+  @media (min-width: 768px) {
+    padding-block: 12rem; // even more space on md+
+    margin-bottom: 12rem; // larger gap on md+
+  }
+}
+
+// Hero background image variant for the home splash
+.hero-auction {
+  // Subtle dark overlay for readability + luxe background image (royalty-free Unsplash)
+  // Image: auction gavel close-up to clearly reflect an auction house theme
+  background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    url('https://images.unsplash.com/photo-1555375771-4b69a4ef95b0?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: variables.$white; // ensure text contrasts on the image
+
+  h1,
+  p,
+  .lead {
+    color: variables.$white !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+  }
+
+  // Force any utility text color inside hero to be readable on the image
+  .text-secondary,
+  .text-dark,
+  .text-muted {
+    color: variables.$white !important;
+  }
+}
+
 // Form Styles
 form {
   h1 {

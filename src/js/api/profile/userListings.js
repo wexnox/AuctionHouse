@@ -4,15 +4,31 @@ import { authFetch } from '../api.js';
 import createHtmlCards from '@/js/ui/common/createHtmlCards.js';
 
 
+/**
+ * Retrieves the user's name from the token.'
+ * @returns {*}
+ */
+
 function getUserName() {
   const user = getTokenFromStorage('profile');
   return user.name;
 }
 
+/**
+ * Builds the URL for fetching user's profile listings.'
+ * @param userName
+ * @returns {string}
+ */
+
 function getProfileListingsUrl(userName) {
   return `${API_PROFILE_URL}/${userName}${API_LISTINGS_URL}?_seller=true&_bids=true`;
 }
 
+
+/**
+ * Fetches the user's profile listings and renders them on the page.'
+ * @returns {Promise<void>}
+ */
 export async function getUserListing() {
 
   const userName = getUserName();

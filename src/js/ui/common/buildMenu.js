@@ -3,12 +3,25 @@ import { authFetch } from '@/js/api/api.js';
 import { API_PROFILE_URL } from '@/js/api/constants.js';
 import { getTokenFromStorage } from '@/js/helpers/storage.js';
 
+/**
+ * Creates a menu item with an active state based on the current path.
+ * @param currentPath
+ * @param path
+ * @param name
+ * @param pathname
+ * @returns {string}
+ */
+
 function createMenuItem({ currentPath, path, name, pathname }) {
   const isActive = pathname === currentPath;
   return `<li class="nav-item">
     <a class="nav-link ${isActive ? 'active' : ''}" href="${path}">${name}</a>
   </li>`;
 }
+
+/**
+ * Builds the menu based on the current path and authentication status.
+ */
 
 function buildMenu() {
   const pathname = window.location.pathname;
@@ -34,6 +47,10 @@ function buildMenu() {
   if (menu) {
     menu.innerHTML = menuItems.map(item => createMenuItem({ ...item, pathname })).join('');
   }
+
+  /**
+   * Handle logout and profile dropdown for authenticated users.
+   */
 
   if (isAuthenticated) {
     // Create profile dropdown instead of simple logout link

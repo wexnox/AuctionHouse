@@ -4,12 +4,15 @@ import { displayMessage } from '../../ui/common/displayMessage.js';
 import buildMenu from '../../ui/common/buildMenu.js';
 import { authFetch } from '@/js/api/api.js';
 
+/**
+ * Logs in a user.
+ * @param userProfile
+ * @returns {Promise<void>}
+ */
+
 export async function login(userProfile) {
   const endpoint = '/auth/login';
   const loginURL = `${API_MAIN_URL}${endpoint}`;
-
-  // console.log(`The API URL is: ${loginURL}`);
-  // console.log(`User Profile Sent: ${JSON.stringify(userProfile)}`);
 
   try {
     const response = await authFetch(loginURL, {
@@ -22,7 +25,9 @@ export async function login(userProfile) {
     if (response.status === 200) {
       storage.saveTokenToStorage('accessToken', accessToken);
       storage.saveTokenToStorage('profile', user);
+
       buildMenu(); // Refresh the menu to reflect the authenticated state
+
       location.href = '/';
     } else {
       console.log('Unexpected response status:', response.status);

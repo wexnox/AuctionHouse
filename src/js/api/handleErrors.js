@@ -1,3 +1,8 @@
+/**
+ * Handles errors from API responses.
+ * @param responseData
+ */
+
 export default function handleErrors(responseData) {
   // If responseData is null or undefined, throw an error
   if (!responseData) {
@@ -13,9 +18,20 @@ export default function handleErrors(responseData) {
   }
 }
 
+/**
+ * Creates an error message for HTTP errors.
+ * @param response
+ * @returns {string}
+ */
+
 function createHttpErrorMessage(response) {
   return `HTTP error! status: ${response.status}`;
 }
+
+/**
+ * Handles HTTP errors.
+ * @param response
+ */
 
 export function handleHttpError(response) {
   if (!response.ok) {

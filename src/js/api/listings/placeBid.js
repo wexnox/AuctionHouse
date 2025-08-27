@@ -6,6 +6,13 @@ import { handleHttpError } from '../handleErrors.js';
 const POST_METHOD = 'POST';
 const USER_PROFILE_KEY = 'userProfile';
 
+/**
+ * Places a bid on an item.
+ * @param id
+ * @param amount
+ * @returns {Promise<any>}
+ */
+
 export async function placeBidOnItem(id, amount) {
 
   const token = getTokenFromStorage('accessToken');
@@ -39,6 +46,10 @@ export async function placeBidOnItem(id, amount) {
   }
 }
 
+/**
+ * Redirects to the item details page.
+ * @param itemId
+ */
 function redirectToItemDetailsPage(itemId) {
   location.href = `../../../../pages/listings/details.html?id=${itemId}`;
 }

@@ -2,6 +2,12 @@ import { API_MAIN_URL, API_LISTINGS_URL } from '../constants.js';
 import { authFetch } from '../api.js';
 import { handleHttpError } from '../handleErrors.js';
 
+/**
+ * Creates a new listing.''
+ * @param listingData
+ * @returns {Promise<any>}
+ */
+
 export async function createNewListing(listingData) {
 
   const createURL = `${API_MAIN_URL}${API_LISTINGS_URL}`;

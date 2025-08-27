@@ -7,6 +7,11 @@ import { getTokenFromStorage } from '../../helpers/storage.js';
 import handleErrors from '../../api/handleErrors.js';
 import { Modal } from 'bootstrap';
 
+/**
+ * Handles the bid form submission.
+ * @returns {Promise<void>}
+ */
+
 export async function placeBidListener() {
   const form = document.querySelector('#bidForm');
 

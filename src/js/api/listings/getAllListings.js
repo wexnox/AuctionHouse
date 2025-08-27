@@ -2,6 +2,11 @@ import { API_MAIN_URL } from '../constants.js';
 import handleErrors, { handleHttpError } from '../handleErrors.js';
 import { authFetch } from '@/js/api/api.js';
 
+/**
+ * Fetches all listings from the API.
+ * @param options
+ * @returns {Promise<any>}
+ */
 export async function getAllListings(options = {}) {
 
   const { limit = 15, offset = 0, _active = true, _tag } = options;

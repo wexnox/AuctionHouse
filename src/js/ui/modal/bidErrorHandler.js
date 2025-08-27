@@ -1,4 +1,10 @@
 // Error handling for modal
+
+/**
+ * Creates an error container for displaying bid errors.
+ * @returns {Element}
+ */
+
 export function createBidErrorContainer() {
   const modalBody = document.querySelector('#placeBidModal .modal-body');
 

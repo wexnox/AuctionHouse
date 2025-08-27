@@ -2,6 +2,10 @@ import {saveTokenToStorage} from '../../helpers/storage.js';
 import {updateUserAvatar} from '../../api/profile/updateAvatar.js';
 import {Modal} from 'bootstrap';
 
+/**
+ * Handles the update avatar form submission.
+ * @returns {Promise<void>}
+ */
 export async function updateAvatarListener() {
   const form = document.querySelector('#updateAvatarForm');
 

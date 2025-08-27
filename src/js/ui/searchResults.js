@@ -4,6 +4,11 @@ import { displayMessage } from '../ui/common/displayMessage.js';
 import { toggleLoadingIndicator } from '@/js/ui/helpers/toggleLoadingIndicator.js';
 import { getPostsForSearch } from '@/js/ui/helpers/getPostsForSearch.js';
 
+/**
+ * Handles the search results for the search page.
+ * @returns {Promise<void>}
+ */
+
 export async function handleSearchResults() {
   const urlParams = new URLSearchParams(window.location.search);
   const searchTerm = urlParams.get('q');

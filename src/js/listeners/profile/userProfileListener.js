@@ -7,6 +7,12 @@ const profileDOMElement = document.getElementById('userWrapper');
 
 // TODO: Make better styling it looks like crap
 // TODO: make a better solution for the backup image
+
+/**
+ * Renders the user profile on the page.
+ * @param userInfo
+ * @returns {Promise<void>}
+ */
 async function renderUserProfile(userInfo) {
 
   console.log(userInfo);
@@ -36,6 +42,11 @@ async function renderUserProfile(userInfo) {
             </div>
         </div>`;
 }
+
+/**
+ * Fetches the user profile and renders it on the page.
+ * @returns {Promise<void>}
+ */
 
 export async function userProfileListener() {
   try {

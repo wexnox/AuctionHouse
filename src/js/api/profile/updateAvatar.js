@@ -5,6 +5,11 @@ import {getTokenFromStorage} from '../../helpers/storage.js';
 const action = '/profiles';
 const method = 'PUT';
 
+/**
+ * Updates the user's avatar.
+ * @param userData
+ * @returns {Promise<any>}
+ */
 export async function updateUserAvatar(userData) {
   const user = getTokenFromStorage('profile');
   const userName = user.name;

@@ -11,11 +11,22 @@ const url = `${API_MAIN_URL}/listings/${id}?_bids=true&_seller=true`;
 const title = document.querySelector('title');
 const wrapper = document.querySelector('#detailsContainer');
 
+/**
+ * Fetches the details of a listing and renders it on the page.
+ * @returns {Promise<void>}
+ */
+
 export function createAvatarImage(seller) {
   return seller.avatar
     ? `<img src="${seller.avatar}" alt="Avatar for ${seller.name}" class="img-fluid rounded-circle mb-4" width="100" height="100" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='../../src/images/no-image.jpeg'" />`
     : '<div class="mb-4"><i class="bi bi-person-circle icon-xl"></i></div>';
 }
+
+/**
+ * Converts media data to an array of image objects.
+ * @param media
+ * @returns {[{url: string, alt: string}]|*|*[]}
+ */
 
 function toGalleryImages(media) {
   const result = [];
@@ -23,8 +34,13 @@ function toGalleryImages(media) {
     return result; // Returnerer tom array hvis ingen data
 
   }
-  // Normalize every element(standardize)
-  // converter unequal data formats into one standard format
+
+  /**
+   * Normalizes the media data to a standard format.
+   * @param value
+   * @param index
+   * @returns {{url: string, alt: string}|{url: (*|string), alt: (string|string|*|string|string)}}
+   */
 
   const normalizeOne = (value, index = 0) => {
     // Hvis verdien er en string (bare URL)
@@ -54,6 +70,12 @@ function toGalleryImages(media) {
   return result;
 }
 
+/**
+ * Creates the HTML for displaying the highest bid and bids.
+ * @param detailsListing
+ * @returns {string|string}
+ */
+
 export function createHighestBidInfo(detailsListing) {
   const highestBid = detailsListing.bids && detailsListing.bids.length > 0
     ? detailsListing.bids.reduce((max, bid) => bid.amount > max.amount ? bid : max, detailsListing.bids[0])
@@ -68,6 +90,12 @@ export function createHighestBidInfo(detailsListing) {
     : '<div class="text-center mt-3"><p>No bids yet</p></div>';
 }
 
+/**
+ * Creates the HTML for displaying the list of bids.
+ * @param detailsListing
+ * @returns {string}
+ */
+
 function createBidList(detailsListing) {
   let bidsListString = detailsListing.bids && detailsListing.bids.length > 0
     ? detailsListing.bids.map(bid => `
@@ -81,6 +109,10 @@ function createBidList(detailsListing) {
   return `<ul class="list-group list-group-flush">${bidsListString}</ul>`;
 }
 
+/**
+ * Fetches the details of a listing and renders it on the page.
+ * @returns {Promise<void>}
+ */
 export async function getListingsDetailsListener() {
   try {
     const response = await authFetch(url, { method });

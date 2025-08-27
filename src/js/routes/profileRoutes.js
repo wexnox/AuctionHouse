@@ -5,6 +5,12 @@ import { initializeSearch } from '@/js/ui/search.js';
 import { displayVersion } from '@/js/ui/common/displayVersion.js';
 import { getPostsForSearch } from '@/js/ui/helpers/getPostsForSearch.js';
 
+/**
+ * Handles all routes related to user profiles
+ * @param pathname
+ * @returns {Promise<void>}
+ */
+
 export async function handleProfileRoutes(pathname) {
 
   if (pathname.endsWith('/index.html')) {

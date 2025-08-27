@@ -1,6 +1,14 @@
 import { getAllListings } from '@/js/api/listings/getAllListings.js';
 import createHtmlCards from '@/js/ui/common/createHtmlCards.js';
 
+/**
+ * Builds the feed for the home page or browse page.
+ * @param limit
+ * @param offset
+ * @param layout
+ * @returns {Promise<*|*[]>}
+ */
+
 export async function buildFeed({ limit, offset = 0, layout } = {}) {
   const container = document.getElementById('listingsContainer');
   if (!container) {

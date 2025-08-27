@@ -1,5 +1,10 @@
 import { getAllListings } from '@/js/api/listings/getAllListings.js';
 
+/**
+ * Fetches posts for search.
+ * @returns {Promise<*|undefined|*[]>}
+ */
+
 export async function getPostsForSearch() {
   try {
     return await getAllListings({ limit: 100, offset: 0, _active: true });

@@ -1,3 +1,9 @@
+/**
+ * Creates a media gallery with navigation and thumbnails.
+ * @param images
+ * @param options
+ * @returns {HTMLElement|HTMLDivElement}
+ */
 
 export function createMediaGallery(images = [], options = {}) {
 
@@ -43,6 +49,12 @@ export function createMediaGallery(images = [], options = {}) {
   return container;
 }
 
+/**
+ * Initializes navigation for a media gallery.
+ * @param galleryContainer
+ * @param images
+ */
+
 export function initializeGalleryNavigation(galleryContainer, images) {
   let currentIndex = 0;
 
@@ -66,10 +78,18 @@ export function initializeGalleryNavigation(galleryContainer, images) {
     });
   }
 
+  /**
+   * Navigates to the next image in the gallery.
+   */
+
   function navigateToNext() {
     const nextIndex = (currentIndex + 1) % images.length;
     updateGallery(nextIndex);
   }
+
+  /**
+   * Navigates to the previous image in the gallery.
+   */
 
   function navigateToPrev() {
     const prevIndex = (currentIndex - 1 + images.length) % images.length;

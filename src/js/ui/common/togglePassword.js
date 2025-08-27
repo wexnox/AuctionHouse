@@ -1,3 +1,9 @@
+
+/**
+ * Toggles the visibility of a password field.
+ * @param {boolean} isLoginPage - Indicates whether the password field is on the login page.
+ */
+
 export default function togglePassword(isLoginPage = false) {
   const togglePassword = document.querySelector('#togglePassword');
   const password = document.querySelector('#password');

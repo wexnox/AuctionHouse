@@ -5,8 +5,14 @@ import {AUCTIONS_LIMIT} from '../../api/constants.js';
 import createHtmlCards from '../../ui/common/createHtmlCards.js';
 import {toggleLoadingIndicator} from '../../ui/helpers/toggleLoadingIndicator.js';
 
+
 const ERROR_COLOR = 'danger';
 
+/**
+ * Fetches and displays auctions.
+ * @returns {(function(): Promise<*|[]|undefined>)|*}
+ */
+// TODO: is this function needed or in use(editor says its not in use?
 export function getAllAuctionsListener() {
   const container = document.querySelector('#listingsContainer');
   let offset = 0;

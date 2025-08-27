@@ -3,6 +3,9 @@ import { displayMessage } from '@/js/ui/common/displayMessage.js';
 import togglePassword from '../../ui/common/togglePassword.js';
 import { isValidEmail } from '@/js/utils/validation.js';
 
+/**
+ * Sets up the event listener for the registration form.
+ */
 export function setRegisterUserListener() {
   const form = document.getElementById('registerForm');
 
