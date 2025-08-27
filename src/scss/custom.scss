@@ -1,6 +1,7 @@
 @use 'bootstrap/scss/bootstrap';
 @use 'sass:color';
 @use 'variables';
+@use 'components/mediaGallery';
 @import 'variables';
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
@@ -16,7 +17,7 @@ $button-hover-darken: -10%;
 body {
   font-family: $font-stack;
   line-height: variables.$body-line-height;
-  background-color: variables.$light;
+  background-color: variables.$white;
   color: variables.$dark;
 }
 
@@ -77,6 +78,101 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+// Auction card tweaks
+.auction-card {
+  position: relative;
+
+  .card-img-top {
+    height: 220px;
+    object-fit: cover;
+  }
+
+  .status-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 2;
+  }
+
+  .time-badge {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .auction-card {
+    .time-badge {
+      font-size: 0.85rem;
+    }
+  }
+}
+
+// Auction row tweaks (landing page)
+.auction-row {
+  .image-wrap {
+    position: relative;
+  }
+  .image-wrap img {
+    width: 100%;
+    height: 100%;
+    max-height: 280px;
+    object-fit: cover;
+  }
+  .status-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 2;
+  }
+  .time-badge {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    align-self: flex-start;
+  }
+}
+
+// Home hero adjustments (make hero taller to push listings down)
+.hero {
+  padding-block: 8rem; // larger vertical space on small screens
+  margin-bottom: 6rem; // more space below hero before Listings
+  @media (min-width: 768px) {
+    padding-block: 12rem; // even more space on md+
+    margin-bottom: 12rem; // larger gap on md+
+  }
+}
+
+// Hero background image variant for the home splash
+.hero-auction {
+  // Subtle dark overlay for readability + luxe background image (royalty-free Unsplash)
+  // Image: auction gavel close-up to clearly reflect an auction house theme
+  background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    url('https://images.unsplash.com/photo-1555375771-4b69a4ef95b0?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: variables.$white; // ensure text contrasts on the image
+
+  h1,
+  p,
+  .lead {
+    color: variables.$white !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+  }
+
+  // Force any utility text color inside hero to be readable on the image
+  .text-secondary,
+  .text-dark,
+  .text-muted {
+    color: variables.$white !important;
+  }
+}
+
 // Form Styles
 form {
   h1 {
@@ -125,20 +221,31 @@ a {
 
 // SearchBar
 #searchBar {
-  background: #2c3e50;
-  color: white;
-  border: none;
-  padding: 15px 20px;
-  border-radius: 10px;
-  font-size: 15px;
+  background: variables.$white;
+  color: variables.$dark;
+  border: 1px solid #ced4da; // subtle border like form controls
+  padding: 0.5rem 0.75rem; // align with bootstrap sizing
+  border-radius: variables.$form-control-border-radius;
+  font-size: 0.9rem;
   font-weight: 500;
+  box-shadow: none;
 }
 
 #searchBar::placeholder {
-  color: #bdc3c7;
+  color: #6c757d; // darker placeholder for readability
 }
 
-// Profile dropdown styling
+#searchBar:focus {
+  border-color: variables.$primary;
+  box-shadow: variables.$focus-box-shadow;
+  outline: none;
+}
+
+// TODO: Remove? unsure on design
+// Luxury accents
+$lux-gold: #c2a661;
+
+// Profile dropdown styling and navbar tweaks
 .navbar {
   .dropdown-menu {
     border: 1px solid #dee2e6;
@@ -163,14 +270,136 @@ a {
     }
   }
 
+  // Keep nav text dark for contrast on white navbar
   #profileDropdown {
     &:hover {
-      color: #ffffff !important;
+      color: inherit !important;
     }
 
     .rounded-circle {
       object-fit: cover;
     }
+  }
+
+  // Avatar in navbar
+  .nav-avatar {
+    border: 2px solid #dee2e6;
+    object-fit: cover;
+  }
+
+  // Ensure points chip is readable and visible on mobile
+  .points-badge {
+    background-color: #f6efe3;
+    border: 1px solid $lux-gold;
+    color: variables.$dark;
+    font-weight: 600;
+    border-radius: 999px;
+    padding: 0.125rem 0.5rem;
+    line-height: 1;
+    white-space: nowrap;
+    font-size: 0.8rem;
+  }
+}
+
+// Footer facelift
+footer {
+  background-color: variables.$white;
+  border-top: 3px solid $lux-gold;
+}
+
+footer .nav-link,
+footer p,
+footer a {
+  color: variables.$dark !important;
+}
+
+footer .nav-link:hover,
+footer a:hover {
+  color: $lux-gold !important;
+}
+
+// Generic avatar sizes and icons
+.avatar-40 {
+  width: 40px;
+  height: 40px;
+}
+
+.icon-xl {
+  font-size: 4rem;
+}
+
+.password-toggle {
+  cursor: pointer;
+  z-index: 5;
+}
+
+// Media URL section (Create Listing)
+.media-url-section {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: variables.$border-radius-lg;
+
+  .input-group .form-control {
+    border-top-left-radius: variables.$border-radius-default;
+    border-bottom-left-radius: variables.$border-radius-default;
+  }
+
+  .media-url-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .media-chip {
+    background: variables.$white;
+    border: 1px solid #e9ecef;
+    border-radius: 999px;
+    padding: 0.25rem 0.5rem 0.25rem 0.75rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+
+    .chip-text {
+      max-width: 220px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: variables.$secondary;
+    }
+
+    .btn-close {
+      filter: invert(45%);
+      opacity: 0.6;
+    }
+
+    &:hover {
+      border-color: #dfe3e6;
+      .btn-close {
+        opacity: 0.9;
+      }
+    }
+  }
+}
+
+// Listing details enhancements
+.listing-details {
+  .stat-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: #f1f3f5;
+    border: 1px solid #e9ecef;
+    color: #495057;
+    padding: 0.25rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.875rem;
+  }
+
+  .seller-mini img {
+    object-fit: cover;
+  }
+
+  .bid-amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: variables.$primary;
   }
 }
 
@@ -184,5 +413,30 @@ a {
       border: none;
       background-color: rgba(255, 255, 255, 0.1);
     }
+  }
+}
+
+
+// Load More button to match card styling
+.load-more-btn {
+  background: variables.$white;
+  color: variables.$dark;
+  border: 1px solid #e9ecef;
+  border-radius: variables.$border-radius-lg;
+  box-shadow: variables.$shadow-md;
+  padding: 0.75rem 1.25rem;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+
+  &:hover,
+  &:focus {
+    background-color: #f8f9fa;
+    border-color: #dfe3e6;
+    box-shadow: variables.$shadow-lg;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: variables.$shadow-sm;
   }
 }

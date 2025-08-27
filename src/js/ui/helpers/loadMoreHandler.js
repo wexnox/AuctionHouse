@@ -1,6 +1,14 @@
 import createHtmlCards from '@/js/ui/common/createHtmlCards.js';
 import { getAllListings } from '@/js/api/listings/getAllListings.js';
 
+/**
+ * Initializes the load more functionality.
+ * @param posts
+ * @param containerId
+ * @param buttonId
+ * @param currentLimit
+ */
+
 export function initializeLoadMore(posts, containerId, buttonId, currentLimit) {
   const container = document.getElementById(containerId);
   const button = document.getElementById(buttonId);

@@ -7,6 +7,13 @@ import * as listeners from '../listeners/index.js';
 import { handleFeedError } from './routeHelpers.js';
 import { displayVersion } from '@/js/ui/common/displayVersion.js';
 import { getPostsForSearch } from '@/js/ui/helpers/getPostsForSearch.js';
+import { initCreateListingPage } from '@/js/listeners/auction/createNewListingListener.js';
+
+/**
+ * Handles all routes related to listings
+ * @param pathname
+ * @returns {Promise<void>}
+ */
 
 export async function handleListingRoutes(pathname) {
 
@@ -58,15 +65,22 @@ export async function handleListingRoutes(pathname) {
 
       initializeSearch();
     }
+
+    // Initialize create listing page (media uploader integration)
+    initCreateListingPage();
     
   }
 }
+/**
+ * Handles the browse listings route.
+ * @returns {Promise<void>}
+ */
 
 async function handleBrowseListings() {
 
   try {
-
-    const limit = 3;
+    //  This is the limit for the listings on the browse page
+    const limit = 9;
     const offset = 0;
 
     const posts = await buildFeed({ limit, offset });

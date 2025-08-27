@@ -6,6 +6,10 @@ import { handleProfileRoutes } from './routes/profileRoutes.js';
 import { handleListingRoutes } from './routes/listingRoutes.js';
 import { handleSearchRoutes } from './routes/searchRoutes.js';
 
+/**
+ * Handles routing based on the current URL.
+ * @returns {Promise<void>}
+ */
 export default async function router() {
   const pathname = location.pathname;
 

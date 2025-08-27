@@ -1,5 +1,11 @@
 import {getTokenFromStorage} from '@/js/helpers/storage.js';
 
+/**
+ * Creates headers for API requests.
+ * @param hasBody
+ * @returns {Headers}
+ */
+
 export function headers(hasBody = false) {
   const headers = new Headers();
 

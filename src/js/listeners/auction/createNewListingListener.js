@@ -1,128 +1,125 @@
 import { createNewListing } from '../../api/listings/createNewListing.js';
 import { displayMessage } from '@/js/ui/common/displayMessage.js';
 
-let mediaItems = []; // Array to hold all media items
+/**
+ * Parses tags from a string.
+ * @param raw
+ * @returns {string[]}
+ */
 
-export function resetForm() {
-  document.getElementById('createListingForm').reset();
-  mediaItems = [];
-  document.getElementById('mediaUrl').value = '';
-  document.getElementById('mediaFile').value = '';
-  updatePreview();
+function parseTags(raw) {
+  // Accept comma or whitespace separated, normalize to unique lowercased strings, max 10 tags
+  const arr = (raw || '')
+    .toString()
+    .split(/[,\n\r\t ]+/)
+    .map((t) => t.trim())
+    .filter(Boolean)
+    .map((t) => t.toLowerCase())
+    .filter((v, i, a) => a.indexOf(v) === i)
+    .slice(0, 10);
+  // Remove tags that are too long or contain disallowed characters
+  return arr.filter((t) => t.length <= 24 && /^[\p{L}\p{N}_-]+$/u.test(t));
 }
 
-export function clearMedia() {
-  mediaItems = [];
-  document.getElementById('mediaFile').value = '';
-  updatePreview();
+/**
+ * Checks if a date is in the future.
+ * @param isoString
+ * @returns {boolean}
+ */
+
+function isFutureDate(isoString) {
+  const d = new Date(isoString);
+  return !isNaN(d.getTime()) && d.getTime() > Date.now();
 }
 
-export function removeMediaItem(index) {
-  if (index > -1) {
-    mediaItems.splice(index, 1);
-    updatePreview();
+/**
+ * Removes empty arrays from the payload.
+ * @param payload
+ * @returns {*}
+ */
+
+function pruneEmptyArrays(payload) {
+  const out = { ...payload };
+  if (!out.tags?.length) {
+    delete out.tags;
   }
-}
-
-export function getFormData(form) {
-  const formData = new FormData(form);
-  const title = formData.get('title');
-  const description = formData.get('description');
-  const endsAt = new Date(formData.get('endsAt'));
-  const tags = formData.get('tags').split(', ').filter(x => x);
-  return { title, description, endsAt, media: mediaItems, tags };
-}
-
-function handleEmptyArrays(listing) {
-  if (!listing.tags.length) {
-    delete listing.tags;
+  if (!out.media?.length) {
+    delete out.media;
   }
-  if (!listing.media.length) {
-    delete listing.media;
-  }
-  return listing;
+  return out;
 }
 
-//TODO: 'handleCreateListing' is defined but never used  no-unused-vars
-export async function handleCreateListing(listing) {
+/**
+ * Submits a new listing.
+ * @param form
+ * @returns {Promise<void>}
+ */
+
+async function submitListing({ form }) {
+  const submitBtn = form.querySelector('[type="submit"]');
+  submitBtn?.setAttribute('disabled', 'true');
+
   try {
+    const fd = new FormData(form);
+    const title = (fd.get('title') || '').toString().trim();
+    const description = (fd.get('description') || '').toString().trim() || undefined;
+    const endsAt = fd.get('endsAt');
+    const tags = parseTags(fd.get('tags'));
+
+    if (!title) {
+      throw new Error('Title is required');
+    }
+    if (!isFutureDate(endsAt)) {
+      throw new Error('Deadline must be a future date/time');
+    }
+
+    // Parse URLs
+    const rawUrls = (fd.get('mediaUrls') || '').toString();
+    const media = rawUrls
+      .split(/\r?\n|[,\s]+/)
+      .map((s) => s.trim())
+      .filter((s) => /^https?:\/\//i.test(s))
+      .filter((v, i, a) => a.indexOf(v) === i) // unique
+      .slice(0, 8);
+
+    if (media.length > 8) {
+      throw new Error(`Maximum 8 images allowed. You currently have ${media.length}.`);
+    }
+
+    const listing = pruneEmptyArrays({ title, description, endsAt: new Date(endsAt), tags, media });
+
     const response = await createNewListing(listing);
     console.log('Server Response:', response);
+
     displayMessage('success', 'Listing created successfully! Redirecting to profile...');
     setTimeout(() => {
       location.href = '../../pages/profile/index.html';
-    }, 3000);
+    }, 1500);
   } catch (e) {
     console.error(e);
-    displayMessage('danger', `Failed to create listing: ${e.message}`);
+    displayMessage('danger', e.message || 'Failed to create listing');
+  } finally {
+    submitBtn?.removeAttribute('disabled');
   }
 }
 
-function updatePreview() {
-  const preview = document.getElementById('preview');
-  preview.innerHTML = '';
+/**
+ * Initializes the create listing page.
+ */
 
-  mediaItems.forEach((item, index) => {
-    const imgContainer = document.createElement('div');
-    imgContainer.classList.add('img-thumbnail', 'col-3', 'position-relative', 'm-2');
+export function initCreateListingPage() {
+  const form = document.getElementById('createListingForm');
+  if (!form) {
+    return;
+  }
+  if (form.dataset.mediaInit === 'true') {
+    return; // prevent double init
+  }
+  form.dataset.mediaInit = 'true';
 
-    const removeBtn = document.createElement('button');
-    removeBtn.innerText = 'X';
-    removeBtn.classList.add('btn', 'btn-danger', 'position-absolute', 'top-0', 'right-0');
-    removeBtn.onclick = () => removeMediaItem(index);
-
-    const img = document.createElement('img');
-    img.style.width = '100%';
-    img.style.height = 'auto';
-    if (typeof item === 'string') {
-      img.src = item;
-      img.onerror = function() {
-        img.src = 'https://images.pexels.com/photos/20186655/pexels-photo-20186655/free-photo-of-a-black-and-green-mercedes-amg-gt.jpeg';
-      };
-    } else {
-      img.src = URL.createObjectURL(item);
-      img.onload = function() {
-        URL.revokeObjectURL(img.src);
-      };
-    }
-
-    imgContainer.appendChild(img);
-    imgContainer.appendChild(removeBtn);
-    preview.appendChild(imgContainer);
+  // URL-only mode: no file uploader is mounted
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    submitListing({ form });
   });
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-  const mediaUrlInput = document.getElementById('mediaUrl');
-  const mediaFileInput = document.getElementById('mediaFile');
-  const form = document.getElementById('createListingForm');
-  const resetButton = document.getElementById('resetButton');
-  const clearMediaButton = document.getElementById('clearMediaButton');
-
-  if (mediaUrlInput && mediaFileInput && form && resetButton && clearMediaButton) {
-    mediaUrlInput.addEventListener('input', function(event) {
-      const url = event.target.value.trim();
-      if (url && !mediaItems.includes(url)) {
-        mediaItems.push(url);
-        updatePreview();
-      }
-    });
-
-    mediaFileInput.addEventListener('change', function(event) {
-      if (event.target.files.length) {
-        mediaItems.push(...event.target.files);
-        updatePreview();
-      }
-    });
-
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      const formData = getFormData(event.target);
-      const listing = handleEmptyArrays(formData);
-      await handleCreateListing(listing);
-    });
-
-    resetButton.addEventListener('click', resetForm);
-    clearMediaButton.addEventListener('click', clearMedia);
-  }
-});

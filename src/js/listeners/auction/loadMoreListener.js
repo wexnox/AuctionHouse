@@ -1,3 +1,8 @@
+/**
+ * Load more listener.
+ * @param func
+ */
+// TODO: check if this is still needed
 export function loadMoreListener(func) {
   const button = document.querySelector('#loadMore');
   if (button) {

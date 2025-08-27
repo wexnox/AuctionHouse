@@ -1,3 +1,10 @@
+/**
+ * Filters posts based on search term.
+ * @param posts
+ * @param searchTerm
+ * @returns {*}
+ */
+
 export function searchPosts(posts, searchTerm) {
 
   console.log('Filtering posts:', posts);

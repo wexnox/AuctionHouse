@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top" role="navigation">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">
       <img alt="logo" class="d-inline-block align-text-top" src="../../src/images/favicon.png" width="50" />
@@ -31,7 +31,7 @@
         <div id="logout-container" class="me-3"></div>
 
         <form class="d-flex">
-          <input aria-label="Search" class="form-control form-control-sm form-control-dark " id="searchBar" name="searchBar" placeholder="Search listings..." type="search" />
+          <input aria-label="Search" class="form-control form-control-sm" id="searchBar" name="searchBar" placeholder="Search listings..." type="search" />
         </form>
 
       </div>
@@ -48,7 +48,7 @@
   <h1 class="text-center mb-4 mt-5">Browse All Listings</h1>
   <div class="row" id="listingsContainer"></div>
 
-  <button class="btn btn-warning mt-5" id="loadMore">
+  <button class="btn load-more-btn mt-5" id="loadMore">
     <svg class="bi bi-hammer" fill="currentColor" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M9.972 2.508a.5.5 0 0 0-.16-.556l-.178-.129a5 5 0 0 0-2.076-.783C6.215.862 4.504 1.229 2.84 3.133H1.786a.5.5 0 0 0-.354.147L.146 4.567a.5.5 0 0 0 0 .706l2.571 2.579a.5.5 0 0 0 .708 0l1.286-1.29a.5.5 0 0 0 .146-.353V5.57l8.387 8.873A.5.5 0 0 0 14 14.5l1.5-1.5a.5.5 0 0 0 .017-.689l-9.129-8.63c.747-.456 1.772-.839 3.112-.839a.5.5 0 0 0 .472-.334" />

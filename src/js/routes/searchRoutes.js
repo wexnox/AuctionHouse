@@ -5,6 +5,12 @@ import { displayVersion } from '@/js/ui/common/displayVersion.js';
 import { initializeSearch } from '@/js/ui/search.js';
 import { getPostsForSearch } from '@/js/ui/helpers/getPostsForSearch.js';
 
+/**
+ * Handles search page routes
+ * @param pathname
+ * @returns {Promise<void>}
+ */
+
 export async function handleSearchRoutes(pathname) {
   if (pathname.endsWith('/search.html')) {
 

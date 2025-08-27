@@ -5,6 +5,11 @@ import { initializeSearch } from '@/js/ui/search.js';
 import { displayVersion } from '@/js/ui/common/displayVersion.js';
 import { getPostsForSearch } from '@/js/ui/helpers/getPostsForSearch.js';
 
+/**
+ * Handles all routes related to authentication (login, register)
+ * @param pathname
+ * @returns {Promise<void>}
+ */
 export async function handleAuthRoutes(pathname) {
 
   if (pathname.endsWith('/register.html')) {

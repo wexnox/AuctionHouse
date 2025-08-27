@@ -1,6 +1,12 @@
 // Shared route helper functions (e.g., handle errors, page redirects)
 import { displayMessage } from '../ui/common/displayMessage.js';
 
+/**
+ * Handles errors that occur during feed loading.
+ * @param error
+ * @param context
+ */
+
 export function handleFeedError(error, context) {
 
   console.error(`Error loading ${context}:`, error);

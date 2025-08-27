@@ -29,7 +29,7 @@ The client has specified the following requirements in the form of User Stories:
 * **User Stories:**
 * A user with a `stud.noroff.no` email may register
 * Registered users can log in, log out, update avatars, and view credit totals.
-* Registered users can create listings (title, deadline, media, description) and place bids.
+* Registered users can create listings (title, deadline, media gallery, description) and place bids.
 * Registered users can view bids on their listings.
 * Unregistered users can search listings.
 

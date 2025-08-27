@@ -1,6 +1,14 @@
 // Validation for placing bids
 import { getTokenFromStorage } from '../helpers/storage.js';
 
+/**
+ * Validates a bid amount and checks if it meets the minimum requirement.
+ * @param bidAmount
+ * @param listingData
+ * @param userProfile
+ * @returns {{isValid: boolean, message: (string|string)}|{isValid: boolean}|{isValid: boolean, message: string}}
+ */
+
 export function validateBid(bidAmount, listingData, userProfile = null) {
   const profile = userProfile || getTokenFromStorage('profile');
 

@@ -3,6 +3,11 @@ import { authFetch } from '../api.js';
 import { displayMessage } from '../../ui/common/displayMessage.js';
 import * as storage from '../../helpers/storage.js';
 
+/**
+ * Registers a new user.
+ * @param userProfile
+ * @returns {Promise<Omit<{name}|{accessToken}|any, "accessToken">|any|void>}
+ */
 
 export async function register(userProfile) {
   const endpoint = '/auth/register';
@@ -18,11 +23,9 @@ export async function register(userProfile) {
       body: JSON.stringify(userProfile),
     });
 
-    // console.log('Raw Response Status:', response.status);
-    // console.log('Raw Response Status Text:', response.statusText);
 
     const data = await response.json();
-    // console.log('Response Data:', data);
+
 
     // Check for "Profile already exists" error
     if (data && data.errors && data.errors.length > 0) {

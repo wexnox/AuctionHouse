@@ -1,3 +1,7 @@
+/**
+ * Initializes the search functionality.
+ */
+
 export function initializeSearch() {
   const searchInput = document.getElementById('searchBar');
 

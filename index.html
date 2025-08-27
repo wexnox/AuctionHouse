@@ -12,7 +12,7 @@
   <title>Auction House</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top" role="navigation">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">
       <img alt="logo" class="d-inline-block align-text-top" src="src/images/favicon.png" width="50" />
@@ -29,7 +29,7 @@
         <div id="logout-container" class="me-3"></div>
 
         <form class="d-flex">
-          <input aria-label="Search" class="form-control form-control-sm form-control-dark " id="searchBar" name="searchBar" placeholder="Search listings..." type="search" />
+          <input aria-label="Search" class="form-control form-control-sm" id="searchBar" name="searchBar" placeholder="Search listings..." type="search" />
         </form>
 
       </div>
@@ -44,11 +44,11 @@
 <main class="container mt-4 mb-4 pb-5 flex-grow-1" id="container">
   <div id="message"></div>
 
-  <section class="hero py-5 bg-light text-center">
+  <section class="hero hero-auction text-center text-white">
     <div class="container">
       <h1 class="display-4 fw-bold">Welcome to Our Auction House</h1>
       <p class="lead text-secondary mt-3">Discover the best listings and grab your favorite items before they're gone!</p>
-      <a class="btn btn-primary btn-lg mt-4" href="/pages/listings/browse.html">Browse Listings</a>
+      <a class="btn load-more-btn btn-lg mt-4" href="/pages/listings/browse.html">Browse Listings</a>
     </div>
   </section>
 

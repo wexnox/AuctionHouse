@@ -2,9 +2,11 @@ import { login } from '../../api/auth/login.js';
 import togglePassword from '@/js/ui/common/togglePassword.js';
 import { displayMessage } from '@/js/ui/common/displayMessage.js';
 
+/**
+ * Sets up the event listener for the login form.
+ */
 
 export function loginListener() {
-
 
   const form = document.getElementById('loginForm');
 
@@ -17,9 +19,6 @@ export function loginListener() {
 
       const formData = new FormData(event.target);
       const userProfile = Object.fromEntries(formData.entries());
-
-      // console.log(userProfile); // Add this line to debug
-      // console.log(JSON.stringify(userProfile));
 
       try {
 

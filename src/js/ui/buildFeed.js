@@ -1,7 +1,15 @@
 import { getAllListings } from '@/js/api/listings/getAllListings.js';
 import createHtmlCards from '@/js/ui/common/createHtmlCards.js';
 
-export async function buildFeed({ limit, offset = 0 }) {
+/**
+ * Builds the feed for the home page or browse page.
+ * @param limit
+ * @param offset
+ * @param layout
+ * @returns {Promise<*|*[]>}
+ */
+
+export async function buildFeed({ limit, offset = 0, layout } = {}) {
   const container = document.getElementById('listingsContainer');
   if (!container) {
     console.error('Listings container not found in DOM.');
@@ -9,7 +17,11 @@ export async function buildFeed({ limit, offset = 0 }) {
   }
 
   try {
-    const posts = await getAllListings({ limit, offset }); // Fetch all posts
+    // Read tag filter from query string if present
+    const usp = new URLSearchParams(window.location.search);
+    const _tag = usp.get('_tag') || undefined;
+
+    const posts = await getAllListings({ limit, offset, _tag }); // Fetch posts, optionally filtered by tag
     console.log('Fetched posts:', posts); // Debug fetched posts
 
     // Handle edge case: empty data
@@ -21,9 +33,8 @@ export async function buildFeed({ limit, offset = 0 }) {
 
     container.innerHTML = ''; // Clear the container
 
-
     const visiblePosts = limit ? posts.slice(0, limit) : posts;
-    createHtmlCards(visiblePosts, container);
+    createHtmlCards(visiblePosts, container, { layout });
 
     return posts; // Return all fetched posts
   } catch (error) {
