@@ -32,18 +32,19 @@ export default defineConfig({
     },
   },
 
-  plugins: [eslintPlugin({
-    // overrideConfigFile: './.eslint.config.js',
-    include: ['src/**/*.js'], // Adjust if using TypeScript or other file types
-    exclude: ['node_modules', 'dist'], // Exclude generated files and dependencies
-    emitWarning: true, // Enable warnings
-    emitError: true,    // Enable errors
-  })],
+  plugins: [
+    eslintPlugin({
+      // overrideConfigFile: './.eslint.config.js',
+      include: ['src/**/*.js'], // Adjust if using TypeScript or other file types
+      exclude: ['node_modules', 'dist'], // Exclude generated files and dependencies
+      emitWarning: true, // Enable warnings
+      emitError: true, // Enable errors
+    }),
+  ],
   build: {
     // target: 'es2015', // oldest
     // target: 'modules', // balanced
     target: 'esnext', // Newest
-
 
     cssCodeSplit: true,
 
@@ -76,7 +77,6 @@ export default defineConfig({
         listingsDetails: path.resolve(__dirname, 'pages/listings/details.html'),
         browseListings: path.resolve(__dirname, 'pages/listings/browse.html'),
         search: path.resolve(__dirname, 'search.html'),
-
       },
     },
   },

@@ -27,5 +27,4 @@ export default async function router() {
   } else if (pathname.endsWith('/search.html')) {
     handleSearchRoutes(pathname);
   }
-
 }
