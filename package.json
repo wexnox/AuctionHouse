@@ -9,7 +9,7 @@
     "start": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "prettier": "npx prettier --write src/**/*.{html,css,js} *.js",
+    "prettier": "npx prettier --write pages/**/*.{html,css,js} src/**/*.{html,css,js} *.js",
     "eslint": "npx eslint 'src/js/**/*.js'",
     "eslint-fix": "eslint src/**/*.js --cache --fix",
     "prepare": "husky install",

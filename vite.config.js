@@ -41,8 +41,10 @@ export default defineConfig({
   })],
   build: {
     // target: 'es2015', // oldest
-    target: 'modules', // balanced
-    // target: 'esnext', // Newest
+    // target: 'modules', // balanced
+    target: 'esnext', // Newest
+
+
     cssCodeSplit: true,
 
     minify: 'terser',
