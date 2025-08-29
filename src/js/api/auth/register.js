@@ -13,8 +13,8 @@ export async function register(userProfile) {
   const endpoint = '/auth/register';
   const registerURL = `${API_MAIN_URL}${endpoint}`;
 
-  console.log('User Profile to register:', userProfile);
-  console.log('JSON payload:', JSON.stringify(userProfile));
+  // console.log('User Profile to register:', userProfile);
+  // console.log('JSON payload:', JSON.stringify(userProfile));
 
   try {
     // Make the API call
@@ -23,9 +23,7 @@ export async function register(userProfile) {
       body: JSON.stringify(userProfile),
     });
 
-
     const data = await response.json();
-
 
     // Check for "Profile already exists" error
     if (data && data.errors && data.errors.length > 0) {
@@ -46,6 +44,18 @@ export async function register(userProfile) {
       storage.saveTokenToStorage('profile', user);
 
       console.log('Registration successful:', user);
+
+      // TODO: need to test if this one works as intended
+      displayMessage(
+        'success',
+        'Registration successful!' +
+          '\n' +
+          'You can now log in.' +
+          '\n' +
+          'Redirecting to profile page...' +
+          user.name +
+          '...'
+      );
 
       location.href = 'profile/index.html';
       return user;

@@ -1,5 +1,6 @@
 import { getAllListings } from '@/js/api/listings/getAllListings.js';
 import createHtmlCards from '@/js/ui/common/createHtmlCards.js';
+import { displayMessage } from '@/js/ui/common/displayMessage.js';
 
 /**
  * Builds the feed for the home page or browse page.
@@ -12,7 +13,8 @@ import createHtmlCards from '@/js/ui/common/createHtmlCards.js';
 export async function buildFeed({ limit, offset = 0, layout } = {}) {
   const container = document.getElementById('listingsContainer');
   if (!container) {
-    console.error('Listings container not found in DOM.');
+    // console.error('Listings container not found in DOM.');
+    displayMessage('danger', 'Listings container not found in DOM.');
     return [];
   }
 
@@ -26,7 +28,8 @@ export async function buildFeed({ limit, offset = 0, layout } = {}) {
 
     // Handle edge case: empty data
     if (!Array.isArray(posts) || posts.length === 0) {
-      console.warn('No posts returned from API.');
+      // console.warn('No posts returned from API.');
+      displayMessage('warning', 'No listings available to display.');
       container.innerHTML = '<div class="alert alert-warning">No listings available to display.</div>';
       return [];
     }
@@ -38,7 +41,8 @@ export async function buildFeed({ limit, offset = 0, layout } = {}) {
 
     return posts; // Return all fetched posts
   } catch (error) {
-    console.error('Error while building feed:', error);
+    // console.error('Error while building feed:', error);
+    displayMessage('danger', 'An unexpected error occurred. Please try again.' + error);
     container.innerHTML = '<div class="alert alert-danger">Failed to load listings. Please try again later.</div>';
     return []; // Return an empty array on failure
   }
