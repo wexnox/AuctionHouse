@@ -4,18 +4,16 @@
  */
 
 export default function handleErrors(responseData) {
-  // If responseData is null or undefined, throw an error
-  if (!responseData) {
-    throw new Error('There was an error processing the request.');
-  }
+  if (!responseData && Array.isArray(responseData.errors) && responseData.errors.length) {
+    const errorMessage = responseData.errors.map((error) => error.message).join('\n');
 
-  // If there are errors and they are in an array, throw with detailed messages
-  if (responseData.errors && Array.isArray(responseData.errors)) {
-    const errorMessage = responseData.errors
-      .map((error) => error.message)
-      .join('\n');
     throw new Error(errorMessage);
   }
+  if (responseData && typeof responseData === 'object' && responseData.message) {
+    throw new Error(responseData.message);
+  }
+
+  throw new Error('There was an error processing the request.');
 }
 
 /**

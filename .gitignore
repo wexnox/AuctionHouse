@@ -30,3 +30,4 @@ docs
 
 # Lock files (to prevent server conflicts)
 package-lock.json
+/.eslintcache
