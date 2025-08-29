@@ -12,8 +12,6 @@ export default function handleErrors(responseData) {
   if (responseData && typeof responseData === 'object' && responseData.message) {
     throw new Error(responseData.message);
   }
-
-  throw new Error('There was an error processing the request.');
 }
 
 /**
