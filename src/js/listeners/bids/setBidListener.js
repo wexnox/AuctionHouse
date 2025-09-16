@@ -2,10 +2,11 @@ import { placeBidOnItem } from '../../api/listings/placeBid.js';
 import { getCurrentUserProfile } from '../../api/profile/getCurrentUser.js';
 import { getListingDetails } from '../../api/listings/getListingDetails.js';
 import { validateBid } from '../../utils/bidValidation.js';
-import { createBidErrorContainer, showBidError, hideBidError } from '../../ui/modal/bidErrorHandler.js';
+import { createBidErrorContainer, hideBidError, showBidError } from '../../ui/modal/bidErrorHandler.js';
 import { getTokenFromStorage } from '../../helpers/storage.js';
 import handleErrors from '../../api/handleErrors.js';
 import { Modal } from 'bootstrap';
+import { displayMessage } from '@/js/ui/common/displayMessage.js';
 
 /**
  * Handles the bid form submission.
@@ -34,14 +35,14 @@ export async function placeBidListener() {
       }
 
       try {
-
         const listingData = await getListingDetails(itemId);
 
         let userProfile;
         try {
           userProfile = await getCurrentUserProfile();
-        } catch (profileError) {
-          console.warn('Could not fetch fresh profile, using cached data:', profileError);
+        } catch (error) {
+          // console.warn('Could not fetch fresh profile, using cached data:', error);
+          displayMessage('warning', 'Could not fetch fresh profile, using cached data' + error);
           userProfile = getTokenFromStorage('profile');
         }
 
@@ -53,7 +54,6 @@ export async function placeBidListener() {
         }
 
         await placeBidOnItem(itemId, bidAmount);
-
 
         const modalElement = document.getElementById('placeBidModal');
         if (modalElement) {
