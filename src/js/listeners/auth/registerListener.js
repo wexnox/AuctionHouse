@@ -10,7 +10,6 @@ export function setRegisterUserListener() {
   const form = document.getElementById('registerForm');
 
   if (form) {
-
     togglePassword();
 
     form.addEventListener('submit', async (event) => {
@@ -20,7 +19,10 @@ export function setRegisterUserListener() {
       const userProfile = Object.fromEntries(formData.entries());
 
       if (!isValidEmail(userProfile.email)) {
-        return displayMessage('danger', 'Registration is only available for noroff.no or stud.noroff.no email addresses');
+        return displayMessage(
+          'danger',
+          'Registration is only available for noroff.no or stud.noroff.no email addresses'
+        );
       }
 
       const password = userProfile.password;
@@ -35,25 +37,24 @@ export function setRegisterUserListener() {
       }
       // TODO: remove this console.warn
       if (password.length < 8) {
-        console.warn('Password length validation failed', { password });
+        // console.warn('Password length validation failed', { password });
+        displayMessage('danger', 'Password must be at least 8 characters long' + password);
       }
 
       delete userProfile.confirmPassword;
       try {
         await register(userProfile);
       } catch (error) {
-        console.error('Unexpected error during registration:', error);
+        // console.error('Unexpected error during registration:', error);
         displayMessage('danger', 'An unexpected error occurred. Please try again.');
       }
-
     });
 
     const emailInput = document.getElementById('email');
     if (emailInput) {
-      emailInput.addEventListener('input', function() {
+      emailInput.addEventListener('input', function () {
         const emailValue = this.value;
         const isValid = isValidEmail(emailValue);
-
 
         if (emailValue && !isValid) {
           this.setCustomValidity('Only noroff.no or stud.noroff.no email addresses are allowed');
@@ -70,7 +71,7 @@ export function setRegisterUserListener() {
     const confirmPasswordInput = document.getElementById('confirmPassword');
 
     if (passwordInput && confirmPasswordInput) {
-      const validatePasswords = function() {
+      const validatePasswords = function () {
         if (confirmPasswordInput.value && passwordInput.value !== confirmPasswordInput.value) {
           confirmPasswordInput.setCustomValidity('Passwords do not match');
           confirmPasswordInput.classList.add('is-invalid');
@@ -83,8 +84,5 @@ export function setRegisterUserListener() {
       passwordInput.addEventListener('input', validatePasswords);
       confirmPasswordInput.addEventListener('input', validatePasswords);
     }
-
-
   }
 }
-
