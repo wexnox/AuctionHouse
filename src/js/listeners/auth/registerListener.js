@@ -46,7 +46,7 @@ export function setRegisterUserListener() {
         await register(userProfile);
       } catch (error) {
         // console.error('Unexpected error during registration:', error);
-        displayMessage('danger', 'An unexpected error occurred. Please try again.');
+        displayMessage('danger', 'An unexpected error occurred. Please try again.' + error);
       }
     });
 
