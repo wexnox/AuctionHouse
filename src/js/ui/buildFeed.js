@@ -24,7 +24,7 @@ export async function buildFeed({ limit, offset = 0, layout } = {}) {
     const _tag = usp.get('_tag') || undefined;
 
     const posts = await getAllListings({ limit, offset, _tag }); // Fetch posts, optionally filtered by tag
-    console.log('Fetched posts:', posts); // Debug fetched posts
+    // console.log('Fetched posts:', posts); // Debug fetched posts
 
     // Handle edge case: empty data
     if (!Array.isArray(posts) || posts.length === 0) {
