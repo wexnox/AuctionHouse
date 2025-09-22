@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+# Husky v9+ hook: do not source husky.sh (it's deprecated and will be removed in v10)
+# Ensure lint-staged runs on staged files before committing
+
+# If lint-staged is installed locally, prefer it without downloading
+npx --no-install lint-staged || {
+  echo "lint-staged not found locally; trying npx fallback..."
+  npx lint-staged
+}
