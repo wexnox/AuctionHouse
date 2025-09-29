@@ -28,18 +28,21 @@ html {
   }
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin-bottom: $text-margin;
   font-weight: 600;
   line-height: 1.2;
 }
 
-
 :focus {
   outline: $outline-focus;
   outline-offset: variables.$focus-outline-offset;
 }
-
 
 // Buttons
 .btn-primary {
@@ -50,7 +53,6 @@ h1, h2, h3, h4, h5, h6 {
     background-color: color.scale(variables.$primary, $lightness: $button-hover-darken);
   }
 }
-
 
 // Cards
 .card {
@@ -151,7 +153,8 @@ h1, h2, h3, h4, h5, h6 {
 .hero-auction {
   // Subtle dark overlay for readability + luxe background image (royalty-free Unsplash)
   // Image: auction gavel close-up to clearly reflect an auction house theme
-  background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
     url('https://images.unsplash.com/photo-1555375771-4b69a4ef95b0?auto=format&fit=crop&w=1920&q=80');
   background-size: cover;
   background-position: center;
@@ -162,7 +165,7 @@ h1, h2, h3, h4, h5, h6 {
   p,
   .lead {
     color: variables.$white !important;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
   }
 
   // Force any utility text color inside hero to be readable on the image
@@ -315,7 +318,8 @@ footer a {
 
 footer .nav-link:hover,
 footer a:hover {
-  color: $lux-gold !important;
+  color: #7a5c1e !important;
+  text-decoration: underline;
 }
 
 // Generic avatar sizes and icons
@@ -354,7 +358,7 @@ footer a:hover {
     border: 1px solid #e9ecef;
     border-radius: 999px;
     padding: 0.25rem 0.5rem 0.25rem 0.75rem;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 
     .chip-text {
       max-width: 220px;
@@ -416,7 +420,6 @@ footer a:hover {
   }
 }
 
-
 // Load More button to match card styling
 .load-more-btn {
   background: variables.$white;
@@ -425,7 +428,10 @@ footer a:hover {
   border-radius: variables.$border-radius-lg;
   box-shadow: variables.$shadow-md;
   padding: 0.75rem 1.25rem;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.1s ease;
 
   &:hover,
   &:focus {
