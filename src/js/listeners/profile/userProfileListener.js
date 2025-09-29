@@ -14,12 +14,12 @@ const profileDOMElement = document.getElementById('userWrapper');
  * @returns {Promise<void>}
  */
 async function renderUserProfile(userInfo) {
-
   console.log(userInfo);
 
-  const avatarSrc = userInfo.avatar || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
+  const avatarSrc =
+    userInfo.avatar || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
 
-  console.log(userInfo);
+  // console.log(userInfo);
 
   profileDOMElement.innerHTML = `
         <div class="profile-container border-bottom shadow p-3 mb-5 d-flex flex-column align-items-center">

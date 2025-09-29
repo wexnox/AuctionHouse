@@ -4,6 +4,7 @@ import { handleSearchResults } from '../ui/searchResults.js';
 import { displayVersion } from '@/js/ui/common/displayVersion.js';
 import { initializeSearch } from '@/js/ui/search.js';
 import { getPostsForSearch } from '@/js/ui/helpers/getPostsForSearch.js';
+import { displayMessage } from '@/js/ui/common/displayMessage.js';
 
 /**
  * Handles search page routes
@@ -13,17 +14,17 @@ import { getPostsForSearch } from '@/js/ui/helpers/getPostsForSearch.js';
 
 export async function handleSearchRoutes(pathname) {
   if (pathname.endsWith('/search.html')) {
-
     setPageTitle('Search Results');
 
     displayVersion();
+    try {
+      await getPostsForSearch();
 
-    await getPostsForSearch();
+      initializeSearch();
 
-    initializeSearch();
-
-    await handleSearchResults();
-
+      await handleSearchResults();
+    } catch (error) {
+      displayMessage('danger', 'Error initializing search' + error);
+    }
   }
 }
-

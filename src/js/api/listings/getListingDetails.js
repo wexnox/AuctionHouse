@@ -1,6 +1,7 @@
 import { API_MAIN_URL } from '../constants.js';
 import { authFetch } from '../api.js';
 import { handleHttpError } from '../handleErrors.js';
+import { displayMessage } from '@/js/ui/common/displayMessage.js';
 
 /**
  * Fetches the details of a listing by its ID.''
@@ -16,7 +17,8 @@ export async function getListingDetails(itemId) {
     handleHttpError(response);
     return await response.json();
   } catch (error) {
-    console.error('Error fetching listing details:', error);
+    // console.error('Error fetching listing details:', error);
+    displayMessage('danger', 'An unexpected error occurred. Please try again.' + error);
     throw error;
   }
 }

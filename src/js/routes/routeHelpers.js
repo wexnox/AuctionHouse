@@ -8,10 +8,9 @@ import { displayMessage } from '../ui/common/displayMessage.js';
  */
 
 export function handleFeedError(error, context) {
+  // console.error(`Error loading ${context}:`, error);
 
-  console.error(`Error loading ${context}:`, error);
-
-  displayMessage('danger', `Failed to load ${context}. Please try again later.`);
+  displayMessage('danger', `Failed to load ${context}., Please try again later.`);
 
   const container = document.querySelector('#listingsContainer');
   if (container) {

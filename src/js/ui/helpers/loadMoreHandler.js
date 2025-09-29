@@ -1,5 +1,6 @@
 import createHtmlCards from '@/js/ui/common/createHtmlCards.js';
 import { getAllListings } from '@/js/api/listings/getAllListings.js';
+import { displayMessage } from '@/js/ui/common/displayMessage.js';
 
 /**
  * Initializes the load more functionality.
@@ -32,7 +33,8 @@ export function initializeLoadMore(posts, containerId, buttonId, currentLimit) {
         console.log('No more posts to load.');
       }
     } catch (error) {
-      console.error('Error loading more posts:', error);
+      // console.error('Error loading more posts:', error);
+      displayMessage('danger', 'An unexpected error occurred. Please try again.' + error);
       button.style.display = 'none';
     }
   });

@@ -1,3 +1,5 @@
+import { displayMessage } from '@/js/ui/common/displayMessage.js';
+
 /**
  * Load more listener.
  * @param func
@@ -8,6 +10,7 @@ export function loadMoreListener(func) {
   if (button) {
     button.addEventListener('click', () => func());
   } else {
-    console.error('Load more button not found in the DOM');
+    displayMessage('danger', 'Load more button not found in the DOM');
+    // console.error('Load more button not found in the DOM');
   }
 }

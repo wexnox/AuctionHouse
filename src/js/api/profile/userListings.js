@@ -2,7 +2,7 @@ import { API_PROFILE_URL, API_LISTINGS_URL } from '../constants.js';
 import { getTokenFromStorage } from '../../helpers/storage.js';
 import { authFetch } from '../api.js';
 import createHtmlCards from '@/js/ui/common/createHtmlCards.js';
-
+import { displayMessage } from '@/js/ui/common/displayMessage.js';
 
 /**
  * Retrieves the user's name from the token.'
@@ -24,19 +24,16 @@ function getProfileListingsUrl(userName) {
   return `${API_PROFILE_URL}/${userName}${API_LISTINGS_URL}?_seller=true&_bids=true`;
 }
 
-
 /**
  * Fetches the user's profile listings and renders them on the page.'
  * @returns {Promise<void>}
  */
 export async function getUserListing() {
-
   const userName = getUserName();
 
   const url = getProfileListingsUrl(userName);
 
   try {
-
     const response = await authFetch(url);
     const data = await response.json();
 
@@ -53,9 +50,9 @@ export async function getUserListing() {
     }
     container.innerHTML = '';
 
-
     createHtmlCards(data, container);
   } catch (error) {
-    console.log(error);
+    // console.log(error);
+    displayMessage('danger', 'An unexpected error occurred. Please try again.' + error);
   }
 }
