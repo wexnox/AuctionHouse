@@ -58,7 +58,7 @@ export default defineConfig({
         toplevel: true,
         // reserved: ['importantVar'],
       },
-      output: {
+      format: {
         beautify: false,
         comments: false,
       },
