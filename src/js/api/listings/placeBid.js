@@ -1,10 +1,9 @@
 import { API_MAIN_URL } from '../constants.js';
-import { getTokenFromStorage, saveTokenToStorage } from '../../helpers/storage.js';
+import { getTokenFromStorage } from '../../helpers/storage.js';
 import { authFetch } from '../api.js';
 import { handleHttpError } from '../handleErrors.js';
 
 const POST_METHOD = 'POST';
-const USER_PROFILE_KEY = 'userProfile';
 
 /**
  * Places a bid on an item.
@@ -14,7 +13,6 @@ const USER_PROFILE_KEY = 'userProfile';
  */
 
 export async function placeBidOnItem(id, amount) {
-
   const token = getTokenFromStorage('accessToken');
 
   if (!token) {
@@ -30,17 +28,15 @@ export async function placeBidOnItem(id, amount) {
     const bidURL = `${API_MAIN_URL}/listings/${id}/bids`;
     const response = await authFetch(bidURL, {
       method: POST_METHOD,
-      body: JSON.stringify({ amount: amount }),
+      body: JSON.stringify({ amount: numericAmount }),
     });
 
     handleHttpError(response);
 
-    const jsonResponse = await response.json();
-    saveTokenToStorage(USER_PROFILE_KEY, jsonResponse.userName);
+    const { data } = await response.json();
     redirectToItemDetailsPage(id);
 
-    return jsonResponse;
-
+    return data;
   } catch (error) {
     throw new Error(`Failed to place bid due to error: ${error.message}`);
   }

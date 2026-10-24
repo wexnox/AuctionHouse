@@ -1,4 +1,4 @@
-import {getTokenFromStorage} from '@/js/helpers/storage.js';
+import { getTokenFromStorage } from '@/js/helpers/storage.js';
 
 /**
  * Creates headers for API requests.
@@ -10,9 +10,14 @@ export function headers(hasBody = false) {
   const headers = new Headers();
 
   const token = getTokenFromStorage('accessToken');
+  const apiKey = getTokenFromStorage('apiKey');
 
-  if (token) {
+  if (token && typeof token === 'string') {
     headers.append('Authorization', `Bearer ${token}`);
+  }
+
+  if (apiKey && typeof apiKey === 'string') {
+    headers.append('X-Noroff-API-Key', apiKey);
   }
 
   // if (APP_KEY){

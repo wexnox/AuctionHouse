@@ -35,12 +35,14 @@ export async function getUserListing() {
 
   try {
     const response = await authFetch(url);
-    const data = await response.json();
+    const result = await response.json();
 
     if (response.status !== 200) {
-      console.log(`Error${response.status}: ${data.message}`);
+      console.log(`Error${response.status}: ${result.errors?.[0]?.message}`);
       return;
     }
+
+    const data = result.data;
 
     const container = document.getElementById('itemsList');
 

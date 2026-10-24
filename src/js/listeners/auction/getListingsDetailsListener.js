@@ -17,8 +17,8 @@ const wrapper = document.querySelector('#detailsContainer');
  */
 
 export function createAvatarImage(seller) {
-  return seller.avatar
-    ? `<img src="${seller.avatar}" alt="Avatar for ${seller.name}" class="img-fluid rounded-circle mb-4" width="100" height="100" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='../../src/images/no-image.jpeg'" />`
+  return seller.avatar?.url
+    ? `<img src="${seller.avatar.url}" alt="Avatar for ${seller.name}" class="img-fluid rounded-circle mb-4" width="100" height="100" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='../../src/images/no-image.jpeg'" />`
     : '<div class="mb-4"><i class="bi bi-person-circle icon-xl"></i></div>';
 }
 
@@ -84,7 +84,7 @@ export function createHighestBidInfo(detailsListing) {
   return highestBid
     ? `<div class="text-center mt-3">
             <h5>Latest Bid</h5>
-            <p>${highestBid.amount} Credits by ${highestBid.bidderName}</p> 
+            <p>${highestBid.amount} Credits by ${highestBid.bidder.name}</p> 
             <small>On ${new Date(highestBid.created).toLocaleDateString()} at ${new Date(highestBid.created).toLocaleTimeString()}</small>
            </div>`
     : '<div class="text-center mt-3"><p>No bids yet</p></div>';
@@ -103,7 +103,7 @@ function createBidList(detailsListing) {
         .map(
           (bid) => `
         <li class="list-group-item py-2 px-3">
-          <div class="fw-semibold">${bid.amount} Credits by ${bid.bidderName}</div>
+          <div class="fw-semibold">${bid.amount} Credits by ${bid.bidder.name}</div>
           <div class="text-muted small">On ${new Date(bid.created).toLocaleDateString()} at ${new Date(bid.created).toLocaleTimeString()}</div>
         </li>
       `
@@ -121,7 +121,7 @@ function createBidList(detailsListing) {
 export async function getListingsDetailsListener() {
   try {
     const response = await authFetch(url, { method });
-    const detailsListing = await response.json();
+    const { data: detailsListing } = await response.json();
 
     title.innerHTML = `Auction House | ${detailsListing.title}`;
 
@@ -164,7 +164,7 @@ export async function getListingsDetailsListener() {
               </div>
 
               <div class="seller-mini d-flex align-items-center gap-2 mb-3">
-                ${sellerDetails.avatar ? `<img src="${sellerDetails.avatar}" alt="${sellerDetails.name}" class="rounded-circle" width="40" height="40" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='../../src/images/no-image.jpeg'">` : '<div class="rounded-circle bg-light d-inline-flex align-items-center justify-content-center avatar-40">👤</div>'}
+                ${sellerDetails.avatar?.url ? `<img src="${sellerDetails.avatar.url}" alt="${sellerDetails.name}" class="rounded-circle" width="40" height="40" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='../../src/images/no-image.jpeg'">` : '<div class="rounded-circle bg-light d-inline-flex align-items-center justify-content-center avatar-40">👤</div>'}
                 <div class="small text-muted">Seller</div>
                 <div class="fw-semibold">${sellerDetails.name}</div>
               </div>

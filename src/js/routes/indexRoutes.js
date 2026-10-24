@@ -28,10 +28,10 @@ export async function handleIndexRoutes() {
 async function displayHomePageFeed() {
   // this is the limit for the home page feed
   const limit = 3;
-  const offset = 0; // Start at the beginning
+  const page = 1; // Start at the beginning
 
   try {
-    await buildFeed({ limit, offset, layout: 'row' });
+    await buildFeed({ limit, page, layout: 'row' });
 
     await getPostsForSearch();
 

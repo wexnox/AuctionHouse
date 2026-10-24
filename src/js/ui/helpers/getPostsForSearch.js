@@ -8,7 +8,7 @@ import { displayMessage } from '@/js/ui/common/displayMessage.js';
 
 export async function getPostsForSearch() {
   try {
-    return await getAllListings({ limit: 100, offset: 0, _active: true });
+    return await getAllListings({ limit: 100, page: 1, _active: true });
   } catch (e) {
     // console.error('Failed to fetch posts for search:', e);
     displayMessage('danger', 'An unexpected error occurred. Please try again.' + e);

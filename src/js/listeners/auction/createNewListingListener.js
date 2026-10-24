@@ -80,13 +80,14 @@ async function submitListing({ form }) {
       .map((s) => s.trim())
       .filter((s) => /^https?:\/\//i.test(s))
       .filter((v, i, a) => a.indexOf(v) === i) // unique
-      .slice(0, 8);
+      .slice(0, 8)
+      .map((url) => ({ url, alt: title }));
 
     if (media.length > 8) {
       throw new Error(`Maximum 8 images allowed. You currently have ${media.length}.`);
     }
 
-    const listing = pruneEmptyArrays({ title, description, endsAt: new Date(endsAt), tags, media });
+    const listing = pruneEmptyArrays({ title, description, endsAt: new Date(endsAt).toISOString(), tags, media });
 
     const response = await createNewListing(listing);
     console.log('Server Response:', response);

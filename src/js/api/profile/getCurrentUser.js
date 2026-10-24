@@ -8,7 +8,6 @@ import { handleHttpError } from '../handleErrors.js';
  * @returns {Promise<any>}
  */
 export async function getCurrentUserProfile() {
-
   const token = getTokenFromStorage('accessToken');
   const userProfile = getTokenFromStorage('profile');
 
@@ -26,7 +25,8 @@ export async function getCurrentUserProfile() {
     });
 
     handleHttpError(response);
-    return await response.json();
+    const { data } = await response.json();
+    return data;
   } catch (error) {
     console.error('Error fetching user profile:', error);
     throw error;

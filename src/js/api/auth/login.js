@@ -1,41 +1,23 @@
-import { API_MAIN_URL } from '../constants.js';
-import * as storage from '../../helpers/storage.js';
-import { displayMessage } from '../../ui/common/displayMessage.js';
-import buildMenu from '../../ui/common/buildMenu.js';
+import { API_AUTH_URL } from '../constants.js';
 import { authFetch } from '@/js/api/api.js';
 
 /**
  * Logs in a user.
- * @param userProfile
- * @returns {Promise<void>}
+ * @param credentials {{email: string, password: string}}
+ * @returns {Promise<Object>} The logged in user, including the access token
  */
 
-export async function login(userProfile) {
-  const endpoint = '/auth/login';
-  const loginURL = `${API_MAIN_URL}${endpoint}`;
+export async function login(credentials) {
+  const response = await authFetch(`${API_AUTH_URL}/login`, {
+    method: 'POST',
+    body: JSON.stringify(credentials),
+  });
 
-  try {
-    const response = await authFetch(loginURL, {
-      method: 'POST',
-      body: JSON.stringify(userProfile),
-    });
+  const result = await response.json();
 
-    const { accessToken, ...user } = await response.json();
-
-    if (response.status === 200) {
-      storage.saveTokenToStorage('accessToken', accessToken);
-      storage.saveTokenToStorage('profile', user);
-
-      buildMenu(); // Refresh the menu to reflect the authenticated state
-
-      location.href = '/';
-    } else {
-      console.log('Unexpected response status:', response.status);
-      displayMessage('danger', 'Unexpected error occurred. Please try again later.');
-    }
-
-
-  } catch (error) {
-    return displayMessage('danger', error.message);
+  if (!response.ok) {
+    throw new Error(result.errors?.[0]?.message || 'Login failed. Please try again.');
   }
+
+  return result.data;
 }

@@ -9,31 +9,24 @@ import { handleHttpError } from '../handleErrors.js';
  */
 
 export async function createNewListing(listingData) {
-
   const createURL = `${API_MAIN_URL}${API_LISTINGS_URL}`;
 
   const method = 'POST';
 
   try {
-
     const response = await authFetch(createURL, {
-
       method,
       body: JSON.stringify(listingData),
-
     });
     console.log('Sending listing data:', JSON.stringify(listingData, null, 2));
 
     handleHttpError(response);
 
-    return await response.json();
-
+    const { data } = await response.json();
+    return data;
   } catch (error) {
-
     console.log(error);
 
     throw error;
-
   }
-
 }

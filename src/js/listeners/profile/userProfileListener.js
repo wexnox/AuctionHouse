@@ -17,7 +17,7 @@ async function renderUserProfile(userInfo) {
   console.log(userInfo);
 
   const avatarSrc =
-    userInfo.avatar || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
+    userInfo.avatar?.url || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
 
   // console.log(userInfo);
 
@@ -33,7 +33,7 @@ async function renderUserProfile(userInfo) {
             <h1 class="profile-name">${userInfo.name}</h1>
             <div class="profile-stats col-lg-6 mx-auto text-center">
                 <p class="profile-stats-detail">
-                Credits: ${userInfo.credits} | ${userInfo.wins.length} Wining Bids | ${userInfo._count.listings} Listings
+                Credits: ${userInfo.credits} | ${userInfo._count.wins} Wining Bids | ${userInfo._count.listings} Listings
                 </p>
                 <div class="d-flex gap-2 justify-content-center profile-action-btns">
                     <a href="../../pages/listings/create.html" class="btn btn-outline-primary btn-sm px-4" role="button">Create Listing</a>
@@ -57,7 +57,7 @@ export async function userProfileListener() {
     }
     const requestURL = `${API_PROFILE_URL}/${userProfile.name}`;
     const response = await authFetch(requestURL, 'GET');
-    const userInfo = await response.json();
+    const { data: userInfo } = await response.json();
 
     await renderUserProfile(userInfo);
 

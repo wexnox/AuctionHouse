@@ -5,12 +5,12 @@ import { displayMessage } from '@/js/ui/common/displayMessage.js';
 /**
  * Builds the feed for the home page or browse page.
  * @param limit
- * @param offset
+ * @param page
  * @param layout
  * @returns {Promise<*|*[]>}
  */
 
-export async function buildFeed({ limit, offset = 0, layout } = {}) {
+export async function buildFeed({ limit, page = 1, layout } = {}) {
   const container = document.getElementById('listingsContainer');
   if (!container) {
     // console.error('Listings container not found in DOM.');
@@ -23,7 +23,7 @@ export async function buildFeed({ limit, offset = 0, layout } = {}) {
     const usp = new URLSearchParams(window.location.search);
     const _tag = usp.get('_tag') || undefined;
 
-    const posts = await getAllListings({ limit, offset, _tag }); // Fetch posts, optionally filtered by tag
+    const posts = await getAllListings({ limit, page, _tag }); // Fetch posts, optionally filtered by tag
     // console.log('Fetched posts:', posts); // Debug fetched posts
 
     // Handle edge case: empty data

@@ -1,4 +1,5 @@
 import { register } from '../../api/auth/register.js';
+import { startSession } from '../../api/auth/startSession.js';
 import { displayMessage } from '@/js/ui/common/displayMessage.js';
 import togglePassword from '../../ui/common/togglePassword.js';
 import { isValidEmail } from '@/js/utils/validation.js';
@@ -43,10 +44,25 @@ export function setRegisterUserListener() {
 
       delete userProfile.confirmPassword;
       try {
+        const { email, password } = userProfile;
+
         await register(userProfile);
+
+        // v2 does not return an access token on register, so log in right away
+        const user = await startSession({ email, password });
+
+        // TODO: need to test if this one works as intended
+        displayMessage('success', 'Registration successful!' + user.name + ' Redirecting to profile page...');
+
+        location.href = '/pages/profile/index.html';
       } catch (error) {
         // console.error('Unexpected error during registration:', error);
-        displayMessage('danger', 'An unexpected error occurred. Please try again.' + error);
+        // Check for "Profile already exists" error
+        if (error.message === 'Profile already exists') {
+          return displayMessage('danger', 'Profile already exists. Please use a different email.');
+        }
+
+        displayMessage('danger', `Registration failed: ${error.message}`);
       }
     });
 

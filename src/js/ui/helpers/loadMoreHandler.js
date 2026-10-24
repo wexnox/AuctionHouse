@@ -14,18 +14,19 @@ export function initializeLoadMore(posts, containerId, buttonId, currentLimit) {
   const container = document.getElementById(containerId);
   const button = document.getElementById(buttonId);
 
+  // Start on the page after the initial posts are loaded
   // Start offset after the initial posts are loaded
-  let offset = currentLimit;
+  let page = 2;
 
   // Add a click event listener to the Load More button
   button.addEventListener('click', async () => {
     try {
-      const newPosts = await getAllListings({ limit: currentLimit, offset });
+      const newPosts = await getAllListings({ limit: currentLimit, page });
 
       // Append the new posts to the container
       if (newPosts.length > 0) {
         createHtmlCards(newPosts, container);
-        offset += currentLimit;
+        page += 1;
       }
 
       if (newPosts.length < currentLimit) {

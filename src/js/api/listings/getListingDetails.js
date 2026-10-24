@@ -15,7 +15,8 @@ export async function getListingDetails(itemId) {
     const response = await authFetch(url, { method: 'GET' });
 
     handleHttpError(response);
-    return await response.json();
+    const { data } = await response.json();
+    return data;
   } catch (error) {
     // console.error('Error fetching listing details:', error);
     displayMessage('danger', 'An unexpected error occurred. Please try again.' + error);

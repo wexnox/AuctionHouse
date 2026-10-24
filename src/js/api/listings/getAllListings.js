@@ -8,9 +8,8 @@ import { authFetch } from '@/js/api/api.js';
  * @returns {Promise<any>}
  */
 export async function getAllListings(options = {}) {
-
-  const { limit = 15, offset = 0, _active = true, _tag } = options;
-  const params = new URLSearchParams({ limit, offset, _active });
+  const { limit = 15, page = 1, _active = true, _tag } = options;
+  const params = new URLSearchParams({ limit, page, _active, _seller: true, sort: 'created', sortOrder: 'desc' });
   if (_tag) {
     params.set('_tag', _tag);
   }
@@ -24,7 +23,7 @@ export async function getAllListings(options = {}) {
 
     handleErrors(data);
 
-    return data;
+    return data.data;
   } catch (error) {
     console.error('Error fetching listings:', error);
     throw error;

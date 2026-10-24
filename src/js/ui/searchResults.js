@@ -1,8 +1,7 @@
-import { searchPosts } from '../utils/searchPosts.js';
+import { searchListings } from '@/js/api/listings/searchListings.js';
 import createHtmlCards from '../ui/common/createHtmlCards.js';
 import { displayMessage } from '../ui/common/displayMessage.js';
 import { toggleLoadingIndicator } from '@/js/ui/helpers/toggleLoadingIndicator.js';
-import { getPostsForSearch } from '@/js/ui/helpers/getPostsForSearch.js';
 
 /**
  * Handles the search results for the search page.
@@ -30,10 +29,9 @@ export async function handleSearchResults() {
   }
 
   try {
-
     toggleLoadingIndicator(searchList);
 
-    const allPosts = await getPostsForSearch();
+    const filteredPosts = await searchListings(searchTerm);
 
     toggleLoadingIndicator(searchList);
 
@@ -41,8 +39,6 @@ export async function handleSearchResults() {
       searchList.innerHTML = '<p class="text-muted text-center">No listings available to search.</p>';
       return;
     }
-
-    const filteredPosts = searchPosts(allPosts, searchTerm);
 
     if (filteredPosts && filteredPosts.length) {
       searchList.innerHTML = '';
@@ -59,6 +55,5 @@ export async function handleSearchResults() {
     if (loadingIndicator) {
       toggleLoadingIndicator(searchList);
     }
-
   }
 }

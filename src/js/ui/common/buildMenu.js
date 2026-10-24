@@ -59,7 +59,6 @@ function buildMenu() {
     const username = storedProfile.name || storedProfile.username || 'Profile';
     const avatarUrl =
       storedProfile.avatar?.url ||
-      storedProfile.avatar ||
       'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
 
     let credits = typeof storedProfile.credits === 'number' ? storedProfile.credits : null;
@@ -72,7 +71,7 @@ function buildMenu() {
         }
         const res = await authFetch(`${API_PROFILE_URL}/${storedProfile.name}`, { method: 'GET' });
         if (res.ok) {
-          const fresh = await res.json();
+          const { data: fresh } = await res.json();
           credits = typeof fresh.credits === 'number' ? fresh.credits : credits;
 
           const creditsEl = document.querySelector('#nav-credits');
@@ -85,7 +84,7 @@ function buildMenu() {
             nameEl.textContent = fresh.name || username;
           }
           if (avatarEl && fresh.avatar) {
-            avatarEl.src = fresh.avatar;
+            avatarEl.src = fresh.avatar.url;
           }
         }
       } catch (error) {

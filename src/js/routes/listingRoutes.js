@@ -74,9 +74,9 @@ async function handleBrowseListings() {
   try {
     //  This is the limit for the listings on the browse page
     const limit = 9;
-    const offset = 0;
+    const page = 1;
 
-    const posts = await buildFeed({ limit, offset });
+    const posts = await buildFeed({ limit, page });
 
     if (posts.length > 0) {
       initializeLoadMore(posts, 'listingsContainer', 'loadMore', limit);

@@ -9,9 +9,9 @@ export function logoutListener() {
   const logoutBtn = document.getElementById('logout');
 
   logoutBtn.addEventListener('click', () => {
-
     storage.clearTokenFromStorage('accessToken');
     storage.clearTokenFromStorage('profile');
+    storage.clearTokenFromStorage('apiKey');
 
     location.href = '/';
 

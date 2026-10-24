@@ -41,8 +41,8 @@ export default function createHtmlCards(listings, container, options = {}) {
       imgLink.href = `/pages/listings/details.html?id=${listing.id}`;
 
       const img = document.createElement('img');
-      img.src = listing.media?.[0] || '../../src/images/no-image.jpeg';
-      img.alt = listing.title;
+      img.src = listing.media?.[0]?.url || '../../src/images/no-image.jpeg';
+      img.alt = listing.media?.[0]?.alt || listing.title;
       img.loading = 'lazy';
       img.decoding = 'async';
       img.referrerPolicy = 'no-referrer';
@@ -156,8 +156,8 @@ export default function createHtmlCards(listings, container, options = {}) {
 
     const img = document.createElement('img');
     img.className = 'card-img-top rounded-top';
-    img.src = listing.media?.[0] || '../../src/images/no-image.jpeg';
-    img.alt = listing.title;
+    img.src = listing.media?.[0]?.url || '../../src/images/no-image.jpeg';
+    img.alt = listing.media?.[0]?.alt || listing.title;
     img.loading = 'lazy';
     img.decoding = 'async';
     img.referrerPolicy = 'no-referrer';
