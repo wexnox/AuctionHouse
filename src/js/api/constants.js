@@ -1,5 +1,8 @@
 /** A constant that holds the URL endpoint for accessing the API. */
-export const API_HOST_URL = 'https://api.noroff.dev/api/v1';
+export const API_HOST_URL = 'https://v2.api.noroff.dev';
+
+/** A constant that holds the URL endpoint for the API authentication routes. */
+export const API_AUTH_URL = `${API_HOST_URL}/auth`;
 
 /** A constant that holds the URL endpoint for accessing the API auction. */
 export const API_AUCTION = '/auction';
