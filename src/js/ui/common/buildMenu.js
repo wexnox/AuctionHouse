@@ -2,6 +2,7 @@ import { logoutListener } from '@/js/listeners/index.js';
 import { authFetch } from '@/js/api/api.js';
 import { API_PROFILE_URL } from '@/js/api/constants.js';
 import { getTokenFromStorage } from '@/js/helpers/storage.js';
+import { displayMessage } from '@/js/ui/common/displayMessage.js';
 
 /**
  * Creates a menu item with an active state based on the current path.
@@ -45,7 +46,7 @@ function buildMenu() {
 
   const menuItems = isAuthenticated ? authMenuItems : unauthMenuItems;
   if (menu) {
-    menu.innerHTML = menuItems.map(item => createMenuItem({ ...item, pathname })).join('');
+    menu.innerHTML = menuItems.map((item) => createMenuItem({ ...item, pathname })).join('');
   }
 
   /**
@@ -56,9 +57,10 @@ function buildMenu() {
     // Create profile dropdown instead of simple logout link
     const storedProfile = getTokenFromStorage('profile') || {};
     const username = storedProfile.name || storedProfile.username || 'Profile';
-    const avatarUrl = storedProfile.avatar?.url
-      || storedProfile.avatar
-      || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
+    const avatarUrl =
+      storedProfile.avatar?.url ||
+      storedProfile.avatar ||
+      'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
 
     let credits = typeof storedProfile.credits === 'number' ? storedProfile.credits : null;
 
@@ -86,8 +88,9 @@ function buildMenu() {
             avatarEl.src = fresh.avatar;
           }
         }
-      } catch (_) {
-        // ignore
+      } catch (error) {
+        // console.log(error)
+        displayMessage(error);
       }
     })();
 

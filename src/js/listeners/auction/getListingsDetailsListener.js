@@ -32,7 +32,6 @@ function toGalleryImages(media) {
   const result = [];
   if (!media) {
     return result; // Returnerer tom array hvis ingen data
-
   }
 
   /**
@@ -77,9 +76,10 @@ function toGalleryImages(media) {
  */
 
 export function createHighestBidInfo(detailsListing) {
-  const highestBid = detailsListing.bids && detailsListing.bids.length > 0
-    ? detailsListing.bids.reduce((max, bid) => bid.amount > max.amount ? bid : max, detailsListing.bids[0])
-    : null;
+  const highestBid =
+    detailsListing.bids && detailsListing.bids.length > 0
+      ? detailsListing.bids.reduce((max, bid) => (bid.amount > max.amount ? bid : max), detailsListing.bids[0])
+      : null;
 
   return highestBid
     ? `<div class="text-center mt-3">
@@ -97,14 +97,19 @@ export function createHighestBidInfo(detailsListing) {
  */
 
 function createBidList(detailsListing) {
-  let bidsListString = detailsListing.bids && detailsListing.bids.length > 0
-    ? detailsListing.bids.map(bid => `
+  let bidsListString =
+    detailsListing.bids && detailsListing.bids.length > 0
+      ? detailsListing.bids
+        .map(
+          (bid) => `
         <li class="list-group-item py-2 px-3">
           <div class="fw-semibold">${bid.amount} Credits by ${bid.bidderName}</div>
           <div class="text-muted small">On ${new Date(bid.created).toLocaleDateString()} at ${new Date(bid.created).toLocaleTimeString()}</div>
         </li>
-      `).join('')
-    : '<li class="list-group-item text-muted">No bids yet</li>';
+      `
+        )
+        .join('')
+      : '<li class="list-group-item text-muted">No bids yet</li>';
 
   return `<ul class="list-group list-group-flush">${bidsListString}</ul>`;
 }
@@ -120,24 +125,27 @@ export async function getListingsDetailsListener() {
 
     title.innerHTML = `Auction House | ${detailsListing.title}`;
 
-    const sellerDetails = detailsListing.seller ? detailsListing.seller : {
-      name: 'Not specified',
-      email: 'Not provided',
-      avatar: null,
-    };
+    const sellerDetails = detailsListing.seller
+      ? detailsListing.seller
+      : {
+        name: 'Not specified',
+        email: 'Not provided',
+        avatar: null,
+      };
 
-    const avatarImage = createAvatarImage(sellerDetails);
+    const avatarImage = createAvatarImage(sellerDetails); // TODO: implement avatarImage
     const images = toGalleryImages(detailsListing.media);
-    const highestBidInfo = createHighestBidInfo(detailsListing);
+    const highestBidInfo = createHighestBidInfo(detailsListing); // TODO: implement HighestBidInfo
     const bidList = createBidList(detailsListing);
     const modalElement = new Modal(document.getElementById('placeBidModal'));
     modalElement.hide();
 
     const bidsCount = Array.isArray(detailsListing.bids) ? detailsListing.bids.length : 0;
     const endsAtDate = detailsListing.endsAt ? new Date(detailsListing.endsAt) : null;
-    const highestBid = detailsListing.bids && detailsListing.bids.length > 0
-      ? detailsListing.bids.reduce((max, bid) => bid.amount > max.amount ? bid : max, detailsListing.bids[0])
-      : null;
+    const highestBid =
+      detailsListing.bids && detailsListing.bids.length > 0
+        ? detailsListing.bids.reduce((max, bid) => (bid.amount > max.amount ? bid : max), detailsListing.bids[0])
+        : null;
 
     wrapper.innerHTML = `
     <div class="listing-details mt-4">
@@ -162,7 +170,7 @@ export async function getListingsDetailsListener() {
               </div>
 
               <div class="d-flex flex-wrap gap-1 mb-3">
-                ${(Array.isArray(detailsListing.tags) ? detailsListing.tags : []).map(t => `<a href="/pages/listings/browse.html?_tag=${encodeURIComponent(t)}" class="badge bg-light text-secondary border" aria-label="Filter by tag ${t}">#${t}</a>`).join('')}
+                ${(Array.isArray(detailsListing.tags) ? detailsListing.tags : []).map((t) => `<a href="/pages/listings/browse.html?_tag=${encodeURIComponent(t)}" class="badge bg-light text-secondary border" aria-label="Filter by tag ${t}">#${t}</a>`).join('')}
               </div>
               <p class="card-text text-break">${detailsListing.description || 'No description provided'}</p>
 
@@ -193,7 +201,6 @@ export async function getListingsDetailsListener() {
       </div>
     </div>`;
 
-
     // Mount gallery after HTML is injected
     const mount = document.getElementById('gallery-mount');
     if (mount) {
@@ -204,13 +211,11 @@ export async function getListingsDetailsListener() {
       }
     }
 
-
     // Countdown for time remaining (moved to reusable helper)
     const timeEl = document.getElementById('time-remaining');
     if (timeEl && endsAtDate instanceof Date && !isNaN(endsAtDate.getTime())) {
       initCountdown(timeEl, endsAtDate, { urgentMs: 60 * 60 * 1000, endedText: 'Auction ended' });
     }
-
   } catch (error) {
     console.error(error);
   }

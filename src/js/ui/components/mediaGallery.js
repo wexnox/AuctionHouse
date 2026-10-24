@@ -6,43 +6,52 @@
  */
 
 export function createMediaGallery(images = [], options = {}) {
-
-  const { containerId = 'media-gallery', showThumbnails = true, maxImages = 8, } = options;
+  const { containerId = 'media-gallery', showThumbnails = true, maxImages = 8 } = options; // TODO: Implement maxImages
 
   const container = document.getElementById(containerId) || document.createElement('div');
   container.id = containerId;
   container.className = 'media-gallery';
 
   if (!images.length) {
-
     container.innerHTML = '<p class="no-images">No images available</p>';
 
     return container;
-
   }
 
   container.innerHTML = `
     <div class="gallery-main">
       <div class="main-image-container">
         <img id="main-image" src="${images[0].url}" alt="${images[0].alt || 'Gallery image'}" />
-        ${images.length > 1 ? `
+        ${
+  images.length > 1
+    ? `
           <button class="nav-btn prev-btn" data-direction="prev" aria-label="Previous image">&lt;</button>
           <button class="nav-btn next-btn" data-direction="next" aria-label="Next image">&gt;</button>
           <div class="image-counter">
             <span class="current">1</span> / <span class="total">${images.length}</span>
           </div>
-        ` : ''}
+        `
+    : ''
+}
       </div>
-      ${showThumbnails && images.length > 1 ? `
+      ${
+  showThumbnails && images.length > 1
+    ? `
         <div class="thumbnails-container">
-          ${images.map((img, index) => `
+          ${images
+    .map(
+      (img, index) => `
             <img class="thumbnail ${index === 0 ? 'active' : ''}" 
                  src="${img.url}" 
                  alt="${img.alt || `Image ${index + 1}`}"
                  data-index="${index}" loading="lazy" />
-          `).join('')}
+          `
+    )
+    .join('')}
         </div>
-      ` : ''}
+      `
+    : ''
+}
     </div>
   `;
 

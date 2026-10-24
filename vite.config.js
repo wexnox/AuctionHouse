@@ -3,6 +3,7 @@ import { fileURLToPath } from 'url';
 import eslintPlugin from 'vite-plugin-eslint';
 import { defineConfig } from 'vite';
 import { readFileSync } from 'fs';
+import.meta.dirname;
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -28,7 +29,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      '@': path.resolve('./src'),
     },
   },
 
@@ -64,19 +65,19 @@ export default defineConfig({
       },
       ecma: 2015,
     },
-    outDir: path.resolve(__dirname, './dist'),
+    // outDir: path.resolve( './dist'),
     sourcemap: true,
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        index: path.resolve(__dirname, 'index.html'),
-        login: path.resolve(__dirname, 'pages/auth/login.html'),
-        register: path.resolve(__dirname, 'pages/auth/register.html'),
-        profile: path.resolve(__dirname, 'pages/profile/index.html'),
-        createListing: path.resolve(__dirname, 'pages/listings/create.html'),
-        listingsDetails: path.resolve(__dirname, 'pages/listings/details.html'),
-        browseListings: path.resolve(__dirname, 'pages/listings/browse.html'),
-        search: path.resolve(__dirname, 'search.html'),
+        index: path.resolve('index.html'),
+        login: path.resolve('pages/auth/login.html'),
+        register: path.resolve('pages/auth/register.html'),
+        profile: path.resolve('pages/profile/index.html'),
+        createListing: path.resolve('pages/listings/create.html'),
+        listingsDetails: path.resolve('pages/listings/details.html'),
+        browseListings: path.resolve('pages/listings/browse.html'),
+        search: path.resolve('search.html'),
       },
     },
   },
