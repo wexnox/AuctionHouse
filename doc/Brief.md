@@ -36,7 +36,7 @@ v1 https://api.noroff.dev/docs/static/index.html
 
 ### User stories
 
-The client has specified the following requirements in the form of*User Stories*:
+The client has specified the following requirements in the form of *User Stories*:
 
 1. A user with a`stud.noroff.no`email may register
 2. A registered user may login
@@ -51,11 +51,6 @@ The client has specified the following requirements in the form of*User Stories*
 ### CSS frameworks
 
 - Bootstrap (version >5.0.1)
-
-### Hosting services
-
-- GitHub Pages
-- Netlify
 
 ### Design applications
 

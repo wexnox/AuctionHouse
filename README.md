@@ -7,6 +7,7 @@
 
 ## Cover
 
+[//]: # (TODO: Add project image)
 ![Project Cover Image](path/to/your/cover/image.png)  *(Replace `path/to/your/cover/image.png` with the actual path to
 your cover image)*
 
