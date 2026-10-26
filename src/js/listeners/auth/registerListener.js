@@ -20,10 +20,7 @@ export function setRegisterUserListener() {
       const userProfile = Object.fromEntries(formData.entries());
 
       if (!isValidEmail(userProfile.email)) {
-        return displayMessage(
-          'danger',
-          'Registration is only available for noroff.no or stud.noroff.no email addresses'
-        );
+        return displayMessage('danger', 'Registration is only available for stud.noroff.no email addresses');
       }
 
       const password = userProfile.password;
@@ -73,7 +70,7 @@ export function setRegisterUserListener() {
         const isValid = isValidEmail(emailValue);
 
         if (emailValue && !isValid) {
-          this.setCustomValidity('Only noroff.no or stud.noroff.no email addresses are allowed');
+          this.setCustomValidity('Only stud.noroff.no email addresses are allowed');
           this.classList.add('is-invalid');
         } else {
           this.setCustomValidity('');
