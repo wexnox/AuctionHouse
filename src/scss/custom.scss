@@ -151,11 +151,8 @@ h6 {
 
 // Hero background image variant for the home splash
 .hero-auction {
-  // Subtle dark overlay for readability + luxe background image (royalty-free Unsplash)
-  // Image: auction gavel close-up to clearly reflect an auction house theme
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
-    url('https://images.unsplash.com/photo-1555375771-4b69a4ef95b0?auto=format&fit=crop&w=1920&q=80');
+  // Dark overlay for readability over the chandelier hall photo
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/hero-home.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -489,5 +486,107 @@ footer a:hover {
   &:active {
     transform: translateY(0);
     box-shadow: variables.$shadow-sm;
+  }
+}
+
+// Page banners (browse, profile, create listing)
+.page-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 9rem;
+  margin-bottom: 2rem;
+  border-radius: variables.$border-radius-lg;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: variables.$white;
+
+  @media (min-width: 768px) {
+    min-height: 13rem;
+  }
+
+  h1 {
+    margin: 0;
+    color: variables.$white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.page-banner--browse {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('../images/banner-browse.webp');
+}
+
+.page-banner--profile {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url('../images/banner-profile.webp');
+  min-height: 7rem;
+
+  @media (min-width: 768px) {
+    min-height: 10rem;
+  }
+}
+
+.page-banner--create {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../images/banner-create.webp');
+  min-height: 7rem;
+
+  @media (min-width: 768px) {
+    min-height: 10rem;
+  }
+}
+
+// Login / register side image
+.auth-image {
+  min-height: 24rem;
+  border-radius: variables.$border-radius-lg;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../images/auth-staircase.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+// Category tiles (home)
+.category-tile {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: variables.$border-radius-lg;
+  box-shadow: variables.$shadow-md;
+  color: variables.$white;
+  text-decoration: none;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .category-label {
+    position: absolute;
+    inset: auto 0 0;
+    padding: 2rem 1rem 0.75rem;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+    font-weight: 600;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: variables.$white;
+
+    img {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.how-it-works-image {
+  box-shadow: variables.$shadow-md;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .category-tile img {
+    transition: none;
   }
 }
