@@ -35,11 +35,6 @@ export async function handleSearchResults() {
 
     toggleLoadingIndicator(searchList);
 
-    if (!allPosts || allPosts.length === 0) {
-      searchList.innerHTML = '<p class="text-muted text-center">No listings available to search.</p>';
-      return;
-    }
-
     if (filteredPosts && filteredPosts.length) {
       searchList.innerHTML = '';
       createHtmlCards(filteredPosts, searchList);
